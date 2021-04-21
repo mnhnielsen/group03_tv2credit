@@ -2,7 +2,6 @@ package Domain;
 
 public class Account
 {
-    //This was named "Producer" on class diagram.
     private int id;
     private String username;
     private String password;
