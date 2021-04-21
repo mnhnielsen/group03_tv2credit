@@ -1,17 +1,13 @@
 package Domain;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URISyntaxException;
+
 import java.util.Scanner;
 
 
