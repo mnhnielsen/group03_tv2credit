@@ -23,4 +23,9 @@
       <module name="group03_tv2credit" target="15" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="group03_tv2credit" options="--add-exports com.google.gson/com.google=Creditsystem" />
+    </option>
+  </component>
 </project>

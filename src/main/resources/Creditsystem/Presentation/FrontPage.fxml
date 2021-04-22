@@ -28,8 +28,13 @@
             <Separator layoutX="126.0" layoutY="62.0" prefHeight="0.0" prefWidth="167.0" style="-fx-background-color: white;" />
          </children>
       </AnchorPane>
+      <Button fx:id="btnLogin" layoutX="905.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleLogin" stylesheets="@Style/fullpackstyling.css" text="Log ind" />
       <TableView fx:id="tblCredits" layoutX="56.0" layoutY="240.0" prefHeight="291.0" prefWidth="901.0" />
       <TextField fx:id="txtSearch" layoutX="808.0" layoutY="138.0" promptText="Søg på programmer" />
-      <Button fx:id="btnLogin" layoutX="905.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleLogin" stylesheets="@Style/fullpackstyling.css" text="Log ind" />
+      <Label layoutX="56.0" layoutY="210.0" text="Krediteringer">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

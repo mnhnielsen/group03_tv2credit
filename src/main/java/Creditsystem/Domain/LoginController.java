@@ -5,19 +5,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import com.google.gson.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.util.Iterator;
 import java.util.Scanner;
+
 
 public class LoginController
 {
+
     //Javafx attributes
     public Hyperlink registerLogin;
     public Hyperlink forgotLogin;
     public Button btnLogin;
+    public ImageView goBack;
     public TextField txtUsername;
     public PasswordField passwordField;
+
+    StageChange stageChange = new StageChange();
+
 
     public void handleForgotLogin(ActionEvent event)
     {
@@ -26,8 +35,61 @@ public class LoginController
 
     public void handleLogin(ActionEvent event)
     {
-        System.out.println("handleLogin");
-        loginFile("accounts.json");
+        boolean pUsername = false;
+        boolean aUsername = false;
+        boolean password = false;
+        if (!txtUsername.getText().trim().isEmpty() && !passwordField.getText().trim().isEmpty())
+        {
+
+            File file = new File("jsonFiles/accounts.json");
+            try
+            {
+                Scanner scanner = new Scanner(file);
+                while (scanner.hasNext())
+                {
+                    String line = scanner.nextLine();
+                    if (line.indexOf(txtUsername.getText()) != -1)
+                    {
+                        if(txtUsername.getText().startsWith("admin"))
+                            aUsername = true;
+                        else
+                            pUsername = true;
+                    }
+                    if (line.indexOf(passwordField.getText()) != -1)
+                    {
+                        password = true;
+                    }
+
+                }
+            } catch (FileNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+
+            if (password)
+            {
+                if (pUsername)
+                {
+                    try
+                    {
+                        stageChange.openNewWindow(event, "producerPage.fxml", "Producer Forside");
+                    } catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                if(aUsername){
+                    try
+                    {
+                        stageChange.openNewWindow(event, "AdminPage.fxml", "Systemadminstrator Forside");
+                    } catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
     }
 
     public void handleRegisterLogin(ActionEvent event)
@@ -35,19 +97,16 @@ public class LoginController
         System.out.println("handleRegisterLogin");
     }
 
-    public void loginFile(String filename)
+
+    public void handleBackButton(ActionEvent event)
     {
-        File file = new File("C:\\Users\\Mathias\\Documents\\Projekt\\CreditSystem\\group03_tv2credit\\jsonFiles\\accounts.json");
         try
         {
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNext())
-            {
-                System.out.println(scanner.nextLine());
-            }
-        } catch (FileNotFoundException e)
+            stageChange.openNewWindow(event, "FrontPage.fxml", "Krediteringsforside");
+        } catch (IOException e)
         {
             e.printStackTrace();
         }
     }
+
 }

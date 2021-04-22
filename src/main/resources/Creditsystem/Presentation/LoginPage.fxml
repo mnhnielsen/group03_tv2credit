@@ -41,6 +41,15 @@
                   <Font size="13.0" />
                </font>
             </Hyperlink>
+            <Button layoutX="15.0" layoutY="27.0" mnemonicParsing="false" onAction="#handleBackButton" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fx:id="goBack" accessibleRole="BUTTON" fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/circled-left.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
       <ImageView fitHeight="65.0" fitWidth="105.0" layoutX="448.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
