@@ -52,7 +52,7 @@ public class LoginController
                     {
                         if(txtUsername.getText().startsWith("admin"))
                             aUsername = true;
-                        else
+                        else if (txtUsername.getText().startsWith("producer"))
                             pUsername = true;
                     }
                     if (line.indexOf(passwordField.getText()) != -1)
