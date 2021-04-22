@@ -13,7 +13,6 @@ public class Account
         this.password = password;
     }
 
-
     public int getId()
     {
         return id;

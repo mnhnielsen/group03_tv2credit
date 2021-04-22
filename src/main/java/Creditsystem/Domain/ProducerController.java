@@ -1,8 +1,6 @@
 package Creditsystem.Domain;
 
-
-
 public class ProducerController
 {
-    //Javafx attributes
+    //TODO create production, credit, cast. Store in arraylist. Save arraylist to local file.
 }

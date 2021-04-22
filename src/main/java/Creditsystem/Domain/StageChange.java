@@ -13,7 +13,6 @@ public class StageChange
 {
     public void openNewWindow(ActionEvent event, String path, String title) throws IOException
     {
-
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(App.class.getResource(path));
 

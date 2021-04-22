@@ -6,11 +6,9 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import com.google.gson.*;
 
 import java.io.*;
-import java.net.URISyntaxException;
-import java.util.Iterator;
+
 import java.util.Scanner;
 
 

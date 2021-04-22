@@ -12,6 +12,7 @@ public class FrontPageController
     public TableView tblCredits;
 
     StageChange stageChange = new StageChange();
+
     public void handleLogin(ActionEvent event)
     {
         try
