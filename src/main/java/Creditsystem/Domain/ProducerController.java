@@ -49,7 +49,7 @@ public class ProducerController
         participant = new Participant(txtName.getText());
         credit = new Credit(participant, txtJob.getText(), participant.getName());
         creditList.add(credit);
-        
+
         //Create columns
         role = new TableColumn("Rolle");
         role.setCellValueFactory(new PropertyValueFactory<>("role"));
