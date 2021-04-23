@@ -2,29 +2,33 @@ package Creditsystem.Domain;
 
 import Creditsystem.Data.FileHandler;
 import javafx.event.ActionEvent;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FrontPageController
 {
+    //Javafx attributes
     public TextField txtSearch;
     public TableView tblCredits;
+    public Button btnOpenCredit;
 
-    StageChange stageChange = new StageChange();
 
-    ArrayList list = new ArrayList();
-
+    private StageChange stageChange = new StageChange();
+    private TableColumn titleColumn = new TableColumn();
     private int noFiles = 0;
+    ArrayList<Production> productionArrayList = new ArrayList<>();
+
+    IFileHandler fileHandler = new FileHandler();
 
     public void initialize()
     {
-        ArrayList<Production> productionArrayList = new ArrayList<>();
+        ArrayList list = new ArrayList();
+
         String title;
         Production production = null;
         File file = new File("Files/Productions/");
@@ -37,13 +41,15 @@ public class FrontPageController
             productionArrayList.add(production);
         }
 
-        TableColumn name = new TableColumn("Title");
-        name.setCellValueFactory(new PropertyValueFactory<>("title"));
-        name.setMinWidth(10);
-        name.setPrefWidth(192);
-        name.setMaxWidth(5000);
+        //Column stuff
+        titleColumn.setText("Title");
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        titleColumn.setMinWidth(10);
+        titleColumn.setPrefWidth(192);
+        titleColumn.setMaxWidth(5000);
 
-        tblCredits.getColumns().addAll(name);
+        tblCredits.getColumns().addAll(titleColumn);
+
         for (Production pr : productionArrayList)
         {
             tblCredits.getItems().add(pr);
@@ -79,6 +85,28 @@ public class FrontPageController
         } catch (IOException e)
         {
             e.printStackTrace();
+        }
+    }
+
+    public void openCredit(ActionEvent event)
+    {
+        try
+        {
+            ArrayList<String> credits = new ArrayList<>();
+            Object obj = tblCredits.getSelectionModel().getSelectedItem();
+            String data = (String) titleColumn.getCellObservableValue(obj).getValue();
+
+            for (int i = 0; i < noFiles; i++)
+            {
+                if (data == productionArrayList.get(i).getTitle())
+                {
+                    credits = fileHandler.readFile("Files/Productions/" + productionArrayList.get(i).getTitle());
+                }
+            }
+            System.out.println(credits);
+        } catch (Exception e)
+        {
+            System.out.println("Select a program first");
         }
     }
 }

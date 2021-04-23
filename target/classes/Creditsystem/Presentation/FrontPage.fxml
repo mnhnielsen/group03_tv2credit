@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: red;">
@@ -36,5 +35,6 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
+      <Button fx:id="btnOpenCredit" layoutX="56.0" layoutY="544.0" mnemonicParsing="false" onAction="#openCredit" stylesheets="@Style/fullpackstyling.css" text="Åbn Program" />
    </children>
 </AnchorPane>
