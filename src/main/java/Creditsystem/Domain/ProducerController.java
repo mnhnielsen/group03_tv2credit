@@ -77,14 +77,13 @@ public class ProducerController
         if (tblCredit.getItems() != null)
         {
             production = new Production(counter, txtTitle.getText(), txtDescription.getText(), Integer.parseInt(txtYear.getText()), creditList);
-            System.out.println(production.toString());
             counter++;
             tblCredit.getItems().clear();
             txtTitle.clear();
             txtDescription.clear();
             txtYear.clear();
-            creditList.removeAll(creditList);
             fileHandler.writeToFile(production.toString(), "jsonFiles/" + production.getTitle() + ".txt");
+            creditList.removeAll(creditList);
         }
     }
 

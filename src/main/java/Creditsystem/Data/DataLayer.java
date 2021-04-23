@@ -34,7 +34,7 @@ public class DataLayer implements IFileHandler
         try
         {
             printWriter = new PrintWriter(file);
-            printWriter.println(obj.toString() + "\n");
+            printWriter.println(obj);
             printWriter.close();
 
         } catch (FileNotFoundException e)
