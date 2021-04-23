@@ -1,6 +1,5 @@
 package Creditsystem.Domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Production

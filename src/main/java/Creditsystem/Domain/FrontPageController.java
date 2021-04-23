@@ -8,7 +8,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class FrontPageController
 {

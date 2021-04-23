@@ -1,7 +1,6 @@
 package Creditsystem.Data;
 
 import Creditsystem.Domain.IFileHandler;
-import Creditsystem.Domain.ProducerController;
 
 import java.io.*;
 import java.util.ArrayList;
