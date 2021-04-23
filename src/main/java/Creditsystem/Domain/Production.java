@@ -9,9 +9,9 @@ public class Production
     private String title;
     private String description;
     private int releaseYear;
-    private ArrayList<Credit> creditList;
+    private List<Credit> creditList;
 
-    public Production(int id, String title, String description, int releaseYear, ArrayList<Credit> creditList)
+    public Production(int id, String title, String description, int releaseYear, List<Credit> creditList)
     {
         this.id = id;
         this.title = title;
@@ -40,9 +40,17 @@ public class Production
         return releaseYear;
     }
 
-    public ArrayList<Credit> getCreditList()
+    public List<Credit> getCreditList()
     {
         return creditList;
+    }
+
+    @Override
+    public String toString(){
+        return "Title: " + title + "\n"
+                + "Release year: " + releaseYear + "\n"
+                + "Description: " + description + "\n"
+                + "Credits: " + "\n" + getCreditList().toString();
     }
 
 }

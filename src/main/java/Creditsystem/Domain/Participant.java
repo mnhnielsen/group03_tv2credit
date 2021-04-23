@@ -7,7 +7,7 @@ public class Participant
     private String phoneNumber;
     private String email;
 
-    public Participant(int id, String name, String phoneNumber, String email)
+    public Participant(int id, String name,String role, String phoneNumber, String email)
     {
         this.id = id;
         this.name = name;
@@ -39,6 +39,5 @@ public class Participant
     {
         return email;
     }
-
 
 }
