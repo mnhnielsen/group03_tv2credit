@@ -39,7 +39,7 @@ public class LoginController
         if (!txtUsername.getText().trim().isEmpty() && !passwordField.getText().trim().isEmpty())
         {
 
-            File file = new File("jsonFiles/accounts.json");
+            File file = new File("Files/Accounts/accounts.json");
             try
             {
                 Scanner scanner = new Scanner(file);

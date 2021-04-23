@@ -7,27 +7,32 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DataLayer implements IFileHandler
+public class FileHandler implements IFileHandler
 {
-    public ArrayList<String> readFile(String fileName) {
+    public ArrayList<String> readFile(String fileName)
+    {
         String content = "";
         ArrayList<String> stringContent = new ArrayList<>();
-        try {
+        try
+        {
             File file = new File(fileName);
             Scanner reader = new Scanner(file);
             while (reader.hasNextLine())
             {
-                content=reader.nextLine();
-                stringContent.add(content+"\n");
+                content = reader.nextLine();
+                stringContent.add(content + "\n");
             }
             reader.close();
             return stringContent;
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
         return stringContent;
     }
-    public  boolean writeToFile(Object obj, String fileName)
+
+
+    public boolean writeToFile(Object obj, String fileName)
     {
         File file = new File(fileName);
         PrintWriter printWriter;
@@ -44,4 +49,6 @@ public class DataLayer implements IFileHandler
         }
         return true;
     }
+
+
 }

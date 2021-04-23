@@ -19,6 +19,9 @@ public class Production
         this.releaseYear = releaseYear;
         this.creditList = creditList;
     }
+    public Production(String title){
+        this.title = title;
+    }
 
     public int getId()
     {

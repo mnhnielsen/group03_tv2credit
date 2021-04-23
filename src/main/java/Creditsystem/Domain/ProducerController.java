@@ -1,6 +1,6 @@
 package Creditsystem.Domain;
 
-import Creditsystem.Data.DataLayer;
+import Creditsystem.Data.FileHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,7 +25,7 @@ public class ProducerController
     TableColumn role;
     StageChange stageChange = new StageChange();
 
-    IFileHandler fileHandler = new DataLayer();
+    IFileHandler fileHandler = new FileHandler();
 
     public void initialize()
     {
@@ -49,6 +49,7 @@ public class ProducerController
         participant = new Participant(txtName.getText());
         credit = new Credit(participant, txtJob.getText(), participant.getName());
         creditList.add(credit);
+        
         //Create columns
         role = new TableColumn("Rolle");
         role.setCellValueFactory(new PropertyValueFactory<>("role"));
@@ -82,7 +83,7 @@ public class ProducerController
             txtTitle.clear();
             txtDescription.clear();
             txtYear.clear();
-            fileHandler.writeToFile(production.toString(), "jsonFiles/" + production.getTitle() + ".txt");
+            fileHandler.writeToFile(production, "Files/Productions/" + production.getTitle());
             creditList.removeAll(creditList);
         }
     }
