@@ -1,16 +1,15 @@
 package Creditsystem.Data;
 
+import Creditsystem.Domain.IFileHandler;
 import Creditsystem.Domain.ProducerController;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DataLayer
+public class DataLayer implements IFileHandler
 {
-    public static ArrayList<String> readFile(String fileName) {
+    public ArrayList<String> readFile(String fileName) {
         String content = "";
         ArrayList<String> stringContent = new ArrayList<>();
         try {
@@ -27,5 +26,22 @@ public class DataLayer
             e.printStackTrace();
         }
         return stringContent;
+    }
+    public  boolean writeToFile(Object obj, String fileName)
+    {
+        File file = new File(fileName);
+        PrintWriter printWriter;
+        try
+        {
+            printWriter = new PrintWriter(file);
+            printWriter.println(obj.toString() + "\n");
+            printWriter.close();
+
+        } catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
