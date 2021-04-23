@@ -25,7 +25,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="group03_tv2credit" options="--add-exports com.google.gson/com.google=Creditsystem" />
+      <module name="group03_tv2credit" options="" />
     </option>
   </component>
 </project>
