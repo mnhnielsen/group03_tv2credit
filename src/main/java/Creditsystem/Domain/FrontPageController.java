@@ -15,6 +15,7 @@ public class FrontPageController
     public TextField txtSearch;
     public TableView tblCredits;
     public Button btnOpenCredit;
+    public TextArea creditInfo_txtArea;
 
 
     private StageChange stageChange = new StageChange();
@@ -102,10 +103,15 @@ public class FrontPageController
                     credits = fileHandler.readFile("Files/Productions/" + productionArrayList.get(i).getTitle());
                 }
             }
+            stageChange.openNewWindow(event, "CreditInfomationPage.fxml", "Krediteringsinfo");
+            //creditInfo_txtArea.appendText(String.valueOf(credits));
+
             System.out.println(credits);
         } catch (Exception e)
         {
             System.out.println("Select a program first");
+            e.printStackTrace();
         }
     }
+
 }
