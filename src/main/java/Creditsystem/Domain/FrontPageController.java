@@ -15,7 +15,6 @@ public class FrontPageController
     public TextField txtSearch;
     public TableView tblCredits;
     public Button btnOpenCredit;
-    public TextArea creditInfo_txtArea;
 
 
     private StageChange stageChange = new StageChange();
@@ -65,15 +64,15 @@ public class FrontPageController
         ArrayList<String> fileList = new ArrayList<>();
         File[] files = file.listFiles();
         for (File f : files)
-        {                       // Loop through files found
+        {                                           // Loop through files found
             if (f.isDirectory())
-            {                   // Check if is directory.
+            {                                       // Check if is directory.
                 findFiles(f.getAbsoluteFile());     // Get directory if any
 
             } else
             {
-                fileList.add(f.getName());                      //Print files path
-                noFiles++;                                      //Count # files
+                fileList.add(f.getName());           //Print files path
+                noFiles++;                          //Count # files
             }
         }
         return fileList;
