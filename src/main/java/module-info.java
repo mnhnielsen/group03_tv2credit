@@ -4,6 +4,7 @@ module Creditsystem{
     requires javafx.graphics;
     requires javafx.base;
     requires com.google.gson;
+    requires org.apache.commons.lang3;
 
     opens Creditsystem.Data;
     opens Creditsystem.Presentation;

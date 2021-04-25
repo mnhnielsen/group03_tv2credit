@@ -1,11 +1,12 @@
 package Creditsystem.Domain;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class InformationController
 {
@@ -15,35 +16,37 @@ public class InformationController
     public Label lblReleaseYear;
     public TextArea txtDescription;
     public TableView tblViewCredits;
-    private TableColumn titleColumn = new TableColumn();
-    private TableColumn titleColumn2 = new TableColumn();
+    public ListView list;
+
+
     StageChange stageChange = new StageChange();
 
     public void initialize()
     {
+        getInfo();
+        creditView();
+    }
+
+    public void creditView()
+    {
+        //tblViewCredits.getItems().add(FrontPageController.getProgram().get(4).toString().substring(7));
+        for (int i = 4; i < FrontPageController.getProgram().size(); i++)
+        {
+            list.getItems().add(FrontPageController.getProgram().get(i).toString().replace("[","").replace("]","").replace(", ",""));
+        }
+
+    }
+
+    public void getInfo()
+    {
         lblTitle.setText(FrontPageController.getProgram().get(0).toString().substring(7));
         lblReleaseYear.setText(FrontPageController.getProgram().get(1).toString().substring(14));
         txtDescription.setText(FrontPageController.getProgram().get(2).toString().substring(13));
-
-        // Column
-        titleColumn.setText("Rolle");
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("rolle"));
-        titleColumn.setMinWidth(10);
-        titleColumn.setPrefWidth(192);
-        titleColumn.setMaxWidth(5000);
-
-        titleColumn2.setText("Navn");
-        titleColumn2.setMinWidth(10);
-        titleColumn2.setPrefWidth(192);
-        titleColumn2.setMaxWidth(5000);
-
-        tblViewCredits.getColumns().addAll(titleColumn,titleColumn2);
-
     }
 
 
     public void handleBackButton(ActionEvent event)
     {
-        stageChange.handleBackButton(event,"FrontPage.fxml","Krediterings forside");
+        stageChange.handleBackButton(event, "FrontPage.fxml", "Krediterings forside");
     }
 }

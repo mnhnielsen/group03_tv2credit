@@ -28,9 +28,10 @@ public class Credit
         return role;
     }
 
+    //TODO This was edited for iteration 1. Should be revised for next iteration!
     @Override
     public String toString()
     {
-        return "Role: " + role + ", name: " + getParticipant().getName() + "\n";
+        return "Rolle: " + role +"\n" + "Navn: " + getParticipant().getName() + "\n" + "\n";
     }
 }

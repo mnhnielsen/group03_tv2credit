@@ -103,19 +103,18 @@ public class FrontPageController
                     credits = fileHandler.readFile("Files/Productions/" + productionArrayList.get(i).getTitle());
                 }
             }
-            stageChange.openNewWindow(event, "CreditInfomationPage.fxml", "Krediteringsinfo");
-            //creditInfo_txtArea.appendText(String.valueOf(credits));
 
-            //System.out.println(credits);
+            stageChange.openNewWindow(event, "CreditInfomationPage.fxml", "Krediteringsinfo");
+
         } catch (Exception e)
         {
             System.out.println("Select a program first");
-            //e.printStackTrace();
         }
     }
     public static ArrayList getProgram(){
         return credits;
     }
+
 
 
 }
