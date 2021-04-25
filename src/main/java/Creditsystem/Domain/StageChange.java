@@ -26,4 +26,14 @@ public class StageChange
         stage.show();
         currentStage.close();
     }
+    public void handleBackButton(ActionEvent event, String path, String title)
+    {
+        try
+        {
+            openNewWindow(event, path, title);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

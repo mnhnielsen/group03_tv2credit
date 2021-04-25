@@ -22,6 +22,8 @@ public class FrontPageController
     private TableColumn titleColumn = new TableColumn();
     private int noFiles = 0;
     ArrayList<Production> productionArrayList = new ArrayList<>();
+    static ArrayList<String> credits = new ArrayList<>();
+
 
     IFileHandler fileHandler = new FileHandler();
 
@@ -92,7 +94,6 @@ public class FrontPageController
     {
         try
         {
-            ArrayList<String> credits = new ArrayList<>();
             Object obj = tblCredits.getSelectionModel().getSelectedItem();
             String data = (String) titleColumn.getCellObservableValue(obj).getValue();
 
@@ -106,12 +107,15 @@ public class FrontPageController
             stageChange.openNewWindow(event, "CreditInfomationPage.fxml", "Krediteringsinfo");
             //creditInfo_txtArea.appendText(String.valueOf(credits));
 
-            System.out.println(credits);
+            //System.out.println(credits);
         } catch (Exception e)
         {
             System.out.println("Select a program first");
-            e.printStackTrace();
+            //e.printStackTrace();
         }
+    }
+    public static ArrayList getProgram(){
+        return credits;
     }
 
 }
