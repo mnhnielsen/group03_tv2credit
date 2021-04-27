@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
    <children>
-      <AnchorPane prefHeight="700.0" prefWidth="359.0" style="-fx-background-color: red;">
+      <AnchorPane prefHeight="700.0" prefWidth="359.0" style="-fx-background-color: #d21e1e;">
          <children>
             <ImageView fitHeight="54.0" fitWidth="65.0" layoutX="7.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -41,7 +41,7 @@
             <Separator layoutX="14.0" layoutY="277.0" prefWidth="207.0" style="-fx-background-color: white;" />
          </children>
       </AnchorPane>
-      <Button fx:id="btnBack" layoutX="925.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackButton" style="-fx-background-color: red;" text="Tilbage" textFill="WHITE">
+      <Button fx:id="btnBack" layoutX="925.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackButton" style="-fx-background-color: #d21e1e;" text="Tilbage" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

@@ -61,14 +61,14 @@
       </Button>
       <TextField layoutX="309.0" layoutY="468.0" promptText="Email" />
       <TextField layoutX="309.0" layoutY="504.0" promptText="Telefonnumeer" />
-      <AnchorPane prefHeight="113.0" prefWidth="1000.0" style="-fx-background-color: red;">
+      <AnchorPane prefHeight="113.0" prefWidth="1000.0" style="-fx-background-color: #d21e1e;">
          <children>
             <ImageView fitHeight="62.0" fitWidth="113.0" layoutX="876.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/TV_2_Hvid_RGB.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnBack" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackButton" style="-fx-background-color: red;" text="Tilbage" textFill="WHITE">
+            <Button fx:id="btnBack" layoutY="14.0" mnemonicParsing="false" onAction="#handleBackButton" style="-fx-background-color: #d21e1e;" text="Tilbage" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

@@ -43,14 +43,17 @@ public class ProducerController
         }
     }
 
+    //Creates participants, credits, columns and adds to a credit list
     public void handleAddCreditButton(ActionEvent event)
     {
+        //Check if info filed != null
+
         //Create credits, participants
         participant = new Participant(txtName.getText());
         credit = new Credit(participant, txtJob.getText(), participant.getName());
         creditList.add(credit);
 
-        //Create columns
+        //Initiate Columns
         role = new TableColumn("Rolle");
         role.setCellValueFactory(new PropertyValueFactory<>("role"));
         role.setMinWidth(10);
@@ -59,7 +62,6 @@ public class ProducerController
 
         TableColumn name = new TableColumn("Navn");
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
-
         name.setMinWidth(10);
         name.setPrefWidth(192);
         name.setMaxWidth(5000);
@@ -73,21 +75,25 @@ public class ProducerController
         txtName.clear();
     }
 
+    //Creates a new production and resets all information when published.
     public void handlePublish(ActionEvent event)
     {
         if (tblCredit.getItems() != null)
         {
-            production = new Production(counter, txtTitle.getText(), txtDescription.getText(), Integer.parseInt(txtYear.getText()), creditList);
+            production = new Production(counter, txtTitle.getText(),
+                    txtDescription.getText(), Integer.parseInt(txtYear.getText()), creditList);
+
             counter++;
             tblCredit.getItems().clear();
             txtTitle.clear();
             txtDescription.clear();
             txtYear.clear();
-            fileHandler.writeToFile(production, "Files/Productions/" + production.getTitle());
+            fileHandler.writeToFile(production, "Files/Productions/" + production.getTitle());  //Saves files to be read by users.
             creditList.removeAll(creditList);
         }
     }
 
+    //Deletes a selected credit from the list. Does not get published if deleted from list.
     public void deleteCredit(ActionEvent event)
     {
         Object obj = tblCredit.getSelectionModel().getSelectedItem();
@@ -100,5 +106,10 @@ public class ProducerController
                 creditList.remove(i);
             }
         }
+    }
+
+    public Production createProduction(int id, String title, String description, int releaseYear, List<Credit> credits)
+    {
+        return new Production(id, title, description, releaseYear, credits);
     }
 }
