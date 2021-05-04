@@ -23,7 +23,6 @@ public class FrontPageController
     ArrayList<Production> productionArrayList = new ArrayList<>();
     static ArrayList<String> credits = new ArrayList<>();
 
-
     IFileHandler fileHandler = new FileHandler();
 
     public void initialize()
@@ -89,13 +88,12 @@ public class FrontPageController
         }
     }
 
-    public void openCredit(ActionEvent event)
+    public void showProduction(ActionEvent event)
     {
         try
         {
             Object obj = tblCredits.getSelectionModel().getSelectedItem();
             String data = (String) titleColumn.getCellObservableValue(obj).getValue();
-
             for (int i = 0; i < noFiles; i++)
             {
                 if (data == productionArrayList.get(i).getTitle())
@@ -103,18 +101,15 @@ public class FrontPageController
                     credits = fileHandler.readFile("Files/Productions/" + productionArrayList.get(i).getTitle());
                 }
             }
-
             stageChange.openNewWindow(event, "CreditInfomationPage.fxml", "Krediteringsinfo");
-
         } catch (Exception e)
         {
             System.out.println("Select a program first");
         }
     }
-    public static ArrayList getProgram(){
+
+    public static ArrayList getProgram()
+    {
         return credits;
     }
-
-
-
 }

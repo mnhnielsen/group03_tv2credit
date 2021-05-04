@@ -27,7 +27,7 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <Button fx:id="btnAddCredit" layoutX="309.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleAddCreditButton" prefHeight="39.0" prefWidth="149.0" text="Tilføj">
+      <Button fx:id="btnAddCredit" layoutX="309.0" layoutY="332.0" mnemonicParsing="false" onAction="#createCredit" prefHeight="39.0" prefWidth="149.0" text="Tilføj">
          <font>
             <Font size="18.0" />
          </font>
@@ -43,7 +43,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnSendCredit" layoutX="888.0" layoutY="647.0" mnemonicParsing="false" onAction="#handlePublish" prefHeight="39.0" prefWidth="68.0" text="Send">
+      <Button fx:id="btnSendCredit" layoutX="888.0" layoutY="647.0" mnemonicParsing="false" onAction="#publishProduction" prefHeight="39.0" prefWidth="68.0" text="Send">
          <font>
             <Font size="18.0" />
          </font>

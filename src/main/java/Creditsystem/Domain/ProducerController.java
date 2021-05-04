@@ -21,7 +21,7 @@ public class ProducerController
     Participant participant;
     List<Credit> creditList;
     Production production;
-    static int counter = 1;
+    static int idCounter = 1;
     TableColumn role;
     StageChange stageChange = new StageChange();
 
@@ -44,7 +44,7 @@ public class ProducerController
     }
 
     //Creates participants, credits, columns and adds to a credit list
-    public void handleAddCreditButton(ActionEvent event)
+    public void createCredit(ActionEvent event)
     {
         //Check if info filed != null
 
@@ -76,19 +76,21 @@ public class ProducerController
     }
 
     //Creates a new production and resets all information when published.
-    public void handlePublish(ActionEvent event)
+    public void publishProduction(ActionEvent event)
     {
         if (tblCredit.getItems() != null)
         {
-            production = new Production(counter, txtTitle.getText(),
+            production = new Production(idCounter, txtTitle.getText(),
                     txtDescription.getText(), Integer.parseInt(txtYear.getText()), creditList);
 
-            counter++;
+            idCounter++;
+
             tblCredit.getItems().clear();
             txtTitle.clear();
             txtDescription.clear();
             txtYear.clear();
-            fileHandler.writeToFile(production, "Files/Productions/" + production.getTitle());  //Saves files to be read by users.
+
+            fileHandler.writeToFile(production, "Files/Productions/" + production.getTitle());
             creditList.removeAll(creditList);
         }
     }

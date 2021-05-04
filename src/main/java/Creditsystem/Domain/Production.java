@@ -18,28 +18,15 @@ public class Production
         this.releaseYear = releaseYear;
         this.creditList = creditList;
     }
-    public Production(String title){
-        this.title = title;
-    }
 
-    public int getId()
+    public Production(String title)
     {
-        return id;
+        this.title = title;
     }
 
     public String getTitle()
     {
         return title;
-    }
-
-    public String getDescription()
-    {
-        return description;
-    }
-
-    public int getReleaseYear()
-    {
-        return releaseYear;
     }
 
     public List<Credit> getCreditList()
@@ -48,7 +35,8 @@ public class Production
     }
 
     @Override
-    public String toString(){
+    public String toString()
+    {
         return "Title: " + title + "\n"
                 + "Release year: " + releaseYear + "\n"
                 + "Description: " + description + "\n"

@@ -23,27 +23,16 @@ public class InformationController
 
     public void initialize()
     {
-        getInfo();
-        creditView();
-    }
+        lblTitle.setText(FrontPageController.getProgram().get(0).toString().substring(7));
+        lblReleaseYear.setText(FrontPageController.getProgram().get(1).toString().substring(14));
+        txtDescription.setText(FrontPageController.getProgram().get(2).toString().substring(13));
 
-    public void creditView()
-    {
         //tblViewCredits.getItems().add(FrontPageController.getProgram().get(4).toString().substring(7));
         for (int i = 4; i < FrontPageController.getProgram().size(); i++)
         {
             list.getItems().add(FrontPageController.getProgram().get(i).toString().replace("[","").replace("]","").replace(", ",""));
         }
-
     }
-
-    public void getInfo()
-    {
-        lblTitle.setText(FrontPageController.getProgram().get(0).toString().substring(7));
-        lblReleaseYear.setText(FrontPageController.getProgram().get(1).toString().substring(14));
-        txtDescription.setText(FrontPageController.getProgram().get(2).toString().substring(13));
-    }
-
 
     public void handleBackButton(ActionEvent event)
     {

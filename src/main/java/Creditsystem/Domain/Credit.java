@@ -2,8 +2,10 @@ package Creditsystem.Domain;
 
 public class Credit
 {
-    private Participant participant;
+    private int id;
     private String role;
+    private Participant participant;
+
     private String name;
 
     public Credit(Participant participant, String role, String name)
@@ -11,11 +13,6 @@ public class Credit
         this.participant = participant;
         this.role = role;
         this.name = name;
-    }
-
-    public String getName()
-    {
-        return participant.getName();
     }
 
     public Participant getParticipant()
@@ -33,5 +30,10 @@ public class Credit
     public String toString()
     {
         return "Rolle: " + role +"\n" + "Navn: " + getParticipant().getName() + "\n" + "\n";
+    }
+
+    public String getName()
+    {
+        return name;
     }
 }
