@@ -47,7 +47,7 @@ public class ProducerController
     public void createCredit(ActionEvent event)
     {
         //Check if info filed != null
-
+        //Test
         //Create credits, participants
         participant = new Participant(txtName.getText());
         credit = new Credit(participant, txtJob.getText(), participant.getName());
