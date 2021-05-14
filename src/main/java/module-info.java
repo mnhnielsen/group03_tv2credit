@@ -5,6 +5,7 @@ module Creditsystem{
     requires javafx.base;
     requires com.google.gson;
     requires org.apache.commons.lang3;
+    requires postgresql;
 
     opens Creditsystem.Data;
     opens Creditsystem.Presentation;
