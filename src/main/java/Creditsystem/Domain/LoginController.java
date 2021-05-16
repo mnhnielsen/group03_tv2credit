@@ -1,5 +1,6 @@
 package Creditsystem.Domain;
 
+import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -24,6 +25,7 @@ public class LoginController
     public PasswordField passwordField;
 
     StageChange stageChange = new StageChange();
+    IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
 
     public void handleForgotLogin(ActionEvent event)
@@ -33,62 +35,38 @@ public class LoginController
 
     public void handleLogin(ActionEvent event)
     {
-        boolean pUsername = false;
-        boolean aUsername = false;
-        boolean password = false;
-        if (!txtUsername.getText().trim().isEmpty() && !passwordField.getText().trim().isEmpty())
+        String username = txtUsername.getText();
+        String password = passwordField.getText();
+        if (username != null && password != null)
         {
-
-            File file = new File("Files/Accounts/accounts.json");
-            try
+            if (persistenceHandler.logIn(username, password))
             {
-                Scanner scanner = new Scanner(file);
-                while (scanner.hasNext())
-                {
-                    String line = scanner.nextLine();
-                    if (line.indexOf(txtUsername.getText()) != -1)
-                    {
-                        if(txtUsername.getText().startsWith("admin"))
-                            aUsername = true;
-                        else if (txtUsername.getText().startsWith("producer"))
-                            pUsername = true;
-                    }
-                    if (line.indexOf(passwordField.getText()) != -1)
-                    {
-                        password = true;
-                    }
-
-                }
-            } catch (FileNotFoundException e)
-            {
-                e.printStackTrace();
-            }
-
-            if (password)
-            {
-                if (pUsername)
+                if (persistenceHandler.isAdmin(username))
                 {
                     try
                     {
-                        stageChange.openNewWindow(event, "producerPage.fxml", "Producer Forside");
+                        new StageChange().openNewWindow(event, "AdminPage.fxml", "Systemadministrator forside");
+                    } catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
+                } else
+                {
+                    try
+                    {
+                        new StageChange().openNewWindow(event, "producerPage.fxml", "Producer forside");
                     } catch (IOException e)
                     {
                         e.printStackTrace();
                     }
                 }
-                if(aUsername){
-                    try
-                    {
-                        stageChange.openNewWindow(event, "AdminPage.fxml", "Systemadminstrator Forside");
-                    } catch (IOException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
+            } else
+            {
+                System.out.println("try again");
             }
         }
-
     }
+
 
     public void handleRegisterLogin(ActionEvent event)
     {
@@ -106,5 +84,4 @@ public class LoginController
             e.printStackTrace();
         }
     }
-
 }

@@ -2,21 +2,25 @@ package Creditsystem.Domain;
 
 public class Account
 {
-    private int id;
+    //private int id;
     private String username;
     private String password;
+    private boolean isAdmin;
 
-    public Account(int id, String username, String password)
+    public Account(String username, String password, boolean isAdmin)
     {
-        this.id = id;
+        //his.id = id;
         this.username = username;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
-    public int getId()
+    public Account(String username, boolean isAdmin)
     {
-        return id;
+        this.username = username;
+        this.isAdmin = isAdmin;
     }
+
 
     public String getUsername()
     {
@@ -26,5 +30,10 @@ public class Account
     public String getPassword()
     {
         return password;
+    }
+
+    public boolean getAdminStatus()
+    {
+        return isAdmin;
     }
 }
