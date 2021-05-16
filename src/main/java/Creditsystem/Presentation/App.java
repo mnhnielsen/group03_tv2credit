@@ -1,7 +1,5 @@
 package Creditsystem.Presentation;
 
-import Creditsystem.Data.PersistenceHandler;
-import Creditsystem.Domain.IPersistenceHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
