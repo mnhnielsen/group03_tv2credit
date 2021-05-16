@@ -16,11 +16,6 @@ public class ProducerAccount extends Account
         this.company = company;
     }
 
-    public ProducerAccount(String username, boolean isAdmin)
-    {
-        super(username, isAdmin);
-    }
-
     public String getName()
     {
         return name;

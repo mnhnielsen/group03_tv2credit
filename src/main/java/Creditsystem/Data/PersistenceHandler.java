@@ -125,7 +125,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean checkUsername(String username)
+    public boolean checkAuthorization(String username)
     {
         try
         {

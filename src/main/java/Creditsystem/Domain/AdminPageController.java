@@ -31,7 +31,7 @@ public class AdminPageController
         {
             if (password.equals(reEnter))
             {
-                if (!persistenceHandler.checkUsername(username))
+                if (!persistenceHandler.checkAuthorization(username))
                 {
                     if (adminCheck.isSelected())
                     {
