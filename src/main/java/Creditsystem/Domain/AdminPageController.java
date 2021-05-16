@@ -17,6 +17,7 @@ public class AdminPageController
 
     StageChange stageChange = new StageChange();
 
+
     public void handleBackButton(ActionEvent event)
     {
         stageChange.handleBackButton(event, "FrontPage.fxml", "Krediterings forside");
@@ -31,7 +32,7 @@ public class AdminPageController
         {
             if (password.equals(reEnter))
             {
-                if (!persistenceHandler.checkAuthorization(username))
+                if (!persistenceHandler.checkUsername(username))
                 {
                     if (adminCheck.isSelected())
                     {
@@ -42,9 +43,9 @@ public class AdminPageController
                         pwrdPassword.clear();
                         pswrdReEnterPassword.clear();
                         adminCheck.setSelected(false);
-                    }
-                    else {
-                        ProducerAccount producerAccount = new ProducerAccount(username,password,false,txtName.getText(),txtEmail.getText(),Integer.valueOf(txtPhone.getText()),txtCompany.getText());
+                    } else
+                    {
+                        ProducerAccount producerAccount = new ProducerAccount(username, password, false, txtName.getText(), txtEmail.getText(), Integer.valueOf(txtPhone.getText()), txtCompany.getText());
                         persistenceHandler.createProducerAccount(producerAccount);
                         txtCreateName.clear();
                         pwrdPassword.clear();

@@ -24,12 +24,13 @@ public class ProducerController
     static int idCounter = 1;
     TableColumn role;
     StageChange stageChange = new StageChange();
-
+    LoginController controller = new LoginController();
     IFileHandler fileHandler = new FileHandler();
 
     public void initialize()
     {
         creditList = new ArrayList<>();
+        System.out.println(controller.getLoggedInID());
     }
 
     public void handleBackButton(ActionEvent event)

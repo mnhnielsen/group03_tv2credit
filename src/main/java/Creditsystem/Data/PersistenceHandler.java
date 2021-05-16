@@ -99,7 +99,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean isAdmin(String username)
+    public boolean checkAuthorization(String username)
     {
 
         boolean isAdmin = false;
@@ -125,7 +125,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean checkAuthorization(String username)
+    public boolean checkUsername(String username)
     {
         try
         {
@@ -187,5 +187,30 @@ public class PersistenceHandler implements IPersistenceHandler
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int getID(String username)
+    {
+        int id = 0;
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM accounts WHERE username = ?");
+            statement.setString(1, username);
+
+            ResultSet sqlReturnValues = statement.executeQuery();
+            List<Account> returnValue = new ArrayList<>();
+            Account account = null;
+            while (sqlReturnValues.next())
+            {
+                account = new Account(sqlReturnValues.getInt(1),sqlReturnValues.getString(2));
+                returnValue.add(account);
+            }
+            id = account.getId();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return id;
     }
 }

@@ -2,6 +2,7 @@ package Creditsystem.Domain;
 
 public class ProducerAccount extends Account
 {
+    private int id;
     private String name;
     private String email;
     private int phoneNumber;
@@ -14,6 +15,11 @@ public class ProducerAccount extends Account
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.company = company;
+    }
+
+    public ProducerAccount(int id, String username)
+    {
+        super(id,username);
     }
 
     public String getName()

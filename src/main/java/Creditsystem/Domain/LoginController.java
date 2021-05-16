@@ -10,8 +10,6 @@ import javafx.scene.image.ImageView;
 
 import java.io.*;
 
-import java.util.Scanner;
-
 
 public class LoginController
 {
@@ -23,6 +21,7 @@ public class LoginController
     public ImageView goBack;
     public TextField txtUsername;
     public PasswordField passwordField;
+    private static int loggedInID;
 
     StageChange stageChange = new StageChange();
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
@@ -41,7 +40,9 @@ public class LoginController
         {
             if (persistenceHandler.logIn(username, password))
             {
-                if (persistenceHandler.isAdmin(username))
+                loggedInID = persistenceHandler.getID(username);
+
+                if (persistenceHandler.checkAuthorization(username))
                 {
                     try
                     {
@@ -84,4 +85,10 @@ public class LoginController
             e.printStackTrace();
         }
     }
+
+    public int getLoggedInID()
+    {
+        return loggedInID;
+    }
+
 }
