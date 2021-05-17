@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import java.io.*;
+import java.util.List;
 
 
 public class LoginController
@@ -17,10 +18,13 @@ public class LoginController
     public Hyperlink registerLogin;
     public Hyperlink forgotLogin;
     public Button btnLogin;
+    public Button btnRequest;
     public ImageView goBack;
     public TextField txtUsername;
     public PasswordField passwordField;
     private static int loggedInID;
+    List<String> requestList;
+    public TextField txtName, txtEmail, txtPhone, txtCompany;
 
     StageChange stageChange = new StageChange();
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
@@ -93,6 +97,31 @@ public class LoginController
     public int getLoggedInID()
     {
         return loggedInID;
+    }
+
+    public void handleRequestButton(ActionEvent event)
+    {
+        //TODO Finish handleRequestButton
+
+        String name = txtName.getText();
+        String company = txtCompany.getText();
+        String email = txtEmail.getText();
+        String phone = txtPhone.getText();
+
+        if(name != null & company != null & email != null & phone != null)
+        {
+            requestList.add(name + "\n");
+            requestList.add(company);
+            requestList.add(email);
+            requestList.add(phone);
+            Mail mail = new Mail();
+            mail.sendEmail("krediteringssystem@gmail.com","Login Ansøgelse",requestList.toString());
+        }
+        else
+        {
+            //Dialog boks skal tilføjes
+            System.out.println("Udfyld venligst alle felter");
+        }
     }
 
 }

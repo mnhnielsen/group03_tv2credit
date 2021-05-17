@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="251.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
+<AnchorPane prefHeight="251.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
    <children>
       <AnchorPane prefHeight="255.0" prefWidth="368.0" style="-fx-background-color: #d21e1e;">
          <children>
@@ -23,7 +23,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="btnCreate" layoutX="81.0" layoutY="210.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="27.0" prefWidth="207.0" style="-fx-border-color: red;" stylesheets="@Style/fullpackstyling.css" text="Ansøg" />
+            <Button fx:id="btnRequest" layoutX="81.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="27.0" prefWidth="207.0" style="-fx-border-color: red;" stylesheets="@Style/fullpackstyling.css" text="Ansøg" />
             <Separator layoutX="84.0" layoutY="58.0" prefWidth="207.0" style="-fx-background-color: white;" />
             <TextField fx:id="txtName" layoutX="81.0" layoutY="68.0" prefHeight="25.0" prefWidth="207.0" promptText="navn" style="-fx-border-color: red;" />
             <TextField fx:id="txtEmail" layoutX="81.0" layoutY="105.0" prefHeight="25.0" prefWidth="207.0" promptText="email" style="-fx-border-color: red;" />
