@@ -311,13 +311,13 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean createCredit(Credits credits, String productionTitle, String roleName)
+    public boolean createCredit(Credits credits, String productionTitle, String roleName, String participantName)
     {
         try
         {
             //Production ID
             int productionId = 0;
-            PreparedStatement productionStatement = connection.prepareStatement("SELECT id FROM production WHERE name = ?");
+            PreparedStatement productionStatement = connection.prepareStatement("SELECT id FROM production WHERE title = ?");
             productionStatement.setString(1, productionTitle);
             ResultSet resultSet = productionStatement.executeQuery();
             List<Production> productionList = new ArrayList<>();
@@ -331,7 +331,8 @@ public class PersistenceHandler implements IPersistenceHandler
             productionId = production.getId();
 
             //Role ID
-            PreparedStatement roleStatement = connection.prepareStatement("SELECT id FROM role WHERE name = ? AND productionID = ?");
+            int roleId = 0;
+            PreparedStatement roleStatement = connection.prepareStatement("SELECT id FROM role WHERE name = ? AND role.\"productionID\" = ?");
             roleStatement.setString(1, roleName);
             roleStatement.setInt(2, productionId);
             ResultSet roleResult = roleStatement.executeQuery();
@@ -342,7 +343,28 @@ public class PersistenceHandler implements IPersistenceHandler
                 role = new Role(roleResult.getString(1));
                 roleList.add(role);
             }
+            roleId = role.getId();
 
+            //ParticipantID
+            int participantID = 0;
+            PreparedStatement participantStatement = connection.prepareStatement("SELECT id FROM participant WHERE name = ?");
+            participantStatement.setString(1, participantName);
+            ResultSet participantResult = participantStatement.executeQuery();
+            List<Participant> participantList = new ArrayList<>();
+            Participant participant = null;
+            while (participantResult.next())
+            {
+                participant = new Participant(participantResult.getInt(1));
+                participantList.add(participant);
+            }
+            participantID = participant.getId();
+
+            //Create actual credit
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit(productionid,roleid,participantid) VALUES(?,?,)");
+            statement.setInt(1, productionId);
+            statement.setInt(2,roleId);
+            statement.setInt(3,participantID);
+            statement.execute();
 
         } catch (SQLException throwables)
         {

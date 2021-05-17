@@ -81,6 +81,7 @@ public class ProducerController
     {
         if (tblCredit.getItems() != null)
         {
+
             production = new Production(idCounter, txtTitle.getText(),
                     txtDescription.getText(), Integer.parseInt(txtYear.getText()), creditList);
 

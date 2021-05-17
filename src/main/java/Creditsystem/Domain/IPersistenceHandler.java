@@ -15,6 +15,6 @@ public interface IPersistenceHandler
     ArrayList<CreditJoin> getCredits(String title);
     boolean createProduction(Production production);
     boolean createRole(Role role);
-    boolean createCredit(Credits credits, String productionTitle, String roleName);
+    boolean createCredit(Credits credits, String productionTitle, String roleName, String participantName);
 
 }

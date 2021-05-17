@@ -14,6 +14,11 @@ public class Participant
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+    public Participant(int id)
+    {
+        this.id = id;
+    }
+
 
     public Participant(String name)
     {
