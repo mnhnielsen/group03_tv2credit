@@ -22,6 +22,7 @@ public class App extends Application {
         stage.setMinHeight(670);
         stage.setMinWidth(530);
         stage.show();
+        stage.setMaximized(true);
     }
 
     static void setRoot(String fxml) throws IOException {
