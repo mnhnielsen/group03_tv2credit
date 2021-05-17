@@ -14,7 +14,6 @@ import java.io.*;
 public class LoginController
 {
 
-    //Javafx attributes
     public Hyperlink registerLogin;
     public Hyperlink forgotLogin;
     public Button btnLogin;

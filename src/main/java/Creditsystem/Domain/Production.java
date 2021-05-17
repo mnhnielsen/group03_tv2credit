@@ -19,11 +19,6 @@ public class Production
         this.creditList = creditList;
     }
 
-    public Production(String title)
-    {
-        this.title = title;
-    }
-
     public Production(String title, int releaseYear, String description)
     {
         this.title = title;
@@ -41,15 +36,6 @@ public class Production
         return creditList;
     }
 
-    @Override
-    public String toString()
-    {
-        return "Title: " + title + "\n"
-                + "Release year: " + getReleaseYear() + "\n"
-                + "Description: " + getDescription();
-                //+ "Credits: " + "\n" + getCreditList().toString();
-    }
-
     public String getDescription()
     {
         return description;
@@ -59,4 +45,14 @@ public class Production
     {
         return releaseYear;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Title: " + title + "\n"
+                + "Release year: " + getReleaseYear() + "\n"
+                + "Description: " + getDescription();
+                //+ "Credits: " + "\n" + getCreditList().toString();
+    }
+
 }
