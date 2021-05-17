@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,8 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="853.0" style="-fx-background-color: #f0f0f0;">
          <children>
@@ -37,24 +37,33 @@
       <AnchorPane prefHeight="35.0" prefWidth="1281.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="BOTTOM_CENTER" />
    </bottom>
    <top>
-      <AnchorPane prefHeight="96.0" prefWidth="1073.0" style="-fx-background-color: white;" BorderPane.alignment="TOP_CENTER">
-         <children>
-            <ImageView fitHeight="32.0" fitWidth="33.0" layoutX="844.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/loginLogoG.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnLogin" layoutX="847.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleLogin" opacity="0.0" prefHeight="4.0" prefWidth="0.0" stylesheets="@Style/fullpackstyling.css" text="Log ind">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-            </Button>
-            <ImageView fitHeight="80.0" fitWidth="105.0" layoutX="438.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+      <BorderPane prefHeight="95.0" prefWidth="1000.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <center>
+            <ImageView fitHeight="80.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
                   <Image url="@Images/TV_2_RGB.png" />
                </image>
+               <BorderPane.margin>
+                  <Insets left="210.0" />
+               </BorderPane.margin>
             </ImageView>
-         </children>
-      </AnchorPane>
+         </center>
+         <right>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="33.0" layoutX="51.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/loginLogoG.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnLogin" layoutX="52.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleLogin" opacity="0.0" prefHeight="4.0" prefWidth="0.0" stylesheets="@Style/fullpackstyling.css" text="Log ind">
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
    </top>
 </BorderPane>
