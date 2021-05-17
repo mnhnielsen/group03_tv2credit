@@ -265,7 +265,7 @@ public class PersistenceHandler implements IPersistenceHandler
             ResultSet sqlReturnValues = stmt.executeQuery();
             while (sqlReturnValues.next())
             {
-                list.add(new CreditJoin(sqlReturnValues.getString(2), sqlReturnValues.getString(9)));
+                list.add(new CreditJoin(sqlReturnValues.getString(2), sqlReturnValues.getString(9),sqlReturnValues.getInt(13)));
             }
             return list;
 

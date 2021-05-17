@@ -48,10 +48,19 @@ public class FrontPageController
         titleColumn.setText("Title");
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         titleColumn.setMinWidth(10);
-        titleColumn.setPrefWidth(192);
+        titleColumn.setPrefWidth(1170);
         titleColumn.setMaxWidth(5000);
 
-        tblCredits.getColumns().addAll(titleColumn);
+        TableColumn year = new TableColumn("År");
+        year.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
+        year.setMinWidth(10);
+        year.setPrefWidth(192);
+        year.setMaxWidth(5000);
+
+
+
+
+        tblCredits.getColumns().addAll(titleColumn,year);
     }
 
     public void handleLogin(ActionEvent event)
