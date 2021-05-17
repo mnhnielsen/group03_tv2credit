@@ -19,6 +19,7 @@ public class StageChange
         Node node = (Node) event.getSource();
         Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
         Stage stage = new Stage();
+        stage.setMaximized(true);
         stage.setMinHeight(670);
         stage.setMinWidth(530);
         Stage currentStage = (Stage) node.getScene().getWindow();
