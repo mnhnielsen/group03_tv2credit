@@ -6,6 +6,7 @@ module Creditsystem{
     requires com.google.gson;
     requires org.apache.commons.lang3;
     requires postgresql;
+    requires java.mail;
 
     opens Creditsystem.Data;
     opens Creditsystem.Presentation;
