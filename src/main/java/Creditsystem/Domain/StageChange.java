@@ -32,7 +32,7 @@ public class StageChange
         fxmlLoader.setLocation(App.class.getResource(path));
 
         Node node = (Node) event.getSource();
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 368, 255);
         Stage stage = new Stage();
 
         stage.setTitle(title);
