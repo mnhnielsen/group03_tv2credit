@@ -1,7 +1,9 @@
 package Creditsystem.Domain;
 
+import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
 public class InformationController
@@ -9,7 +11,8 @@ public class InformationController
     public Label lblTitle;
     public Label lblReleaseYear;
     public TextArea txtDescription;
-    public ListView list;
+    public TableView tabelView;
+    private TableColumn role = new TableColumn();
 
     StageChange stageChange = new StageChange();
 
@@ -18,6 +21,27 @@ public class InformationController
         lblTitle.setText(FrontPageController.getProduction().getTitle());
         lblReleaseYear.setText(String.valueOf(FrontPageController.getProduction().getReleaseYear()));
         txtDescription.setText(FrontPageController.getProduction().getDescription());
+
+        role = new TableColumn("Rolle");
+        role.setCellValueFactory(new PropertyValueFactory<>("roleName"));
+        role.setMinWidth(10);
+        role.setPrefWidth(192);
+        role.setMaxWidth(5000);
+
+
+        TableColumn name = new TableColumn("Navn");
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        name.setMinWidth(10);
+        name.setPrefWidth(192);
+        name.setMaxWidth(5000);
+
+        //Add to columns
+        tabelView.getColumns().addAll(role, name);
+
+        for (CreditJoin creditJoin : FrontPageController.getCredits())
+        {
+            tabelView.getItems().add(creditJoin);
+        }
     }
 
     public void handleBackButton(ActionEvent event)

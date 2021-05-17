@@ -1,9 +1,6 @@
 package Creditsystem.Data;
 
-import Creditsystem.Domain.Account;
-import Creditsystem.Domain.IPersistenceHandler;
-import Creditsystem.Domain.ProducerAccount;
-import Creditsystem.Domain.Production;
+import Creditsystem.Domain.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -254,4 +251,52 @@ public class PersistenceHandler implements IPersistenceHandler
             return null;
         }
     }
+
+    @Override
+    public Production searchProduction(String title)
+    {
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM production WHERE title LIKE %?%");
+            //for stored procedure. Will test later
+            //PreparedStatement statement = connection.prepareCall("sp_searchproduction");
+            stmt.setString(1, title);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            if (!sqlReturnValues.next())
+            {
+                return null;
+            }
+            return new Production(sqlReturnValues.getString(2), sqlReturnValues.getInt(3), sqlReturnValues.getString(4));
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<CreditJoin> getCredits(String title)
+    {
+        try
+        {
+            ArrayList<CreditJoin> list = new ArrayList<>();
+
+            PreparedStatement stmt = connection.prepareStatement("SELECT * From participant join credit c on participant.id = c.participantid join role r on c.roleid = r.id JOIN production p on c.productionid = p.id WHERE p.title = ?");
+            stmt.setString(1, title);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            while (sqlReturnValues.next())
+            {
+                list.add(new CreditJoin(sqlReturnValues.getString(2), sqlReturnValues.getString(9)));
+            }
+            return list;
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+
 }
