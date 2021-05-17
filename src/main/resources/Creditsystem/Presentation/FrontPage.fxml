@@ -1,38 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
-   <children>
-      <AnchorPane prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: #d21e1e;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+   <center>
+      <VBox alignment="CENTER">
          <children>
-            <ImageView fitHeight="80.0" fitWidth="105.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/TV_2_Hvid_RGB.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="126.0" layoutY="37.0" text="/KREDITERINGSSYSTEM" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
+            <AnchorPane prefHeight="548.0" prefWidth="920.0">
+               <children>
+                  <TableView fx:id="tblCredits" layoutX="57.0" layoutY="110.0" prefHeight="346.0" prefWidth="827.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="110.0" />
+                  <TextField fx:id="txtSearch" layoutX="208.0" layoutY="67.0" prefHeight="26.0" prefWidth="557.0" promptText="Søg på programmer" style="-fx-background-radius: 15px;" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="67.0" />
+                  <Button fx:id="btnOpenCredit" layoutX="57.0" layoutY="468.0" mnemonicParsing="false" onAction="#showProduction" prefHeight="34.0" prefWidth="102.0" style="-fx-border-radius: 15px; -fx-background-radius: 15px;" stylesheets="@Style/fullpackstyling.css" text="Åbn Program" AnchorPane.bottomAnchor="14.399999999999977" />
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
-      <Button fx:id="btnLogin" layoutX="905.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleLogin" stylesheets="@Style/fullpackstyling.css" text="Log ind" />
-      <TableView fx:id="tblCredits" layoutX="56.0" layoutY="240.0" prefHeight="291.0" prefWidth="901.0" />
-      <TextField fx:id="txtSearch" layoutX="808.0" layoutY="138.0" promptText="Søg på programmer" />
-      <Label layoutX="56.0" layoutY="210.0" text="Krediteringer">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnOpenCredit" layoutX="56.0" layoutY="544.0" mnemonicParsing="false" onAction="#showProduction" stylesheets="@Style/fullpackstyling.css" text="Åbn Program" />
-   </children>
-</AnchorPane>
+      </VBox>
+   </center>
+   <right>
+      <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
+   </right>
+   <left>
+      <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_LEFT" />
+   </left>
+   <bottom>
+      <AnchorPane prefHeight="35.0" prefWidth="1281.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="BOTTOM_CENTER" />
+   </bottom>
+   <top>
+      <BorderPane prefHeight="95.0" prefWidth="1000.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <center>
+            <ImageView fitHeight="80.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@Images/TV_2_RGB.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets left="210.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </center>
+         <right>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="33.0" layoutX="51.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/loginLogoG.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnLogin" layoutX="52.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleLogin" opacity="0.0" prefHeight="4.0" prefWidth="0.0" stylesheets="@Style/fullpackstyling.css" text="Log ind">
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+   </top>
+</BorderPane>
