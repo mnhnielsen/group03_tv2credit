@@ -72,7 +72,7 @@ public class LoginController
     {
         try
         {
-            stageChange.openPopup(event, "producerPage.fxml", "Opret nyt login");
+            stageChange.openPopup(event, "RequestLogin.fxml", "Ansøg om login");
         } catch (IOException e)
         {
             e.printStackTrace();
