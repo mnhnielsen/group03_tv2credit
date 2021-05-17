@@ -3,6 +3,7 @@ package Creditsystem.Data;
 import Creditsystem.Domain.Account;
 import Creditsystem.Domain.IPersistenceHandler;
 import Creditsystem.Domain.ProducerAccount;
+import Creditsystem.Domain.Production;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -175,10 +176,10 @@ public class PersistenceHandler implements IPersistenceHandler
             statement.setString(1, producerAccount.getUsername());
             statement.setString(2, producerAccount.getPassword());
             statement.setBoolean(3, producerAccount.getAdminStatus());
-            statement.setString(4,producerAccount.getName());
-            statement.setString(5,producerAccount.getEmail());
-            statement.setInt(6,producerAccount.getPhoneNumber());
-            statement.setString(7,producerAccount.getCompany());
+            statement.setString(4, producerAccount.getName());
+            statement.setString(5, producerAccount.getEmail());
+            statement.setInt(6, producerAccount.getPhoneNumber());
+            statement.setString(7, producerAccount.getCompany());
             statement.execute();
         } catch (SQLException throwables)
         {
@@ -203,7 +204,7 @@ public class PersistenceHandler implements IPersistenceHandler
             Account account = null;
             while (sqlReturnValues.next())
             {
-                account = new Account(sqlReturnValues.getInt(1),sqlReturnValues.getString(2));
+                account = new Account(sqlReturnValues.getInt(1), sqlReturnValues.getString(2));
                 returnValue.add(account);
             }
             id = account.getId();
@@ -212,5 +213,45 @@ public class PersistenceHandler implements IPersistenceHandler
             throwables.printStackTrace();
         }
         return id;
+    }
+
+    @Override
+    public ArrayList getProductions()
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM production");
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Production> returnValues = new ArrayList<>();
+            while (resultSet.next())
+            {
+                returnValues.add(new Production(resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4)));
+            }
+            return returnValues;
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Production getProductionTitle(String title)
+    {
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM production WHERE title = ?");
+            stmt.setString(1, title);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            if (!sqlReturnValues.next())
+            {
+                return null;
+            }
+            return new Production(sqlReturnValues.getString(2), sqlReturnValues.getInt(3), sqlReturnValues.getString(4));
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return null;
+        }
     }
 }

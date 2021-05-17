@@ -1,5 +1,7 @@
 package Creditsystem.Domain;
 
+import java.util.ArrayList;
+
 public interface IPersistenceHandler
 {
     boolean logIn(String username, String password);
@@ -8,4 +10,6 @@ public interface IPersistenceHandler
     boolean createAdminAccount(Account account);
     boolean createProducerAccount(ProducerAccount producerAccount);
     int getID(String username);
+    ArrayList getProductions();
+    Production getProductionTitle(String title);
 }

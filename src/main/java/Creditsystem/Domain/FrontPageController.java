@@ -1,11 +1,10 @@
 package Creditsystem.Domain;
 
-import Creditsystem.Data.FileHandler;
+import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,29 +18,28 @@ public class FrontPageController
 
     private StageChange stageChange = new StageChange();
     private TableColumn titleColumn = new TableColumn();
-    private int noFiles = 0;
-    ArrayList<Production> productionArrayList = new ArrayList<>();
+
     static ArrayList<String> credits = new ArrayList<>();
 
-    IFileHandler fileHandler = new FileHandler();
+    IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
+
+    ArrayList<Production> lists = persistenceHandler.getProductions();
+
+    static Production production = null;
 
     public void initialize()
     {
-        ArrayList list = new ArrayList();
+        initializeColumns();
 
-        String title;
-        Production production = null;
-        File file = new File("Files/Productions/");
-        list = findFiles(file);
 
-        for (int i = 0; i < noFiles; i++)
+        for (Production pr : lists)
         {
-            title = list.get(i).toString();
-            production = new Production(title);
-            productionArrayList.add(production);
+            tblCredits.getItems().add(pr);
         }
+    }
 
-        //Column stuff
+    private void initializeColumns()
+    {
         titleColumn.setText("Title");
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         titleColumn.setMinWidth(10);
@@ -49,33 +47,8 @@ public class FrontPageController
         titleColumn.setMaxWidth(5000);
 
         tblCredits.getColumns().addAll(titleColumn);
-
-        for (Production pr : productionArrayList)
-        {
-            tblCredits.getItems().add(pr);
-
-        }
     }
 
-    //This could be moved to Data.FileHandler
-    private ArrayList findFiles(File file)
-    {
-        ArrayList<String> fileList = new ArrayList<>();
-        File[] files = file.listFiles();
-        for (File f : files)
-        {                                           // Loop through files found
-            if (f.isDirectory())
-            {                                       // Check if is directory.
-                findFiles(f.getAbsoluteFile());     // Get directory if any
-
-            } else
-            {
-                fileList.add(f.getName());           //Print files path
-                noFiles++;                          //Count # files
-            }
-        }
-        return fileList;
-    }
 
     public void handleLogin(ActionEvent event)
     {
@@ -90,26 +63,32 @@ public class FrontPageController
 
     public void showProduction(ActionEvent event)
     {
-        try
+        Object obj = tblCredits.getSelectionModel().getSelectedItem();
+        String data = (String) titleColumn.getCellObservableValue(obj).getValue();
+        for (int i = 0; i < lists.size(); i++)
         {
-            Object obj = tblCredits.getSelectionModel().getSelectedItem();
-            String data = (String) titleColumn.getCellObservableValue(obj).getValue();
-            for (int i = 0; i < noFiles; i++)
+            if (data == lists.get(i).getTitle())
             {
-                if (data == productionArrayList.get(i).getTitle())
+                production = persistenceHandler.getProductionTitle(data);
+                try
                 {
-                    credits = fileHandler.readFile("Files/Productions/" + productionArrayList.get(i).getTitle());
+                    stageChange.openNewWindow(event,"CreditInfomationPage.fxml","Informations side");
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
                 }
             }
-            stageChange.openNewWindow(event, "CreditInfomationPage.fxml", "Krediteringsinfo");
-        } catch (Exception e)
-        {
-            System.out.println("Select a program first");
         }
+
     }
 
     public static ArrayList getProgram()
     {
         return credits;
+    }
+
+    public static Production getProduction()
+    {
+        return production;
     }
 }

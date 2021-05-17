@@ -24,6 +24,13 @@ public class Production
         this.title = title;
     }
 
+    public Production(String title, int releaseYear, String description)
+    {
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+    }
+
     public String getTitle()
     {
         return title;
@@ -38,9 +45,18 @@ public class Production
     public String toString()
     {
         return "Title: " + title + "\n"
-                + "Release year: " + releaseYear + "\n"
-                + "Description: " + description + "\n"
-                + "Credits: " + "\n" + getCreditList().toString();
+                + "Release year: " + getReleaseYear() + "\n"
+                + "Description: " + getDescription();
+                //+ "Credits: " + "\n" + getCreditList().toString();
     }
 
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public int getReleaseYear()
+    {
+        return releaseYear;
+    }
 }
