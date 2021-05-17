@@ -31,11 +31,6 @@ public class Production
         return title;
     }
 
-    public List<Credit> getCreditList()
-    {
-        return creditList;
-    }
-
     public String getDescription()
     {
         return description;

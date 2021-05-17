@@ -19,8 +19,6 @@ public class FrontPageController
     private StageChange stageChange = new StageChange();
     private TableColumn titleColumn = new TableColumn();
 
-    static ArrayList<String> credits = new ArrayList<>();
-
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
     ArrayList<Production> lists = persistenceHandler.getProductions();
@@ -30,7 +28,6 @@ public class FrontPageController
     public void initialize()
     {
         initializeColumns();
-
 
         for (Production pr : lists)
         {
@@ -72,19 +69,13 @@ public class FrontPageController
                 production = persistenceHandler.getProductionTitle(data);
                 try
                 {
-                    stageChange.openNewWindow(event,"CreditInfomationPage.fxml","Informations side");
+                    stageChange.openNewWindow(event, "CreditInfomationPage.fxml", "Informations side");
                 } catch (IOException e)
                 {
                     e.printStackTrace();
                 }
             }
         }
-
-    }
-
-    public static ArrayList getProgram()
-    {
-        return credits;
     }
 
     public static Production getProduction()
