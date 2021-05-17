@@ -9,26 +9,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="251.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
+<AnchorPane prefHeight="372.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
    <children>
-      <AnchorPane prefHeight="255.0" prefWidth="368.0" style="-fx-background-color: #d21e1e;">
+      <AnchorPane prefHeight="372.0" prefWidth="368.0" style="-fx-background-color: #d21e1e;">
          <children>
-            <ImageView fitHeight="54.0" fitWidth="65.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="54.0" fitWidth="65.0" layoutX="286.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/TV_2_Hvid_RGB.png" />
                </image>
             </ImageView>
-            <Label layoutX="113.0" layoutY="10.0" text="Ansøg om login" textFill="WHITE">
+            <Label layoutX="111.0" layoutY="54.0" text="Ansøg om login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="btnRequest" layoutX="81.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="27.0" prefWidth="207.0" style="-fx-border-color: red;" stylesheets="@Style/fullpackstyling.css" text="Ansøg" />
-            <Separator layoutX="84.0" layoutY="58.0" prefWidth="207.0" style="-fx-background-color: white;" />
-            <TextField fx:id="txtName" layoutX="81.0" layoutY="68.0" prefHeight="25.0" prefWidth="207.0" promptText="navn" style="-fx-border-color: red;" />
-            <TextField fx:id="txtEmail" layoutX="81.0" layoutY="105.0" prefHeight="25.0" prefWidth="207.0" promptText="email" style="-fx-border-color: red;" />
-            <TextField fx:id="txtPhone" layoutX="81.0" layoutY="143.0" prefHeight="25.0" prefWidth="207.0" promptText="telefon" style="-fx-border-color: red;" />
-            <TextField fx:id="txtCompany" layoutX="81.0" layoutY="177.0" prefHeight="25.0" prefWidth="207.0" promptText="firma" style="-fx-border-color: red;" />
+            <Button fx:id="btnRequest" layoutX="79.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleRequestButton" prefHeight="27.0" prefWidth="207.0" style="-fx-border-color: red;" stylesheets="@Style/fullpackstyling.css" text="Ansøg" />
+            <Separator layoutX="82.0" layoutY="102.0" prefWidth="207.0" style="-fx-background-color: white;" />
+            <TextField fx:id="txtName" layoutX="79.0" layoutY="112.0" prefHeight="25.0" prefWidth="207.0" promptText="navn" style="-fx-border-color: red;" />
+            <TextField fx:id="txtEmail" layoutX="79.0" layoutY="149.0" prefHeight="25.0" prefWidth="207.0" promptText="email" style="-fx-border-color: red;" />
+            <TextField fx:id="txtPhone" layoutX="79.0" layoutY="187.0" prefHeight="25.0" prefWidth="207.0" promptText="telefon" style="-fx-border-color: red;" />
+            <TextField fx:id="txtCompany" layoutX="79.0" layoutY="221.0" prefHeight="25.0" prefWidth="207.0" promptText="firma" style="-fx-border-color: red;" />
+            <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#goBack" prefHeight="20.0" prefWidth="26.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/Transparent_X.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="receipt" layoutX="79.0" layoutY="287.0" prefHeight="70.0" prefWidth="207.0" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

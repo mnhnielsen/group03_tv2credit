@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -27,19 +28,31 @@ public class StageChange
         stage.show();
         currentStage.close();
     }
+
     public void openPopup(ActionEvent event, String path, String title) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(App.class.getResource(path));
 
         Node node = (Node) event.getSource();
-        Scene scene = new Scene(fxmlLoader.load(), 368, 255);
+        Scene scene = new Scene(fxmlLoader.load(), 368, 372);
         Stage stage = new Stage();
+        stage.initStyle(StageStyle.TRANSPARENT);
 
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
     }
+
+    public void closePopup(ActionEvent event)
+    {
+        Node node = (Node) event.getSource();
+
+        Stage currentStage = (Stage) node.getScene().getWindow();
+        currentStage.close();
+
+    }
+
     public void handleBackButton(ActionEvent event, String path, String title)
     {
         try

@@ -2,20 +2,14 @@ package Creditsystem.Domain;
 
 import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class LoginController
 {
-
     public Hyperlink registerLogin;
     public Hyperlink forgotLogin;
     public Button btnLogin;
@@ -25,6 +19,7 @@ public class LoginController
     public PasswordField passwordField;
     private static int loggedInID;
     public TextField txtName, txtEmail, txtPhone, txtCompany;
+    public Label receipt;
 
     StageChange stageChange = new StageChange();
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
@@ -70,7 +65,6 @@ public class LoginController
         }
     }
 
-
     public void handleRegisterLogin(ActionEvent event)
     {
         try
@@ -81,7 +75,6 @@ public class LoginController
             e.printStackTrace();
         }
     }
-
 
     public void handleBackButton(ActionEvent event)
     {
@@ -101,9 +94,6 @@ public class LoginController
 
     public void handleRequestButton(ActionEvent event)
     {
-        //TODO Finish handleRequestButton
-
-
         String name = txtName.getText();
         String company = txtCompany.getText();
         String email = txtEmail.getText();
@@ -113,6 +103,11 @@ public class LoginController
         {
             Mail mail = new Mail();
             mail.receiveEmail("Ny konto hos krediteringssystemet", "navn: " + name + "\n" + "firma: " + company + "\n" + "email: " + email + "\n" + "telefon: " + phone);
+            receipt.setText("Tak for din ansøgning. Brugernavn og adgangskode modtager du på mail når din konto er oprettet");
+            txtName.clear();
+            txtCompany.clear();
+            txtEmail.clear();
+            txtPhone.clear();
         } else
         {
             //Dialog boks skal tilføjes
@@ -120,4 +115,8 @@ public class LoginController
         }
     }
 
+    public void goBack(ActionEvent event)
+    {
+        stageChange.closePopup(event);
+    }
 }
