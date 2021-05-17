@@ -85,18 +85,19 @@ public class FrontPageController
             }
         }
     }
+    // Denne metoder konverterer teksten i søgefeltet til lowercase.
     private boolean searchFindsProduction(Production production, String searchText){
         return (production.getTitle().toLowerCase().contains(searchText.toLowerCase())) ||
                 (production.getDescription().toLowerCase().contains(searchText.toLowerCase())) ||
                 Integer.valueOf(production.getReleaseYear()).toString().equals(searchText.toLowerCase());
     }
+    //Søgefunktion
     private ObservableList<Production> filterList(List<Production> list, String searchText){
         List<Production> filteredList = new ArrayList<>();
         for (Production production : list){
             if(searchFindsProduction(production, searchText))
             {
-                //filteredList.add(production);
-                persistenceHandler.searchProduction(searchText);
+                filteredList.add(production);
             }
         }
         return FXCollections.observableList(filteredList);

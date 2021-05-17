@@ -12,6 +12,5 @@ public interface IPersistenceHandler
     int getID(String username);
     ArrayList getProductions();
     Production getProductionTitle(String title);
-    Production searchProduction(String title);
     ArrayList<CreditJoin> getCredits(String title);
 }

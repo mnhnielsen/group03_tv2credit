@@ -10,6 +10,6 @@ public class DBTest
     {
         //IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
         Mail mail = new Mail();
-        mail.sendEmail();
+        mail.sendEmail("mnhnielsen@gmail.com","Ny konto fra Krediteringssystem", "Indhold");
     }
 }

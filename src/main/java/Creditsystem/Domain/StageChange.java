@@ -26,6 +26,19 @@ public class StageChange
         stage.show();
         currentStage.close();
     }
+    public void openPopup(ActionEvent event, String path, String title) throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(App.class.getResource(path));
+
+        Node node = (Node) event.getSource();
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+        Stage stage = new Stage();
+
+        stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
+    }
     public void handleBackButton(ActionEvent event, String path, String title)
     {
         try

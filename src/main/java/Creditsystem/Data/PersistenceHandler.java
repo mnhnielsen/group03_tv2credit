@@ -252,28 +252,6 @@ public class PersistenceHandler implements IPersistenceHandler
         }
     }
 
-    @Override
-    public Production searchProduction(String title)
-    {
-        try
-        {
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM production WHERE title LIKE %?%");
-            //for stored procedure. Will test later
-            //PreparedStatement statement = connection.prepareCall("sp_searchproduction");
-            stmt.setString(1, title);
-            ResultSet sqlReturnValues = stmt.executeQuery();
-            if (!sqlReturnValues.next())
-            {
-                return null;
-            }
-            return new Production(sqlReturnValues.getString(2), sqlReturnValues.getInt(3), sqlReturnValues.getString(4));
-
-        } catch (SQLException throwables)
-        {
-            throwables.printStackTrace();
-            return null;
-        }
-    }
 
     @Override
     public ArrayList<CreditJoin> getCredits(String title)

@@ -70,7 +70,13 @@ public class LoginController
 
     public void handleRegisterLogin(ActionEvent event)
     {
-        System.out.println("handleRegisterLogin");
+        try
+        {
+            stageChange.openPopup(event, "producerPage.fxml", "Opret nyt login");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 
