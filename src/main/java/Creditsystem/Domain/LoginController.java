@@ -25,7 +25,6 @@ public class LoginController
     StageChange stageChange = new StageChange();
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
-
     public void handleForgotLogin(ActionEvent event)
     {
         System.out.println("handleForgotLogin");

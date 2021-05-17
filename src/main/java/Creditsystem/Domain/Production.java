@@ -25,6 +25,9 @@ public class Production
         this.description = description;
         this.releaseYear = releaseYear;
     }
+    public Production(int id){
+        this.id = id;
+    }
 
     public String getTitle()
     {
@@ -50,4 +53,8 @@ public class Production
                 //+ "Credits: " + "\n" + getCreditList().toString();
     }
 
+    public int getId()
+    {
+        return id;
+    }
 }

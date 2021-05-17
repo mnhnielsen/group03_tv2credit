@@ -13,4 +13,8 @@ public interface IPersistenceHandler
     ArrayList getProductions();
     Production getProductionTitle(String title);
     ArrayList<CreditJoin> getCredits(String title);
+    boolean createProduction(Production production);
+    boolean createRole(Role role);
+    boolean createCredit(Credits credits, String productionTitle, String roleName);
+
 }

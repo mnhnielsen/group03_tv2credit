@@ -276,5 +276,80 @@ public class PersistenceHandler implements IPersistenceHandler
         }
     }
 
+    @Override
+    public boolean createProduction(Production production)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO production(title, releaseyear, description) VALUES(?,?,?)");
+            statement.setString(1, production.getTitle());
+            statement.setInt(2, production.getReleaseYear());
+            statement.setString(3, production.getDescription());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean createRole(Role role)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO role(name) VALUES(?)");
+            statement.setString(1, role.getName());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean createCredit(Credits credits, String productionTitle, String roleName)
+    {
+        try
+        {
+            //Production ID
+            int productionId = 0;
+            PreparedStatement productionStatement = connection.prepareStatement("SELECT id FROM production WHERE name = ?");
+            productionStatement.setString(1, productionTitle);
+            ResultSet resultSet = productionStatement.executeQuery();
+            List<Production> productionList = new ArrayList<>();
+            Production production = null;
+
+            while (resultSet.next())
+            {
+                production = new Production(resultSet.getInt(1));
+                productionList.add(production);
+            }
+            productionId = production.getId();
+
+            //Role ID
+            PreparedStatement roleStatement = connection.prepareStatement("SELECT id FROM role WHERE name = ? AND productionID = ?");
+            roleStatement.setString(1, roleName);
+            roleStatement.setInt(2, productionId);
+            ResultSet roleResult = roleStatement.executeQuery();
+            List<Role> roleList = new ArrayList<>();
+            Role role = null;
+            while (roleResult.next())
+            {
+                role = new Role(roleResult.getString(1));
+                roleList.add(role);
+            }
+
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return true;
+    }
+
 
 }
