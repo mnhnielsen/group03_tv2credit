@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,7 +24,7 @@ public class LoginController
     public TextField txtUsername;
     public PasswordField passwordField;
     private static int loggedInID;
-    List<String> requestList;
+    List<String> requestList = new ArrayList<>();
     public TextField txtName, txtEmail, txtPhone, txtCompany;
 
     StageChange stageChange = new StageChange();
@@ -103,19 +104,20 @@ public class LoginController
     {
         //TODO Finish handleRequestButton
 
+
         String name = txtName.getText();
         String company = txtCompany.getText();
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
 
-        if(name != null & company != null & email != null & phone != null)
+        if(name.trim() != null & company.trim() != null & email.trim() != null & phone.trim() != null)
         {
             requestList.add(name + "\n");
             requestList.add(company);
             requestList.add(email);
             requestList.add(phone);
             Mail mail = new Mail();
-            mail.sendEmail("krediteringssystem@gmail.com","Login Ansøgelse",requestList.toString());
+            mail.receiveEmail("Ny konto hos krediteringssystemet","navn: " + name + "\n" + "firma: " + company + "\n" + "email: " + email + "\n" + "telefon: " + phone);
         }
         else
         {
