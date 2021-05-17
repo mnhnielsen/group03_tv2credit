@@ -24,7 +24,6 @@ public class LoginController
     public TextField txtUsername;
     public PasswordField passwordField;
     private static int loggedInID;
-    List<String> requestList = new ArrayList<>();
     public TextField txtName, txtEmail, txtPhone, txtCompany;
 
     StageChange stageChange = new StageChange();
@@ -110,16 +109,11 @@ public class LoginController
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
 
-        if(name.trim() != null & company.trim() != null & email.trim() != null & phone.trim() != null)
+        if (name.trim() != null & company.trim() != null & email.trim() != null & phone.trim() != null)
         {
-            requestList.add(name + "\n");
-            requestList.add(company);
-            requestList.add(email);
-            requestList.add(phone);
             Mail mail = new Mail();
-            mail.receiveEmail("Ny konto hos krediteringssystemet","navn: " + name + "\n" + "firma: " + company + "\n" + "email: " + email + "\n" + "telefon: " + phone);
-        }
-        else
+            mail.receiveEmail("Ny konto hos krediteringssystemet", "navn: " + name + "\n" + "firma: " + company + "\n" + "email: " + email + "\n" + "telefon: " + phone);
+        } else
         {
             //Dialog boks skal tilføjes
             System.out.println("Udfyld venligst alle felter");
