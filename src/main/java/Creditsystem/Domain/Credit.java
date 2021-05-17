@@ -32,8 +32,4 @@ public class Credit
         return "Rolle: " + role +"\n" + "Navn: " + getParticipant().getName() + "\n" + "\n";
     }
 
-    public String getName()
-    {
-        return name;
-    }
 }

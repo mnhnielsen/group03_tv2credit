@@ -1,12 +1,16 @@
 package Creditsystem.Domain;
 
 import Creditsystem.Data.PersistenceHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class FrontPageController
 {
@@ -22,6 +26,7 @@ public class FrontPageController
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
     ArrayList<Production> lists = persistenceHandler.getProductions();
+    static ArrayList<CreditJoin> credits = new ArrayList<>();
 
     static Production production = null;
 
@@ -33,6 +38,9 @@ public class FrontPageController
         {
             tblCredits.getItems().add(pr);
         }
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) ->
+                tblCredits.setItems(filterList(lists, newValue.toLowerCase()))
+        );
     }
 
     private void initializeColumns()
@@ -45,7 +53,6 @@ public class FrontPageController
 
         tblCredits.getColumns().addAll(titleColumn);
     }
-
 
     public void handleLogin(ActionEvent event)
     {
@@ -67,6 +74,7 @@ public class FrontPageController
             if (data == lists.get(i).getTitle())
             {
                 production = persistenceHandler.getProductionTitle(data);
+                credits = persistenceHandler.getCredits(data);
                 try
                 {
                     stageChange.openNewWindow(event, "CreditInfomationPage.fxml", "Informations side");
@@ -77,9 +85,30 @@ public class FrontPageController
             }
         }
     }
+    private boolean searchFindsProduction(Production production, String searchText){
+        return (production.getTitle().toLowerCase().contains(searchText.toLowerCase())) ||
+                (production.getDescription().toLowerCase().contains(searchText.toLowerCase())) ||
+                Integer.valueOf(production.getReleaseYear()).toString().equals(searchText.toLowerCase());
+    }
+    private ObservableList<Production> filterList(List<Production> list, String searchText){
+        List<Production> filteredList = new ArrayList<>();
+        for (Production production : list){
+            if(searchFindsProduction(production, searchText))
+            {
+                //filteredList.add(production);
+                persistenceHandler.searchProduction(searchText);
+            }
+        }
+        return FXCollections.observableList(filteredList);
+    }
 
     public static Production getProduction()
     {
         return production;
+    }
+
+    public static ArrayList<CreditJoin> getCredits()
+    {
+        return credits;
     }
 }
