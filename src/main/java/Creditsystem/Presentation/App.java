@@ -20,6 +20,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("FrontPage"));
         stage.setScene(scene);
         stage.show();
+        stage.setMaximized(true);
     }
 
     static void setRoot(String fxml) throws IOException {
