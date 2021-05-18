@@ -25,6 +25,9 @@ public interface IPersistenceHandler
     int getParticipantID();
     boolean checkRoleName(String roleName);
     ArrayList<Participant> getParticipants();
+    ArrayList<Role> getRoles();
     Participant getParticipant(String name);
     void getParticipantID(String name);
+    void getRoleID(String name);
+
 }

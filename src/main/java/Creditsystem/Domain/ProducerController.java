@@ -1,12 +1,10 @@
 package Creditsystem.Domain;
 
-import Creditsystem.Data.FileHandler;
 import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.mail.Part;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +27,8 @@ public class ProducerController
     Role role = null;
     Participant participant = null;
     Credits credits = null;
-    boolean found = false;
+    boolean foundParticipant = false;
+    boolean foundRole = false;
 
 
     public void initialize()
@@ -59,15 +58,27 @@ public class ProducerController
         {
             if (txtName.getText().equals(participant.getName()))
             {
-                found = true;
+                foundParticipant = true;
                 break;
             } else
             {
-                found = false;
+                foundParticipant = false;
             }
         }
 
-        if (found)
+        for (Role role : persistenceHandler.getRoles())
+        {
+            if (txtJob.getText().equals(role.getName()))
+            {
+                foundRole = true;
+                break;
+            }
+            else{
+                foundRole = false;
+            }
+        }
+
+        if (foundParticipant)
         {
             participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
             participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
@@ -76,19 +87,6 @@ public class ProducerController
             participantEmail.setStyle("-fx-border-color: red;");
             participantPhone.setStyle("-fx-border-color: red;");
         }
-       /* if (persistenceHandler.findParticipant(txtName.getText()))
-        {
-            System.out.println("Found");
-            participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
-            participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
-        } else
-        {
-            System.out.println("Not found");
-
-
-        }
-
-        */
     }
 
     //Creates participants, credits, columns and adds to a credit list
@@ -96,25 +94,33 @@ public class ProducerController
     {
 
 
-        if (!found)
+        if (!foundParticipant)
         {
             //Create a participant
             participant = new Participant(txtName.getText(), Integer.parseInt(participantPhone.getText()), participantEmail.getText());
             persistenceHandler.createParticipant(participant);
-        }
-        else{
+        } else
+        {
             persistenceHandler.getParticipantID(txtName.getText());
         }
-        //Create a role
-        role = new Role(txtJob.getText());
-        persistenceHandler.createRole(role);
+        if (!foundRole)
+        {
+            //Create a role
+            role = new Role(txtJob.getText());
+            persistenceHandler.createRole(role);
+        }
+        else
+        {
+            persistenceHandler.getRoleID(txtJob.getText());
+        }
+
+        //Create Credit
         credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
         persistenceHandler.createCredit(credits);
 
         //Visual stuff
         Participant participants = new Participant(txtName.getText());
         Credit credit = new Credit(participants, txtJob.getText(), participants.getName());
-
 
 
         roleColumn = new TableColumn("Rolle");

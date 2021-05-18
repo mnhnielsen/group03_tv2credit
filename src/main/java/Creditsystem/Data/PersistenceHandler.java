@@ -495,6 +495,26 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
+    public ArrayList<Role> getRoles()
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM role");
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Role> returnValues = new ArrayList<>();
+            while (resultSet.next())
+            {
+                returnValues.add(new Role(resultSet.getString(2)));
+            }
+            return returnValues;
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public Participant getParticipant(String name)
     {
         try
@@ -530,6 +550,29 @@ public class PersistenceHandler implements IPersistenceHandler
                 returnValue.add(participant);
             }
             participantID = participant.getId();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getRoleID(String name)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT id FROM role WHERE name = ?");
+            statement.setString(1, name);
+
+            ResultSet sqlReturnValues = statement.executeQuery();
+            List<Role> returnValue = new ArrayList<>();
+            Role role = null;
+            while (sqlReturnValues.next())
+            {
+                role = new Role(sqlReturnValues.getInt(1));
+                returnValue.add(role);
+            }
+            roleID = role.getId();
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
