@@ -512,5 +512,28 @@ public class PersistenceHandler implements IPersistenceHandler
             return null;
         }
     }
+
+    @Override
+    public void getParticipantID(String name)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT id FROM participant WHERE name = ?");
+            statement.setString(1, name);
+
+            ResultSet sqlReturnValues = statement.executeQuery();
+            List<Participant> returnValue = new ArrayList<>();
+            Participant participant = null;
+            while (sqlReturnValues.next())
+            {
+                participant = new Participant(sqlReturnValues.getInt(1));
+                returnValue.add(participant);
+            }
+            participantID = participant.getId();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+    }
 }
 

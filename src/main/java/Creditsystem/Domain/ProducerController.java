@@ -29,6 +29,7 @@ public class ProducerController
     Role role = null;
     Participant participant = null;
     Credits credits = null;
+    boolean found = false;
 
 
     public void initialize()
@@ -48,22 +49,73 @@ public class ProducerController
         }
     }
 
+    public void searchForPerson(ActionEvent event)
+    {
+        participantPhone.clear();
+        participantEmail.clear();
+        participantPhone.setStyle(null);
+        participantEmail.setStyle(null);
+        for (Participant participant : persistenceHandler.getParticipants())
+        {
+            if (txtName.getText().equals(participant.getName()))
+            {
+                found = true;
+                break;
+            } else
+            {
+                found = false;
+            }
+        }
+
+        if (found)
+        {
+            participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
+            participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
+        } else
+        {
+            participantEmail.setStyle("-fx-border-color: red;");
+            participantPhone.setStyle("-fx-border-color: red;");
+        }
+       /* if (persistenceHandler.findParticipant(txtName.getText()))
+        {
+            System.out.println("Found");
+            participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
+            participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
+        } else
+        {
+            System.out.println("Not found");
+
+
+        }
+
+        */
+    }
+
     //Creates participants, credits, columns and adds to a credit list
     public void createCredit(ActionEvent event)
     {
-        //Create a participant
-        participant = new Participant(txtName.getText(), Integer.parseInt(participantPhone.getText()), participantEmail.getText());
-        persistenceHandler.createParticipant(participant);
 
+
+        if (!found)
+        {
+            //Create a participant
+            participant = new Participant(txtName.getText(), Integer.parseInt(participantPhone.getText()), participantEmail.getText());
+            persistenceHandler.createParticipant(participant);
+        }
+        else{
+            persistenceHandler.getParticipantID(txtName.getText());
+        }
         //Create a role
         role = new Role(txtJob.getText());
         persistenceHandler.createRole(role);
+        credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
+        persistenceHandler.createCredit(credits);
+
         //Visual stuff
         Participant participants = new Participant(txtName.getText());
         Credit credit = new Credit(participants, txtJob.getText(), participants.getName());
 
-        credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
-        persistenceHandler.createCredit(credits);
+
 
         roleColumn = new TableColumn("Rolle");
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
@@ -94,46 +146,6 @@ public class ProducerController
 
     }
 
-    public void searchForPerson(ActionEvent event)
-    {
-        participantPhone.clear();
-        participantEmail.clear();
-        participantPhone.setStyle(null);
-        participantEmail.setStyle(null);
-        boolean found = false;
-        for (Participant participant : persistenceHandler.getParticipants())
-        {
-            if (txtName.getText().equals(participant.getName())){
-                found = true;
-                break;
-            }
-            else{
-                found = false;
-            }
-        }
-
-        if(found){
-            participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
-            participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
-        }
-        else{
-            participantEmail.setStyle("-fx-border-color: red;");
-            participantPhone.setStyle("-fx-border-color: red;");
-        }
-       /* if (persistenceHandler.findParticipant(txtName.getText()))
-        {
-            System.out.println("Found");
-            participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
-            participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
-        } else
-        {
-            System.out.println("Not found");
-
-
-        }
-
-        */
-    }
 
     public void addProduction(ActionEvent event)
     {
