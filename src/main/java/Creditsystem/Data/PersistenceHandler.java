@@ -473,4 +473,44 @@ public class PersistenceHandler implements IPersistenceHandler
         }
         return affectedRows;
     }
+
+    @Override
+    public ArrayList<Participant> getParticipants()
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM participant");
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Participant> returnValues = new ArrayList<>();
+            while (resultSet.next())
+            {
+                returnValues.add(new Participant(resultSet.getString(2)));
+            }
+            return returnValues;
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Participant getParticipant(String name)
+    {
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM participant WHERE name = ?");
+            stmt.setString(1, name);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            if (!sqlReturnValues.next())
+            {
+                return null;
+            }
+            return new Participant(sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getInt(4));
+        } catch (SQLException throwables)
+        {
+            return null;
+        }
+    }
 }
+

@@ -1,5 +1,6 @@
 package Creditsystem.Domain;
 
+import javax.mail.Part;
 import java.util.ArrayList;
 
 public interface IPersistenceHandler
@@ -23,4 +24,6 @@ public interface IPersistenceHandler
     int getRoleID();
     int getParticipantID();
     boolean checkRoleName(String roleName);
+    ArrayList<Participant> getParticipants();
+    Participant getParticipant(String name);
 }

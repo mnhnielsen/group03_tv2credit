@@ -18,6 +18,11 @@ public class Participant
         this.id = id;
     }
 
+    public Participant(String name, String email, int Phone){
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = Phone;
+    }
 
     public Participant(String name)
     {

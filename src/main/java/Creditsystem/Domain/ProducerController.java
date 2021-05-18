@@ -6,16 +6,17 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.mail.Part;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProducerController
 {
-    public Button btnBack, btnAddCredit, btnSendCredit, btnDeleteCredit;
     public TableView tblCredit;
     public TextField txtTitle, txtYear, txtName, txtJob, participantName, participantEmail, participantPhone;
     public TextArea txtDescription;
+    public Label lblTitle, lblReleaseYear;
 
     List<Credit> creditList;
     TableColumn roleColumn;
@@ -50,11 +51,6 @@ public class ProducerController
     //Creates participants, credits, columns and adds to a credit list
     public void createCredit(ActionEvent event)
     {
-
-        //Create production
-        production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText());
-        persistenceHandler.createProduction(production);
-
         //Create a participant
         participant = new Participant(txtName.getText(), Integer.parseInt(participantPhone.getText()), participantEmail.getText());
         persistenceHandler.createParticipant(participant);
@@ -62,15 +58,12 @@ public class ProducerController
         //Create a role
         role = new Role(txtJob.getText());
         persistenceHandler.createRole(role);
-
-        //Create the credit
-        credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
-        persistenceHandler.createCredit(credits);
-
-
         //Visual stuff
         Participant participants = new Participant(txtName.getText());
         Credit credit = new Credit(participants, txtJob.getText(), participants.getName());
+
+        credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
+        persistenceHandler.createCredit(credits);
 
         roleColumn = new TableColumn("Rolle");
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
@@ -98,10 +91,58 @@ public class ProducerController
     //Creates a new production and resets all information when published.
     public void publishProduction(ActionEvent event)
     {
-        if (tblCredit.getItems() != null)
+
+    }
+
+    public void searchForPerson(ActionEvent event)
+    {
+        participantPhone.clear();
+        participantEmail.clear();
+        participantPhone.setStyle(null);
+        participantEmail.setStyle(null);
+        boolean found = false;
+        for (Participant participant : persistenceHandler.getParticipants())
         {
+            if (txtName.getText().equals(participant.getName())){
+                found = true;
+                break;
+            }
+            else{
+                found = false;
+            }
+        }
+
+        if(found){
+            participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
+            participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
+        }
+        else{
+            participantEmail.setStyle("-fx-border-color: red;");
+            participantPhone.setStyle("-fx-border-color: red;");
+        }
+       /* if (persistenceHandler.findParticipant(txtName.getText()))
+        {
+            System.out.println("Found");
+            participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
+            participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
+        } else
+        {
+            System.out.println("Not found");
+
 
         }
+
+        */
+    }
+
+    public void addProduction(ActionEvent event)
+    {
+        //Create production
+        production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText());
+        persistenceHandler.createProduction(production);
+
+        lblTitle.setText(txtTitle.getText());
+        lblReleaseYear.setText(String.valueOf(txtYear.getText()));
     }
 
     //Deletes a selected credit from the list. Does not get published if deleted from list.

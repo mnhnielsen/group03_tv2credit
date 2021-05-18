@@ -28,7 +28,7 @@ public class LoginController
     {
         try
         {
-            stageChange.openPopup(event, "ForgotPassword.fxml", "Glemt login", 368,191);
+            stageChange.openPopup(event, "ForgotPassword.fxml", "Glemt login", 368, 191);
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class LoginController
                 }
             } else
             {
-                lblWrong.setText("Fokert brugernavn eller adgangskode");
+                lblWrong.setText("Forkert brugernavn eller adgangskode");
 
             }
         }
@@ -129,9 +129,7 @@ public class LoginController
             */
             receipt.setText("Udfyld alle felter");
         }
-
-
-        }
+    }
 
     public void goBack(ActionEvent event)
     {
