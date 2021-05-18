@@ -78,7 +78,7 @@ public class LoginController
                 if(aUsername){
                     try
                     {
-                        stageChange.openNewWindow(event, "AdminPage.fxml", "Systemadminstrator Forside");
+                        stageChange.openNewWindow(event, "OpretNyBruger.fxml", "Systemadminstrator Forside");
                     } catch (IOException e)
                     {
                         e.printStackTrace();
