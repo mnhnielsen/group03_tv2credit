@@ -22,6 +22,10 @@ public class PersistenceHandler implements IPersistenceHandler
     private String password;
     private Connection connection = null;
 
+    private int productionID;
+    private int roleID;
+    private int participantID;
+
     private void initializeConfiguration()
     {
         try
@@ -286,6 +290,14 @@ public class PersistenceHandler implements IPersistenceHandler
             statement.setInt(2, production.getReleaseYear());
             statement.setString(3, production.getDescription());
             statement.execute();
+
+            PreparedStatement productionStatement = connection.prepareStatement("SELECT id FROM production WHERE title = ?");
+            productionStatement.setString(1, production.getTitle());
+            ResultSet resultSet = productionStatement.executeQuery();
+            Production productions = new Production(resultSet.getInt(1));
+
+
+            productionID = productions.getId();
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();

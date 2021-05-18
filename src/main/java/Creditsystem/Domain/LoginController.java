@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
-import java.io.*;
+import java.io.IOException;
 
 
 public class LoginController
@@ -19,14 +19,20 @@ public class LoginController
     public PasswordField passwordField;
     private static int loggedInID;
     public TextField txtName, txtEmail, txtPhone, txtCompany;
-    public Label receipt;
+    public Label receipt, lblWrong;
 
     StageChange stageChange = new StageChange();
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
     public void handleForgotLogin(ActionEvent event)
     {
-        System.out.println("handleForgotLogin");
+        try
+        {
+            stageChange.openPopup(event, "ForgotPassword.fxml", "Glemt login", 368,191);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public void handleLogin(ActionEvent event)
@@ -60,7 +66,8 @@ public class LoginController
                 }
             } else
             {
-                System.out.println("try again");
+                lblWrong.setText("Fokert brugernavn eller adgangskode");
+
             }
         }
     }
@@ -69,7 +76,7 @@ public class LoginController
     {
         try
         {
-            stageChange.openPopup(event, "RequestLogin.fxml", "Ansøg om login");
+            stageChange.openPopup(event, "RequestLogin.fxml", "Ansøg om login", 368, 372);
         } catch (IOException e)
         {
             e.printStackTrace();

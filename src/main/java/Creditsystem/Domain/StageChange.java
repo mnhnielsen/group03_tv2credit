@@ -29,13 +29,13 @@ public class StageChange
         currentStage.close();
     }
 
-    public void openPopup(ActionEvent event, String path, String title) throws IOException
+    public void openPopup(ActionEvent event, String path, String title, int width, int length) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(App.class.getResource(path));
 
         Node node = (Node) event.getSource();
-        Scene scene = new Scene(fxmlLoader.load(), 368, 372);
+        Scene scene = new Scene(fxmlLoader.load(), width, length);
         Stage stage = new Stage();
         stage.initStyle(StageStyle.TRANSPARENT);
 
