@@ -26,6 +26,27 @@ public class PersistenceHandler implements IPersistenceHandler
     private int roleID;
     private int participantID;
 
+
+    @Override
+    public int getProductionID()
+    {
+        return productionID;
+    }
+
+    @Override
+    public int getRoleID()
+    {
+        return roleID;
+    }
+
+    @Override
+    public int getParticipantID()
+    {
+        return participantID;
+    }
+
+
+
     private void initializeConfiguration()
     {
         try
@@ -296,7 +317,6 @@ public class PersistenceHandler implements IPersistenceHandler
             ResultSet resultSet = productionStatement.executeQuery();
             Production productions = new Production(resultSet.getInt(1));
 
-
             productionID = productions.getId();
         } catch (SQLException throwables)
         {
@@ -314,6 +334,14 @@ public class PersistenceHandler implements IPersistenceHandler
             PreparedStatement statement = connection.prepareStatement("INSERT INTO role(name) VALUES(?)");
             statement.setString(1, role.getName());
             statement.execute();
+
+            PreparedStatement roleStatement = connection.prepareStatement("SELECT id FROM role WHERE name = ? AND role.\"productionID\" = ?");
+            roleStatement.setString(1, role.getName());
+            roleStatement.setInt(2, productionID);
+            ResultSet roleResult = roleStatement.executeQuery();
+            Role roles = new Role(roleResult.getInt(1));
+
+            roleID = roles.getId();
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
@@ -323,67 +351,64 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean createCredit(Credits credits, String productionTitle, String roleName, String participantName)
+    public boolean createParticipant(Participant participant)
     {
         try
         {
-            //Production ID
-            int productionId = 0;
-            PreparedStatement productionStatement = connection.prepareStatement("SELECT id FROM production WHERE title = ?");
-            productionStatement.setString(1, productionTitle);
-            ResultSet resultSet = productionStatement.executeQuery();
-            List<Production> productionList = new ArrayList<>();
-            Production production = null;
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO participant(name, email, phonenumber) VALUES(?,?,?)");
+            statement.setString(1, participant.getName());
+            statement.setString(2,participant.getEmail());
+            statement.setInt(3,participant.getPhoneNumber());
+            statement.execute();
 
-            while (resultSet.next())
-            {
-                production = new Production(resultSet.getInt(1));
-                productionList.add(production);
-            }
-            productionId = production.getId();
-
-            //Role ID
-            int roleId = 0;
-            PreparedStatement roleStatement = connection.prepareStatement("SELECT id FROM role WHERE name = ? AND role.\"productionID\" = ?");
-            roleStatement.setString(1, roleName);
-            roleStatement.setInt(2, productionId);
-            ResultSet roleResult = roleStatement.executeQuery();
-            List<Role> roleList = new ArrayList<>();
-            Role role = null;
-            while (roleResult.next())
-            {
-                role = new Role(roleResult.getString(1));
-                roleList.add(role);
-            }
-            roleId = role.getId();
-
-            //ParticipantID
-            int participantID = 0;
             PreparedStatement participantStatement = connection.prepareStatement("SELECT id FROM participant WHERE name = ?");
-            participantStatement.setString(1, participantName);
+            participantStatement.setString(1, participant.getName());
             ResultSet participantResult = participantStatement.executeQuery();
-            List<Participant> participantList = new ArrayList<>();
-            Participant participant = null;
-            while (participantResult.next())
-            {
-                participant = new Participant(participantResult.getInt(1));
-                participantList.add(participant);
-            }
-            participantID = participant.getId();
+            Participant participants = new Participant(participantResult.getInt(1));
 
-            //Create actual credit
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit(productionid,roleid,participantid) VALUES(?,?,)");
-            statement.setInt(1, productionId);
-            statement.setInt(2,roleId);
+            participantID = participants.getId();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean createCredit(Credits credits)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO credit(productionid,roleid,participantid) VALUES(?,?,?)");
+            statement.setInt(1, productionID);
+            statement.setInt(2,roleID);
             statement.setInt(3,participantID);
             statement.execute();
 
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
+            return false;
         }
         return true;
     }
-
-
+    public ArrayList getUsers()
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM accounts");
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Account> returnValues = new ArrayList<>();
+            while (resultSet.next())
+            {
+                returnValues.add(new Account(resultSet.getString(1), resultSet.getString(2), resultSet.getBoolean(3)));
+            }
+            return returnValues;
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
 }

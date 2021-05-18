@@ -4,12 +4,11 @@ public class Participant
 {
     private int id;
     private String name;
-    private String phoneNumber;
+    private int phoneNumber;
     private String email;
 
-    public Participant(int id, String name, String role, String phoneNumber, String email)
+    public Participant(String name, int phoneNumber, String email)
     {
-        this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -33,5 +32,15 @@ public class Participant
     public String getName()
     {
         return name;
+    }
+
+    public int getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+
+    public String getEmail()
+    {
+        return email;
     }
 }

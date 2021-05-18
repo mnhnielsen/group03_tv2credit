@@ -53,14 +53,14 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField layoutX="309.0" layoutY="429.0" promptText="Navn" />
+      <TextField fx:id="participantName" layoutX="309.0" layoutY="429.0" promptText="Navn" />
       <Button layoutX="309.0" layoutY="540.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="149.0" text="Tilføj">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField layoutX="309.0" layoutY="468.0" promptText="Email" />
-      <TextField layoutX="309.0" layoutY="504.0" promptText="Telefonnumeer" />
+      <TextField fx:id="participantEmail" layoutX="309.0" layoutY="468.0" promptText="Email" />
+      <TextField fx:id="participantPhone" layoutX="309.0" layoutY="504.0" promptText="Telefonnummer" />
       <AnchorPane prefHeight="113.0" prefWidth="1000.0" style="-fx-background-color: #d21e1e;">
          <children>
             <ImageView fitHeight="62.0" fitWidth="113.0" layoutX="876.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
