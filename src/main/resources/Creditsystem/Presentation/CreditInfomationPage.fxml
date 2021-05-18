@@ -11,28 +11,27 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.InformationController">
+<BorderPane prefHeight="626.0" prefWidth="755.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.InformationController">
    <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="536.0" prefWidth="1000.0">
-         <ListView fx:id="list" layoutX="611.0" layoutY="154.0" prefHeight="350.0" prefWidth="350.0" />
-         <TextArea fx:id="txtDescription" editable="false" layoutX="81.0" layoutY="155.0" prefHeight="350.0" prefWidth="350.0" wrapText="true" />
-         <Label layoutX="84.0" layoutY="135.0" text="Beskrivelse">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="536.0" prefWidth="739.0" BorderPane.alignment="CENTER">
+         <ListView fx:id="list" layoutX="104.0" layoutY="238.0" prefHeight="214.0" prefWidth="539.0" />
+         <TextArea fx:id="txtDescription" editable="false" layoutX="102.0" layoutY="125.0" prefHeight="67.0" prefWidth="541.0" wrapText="true" />
+         <Label layoutX="105.0" layoutY="105.0" text="Beskrivelse">
             <font>
                <Font name="Gill Sans" size="13.0" />
             </font>
          </Label>
-         <Label layoutX="612.0" layoutY="136.0" text="Krediteringer">
+         <Label layoutX="107.0" layoutY="219.0" text="Krediteringer">
             <font>
                <Font name="Gill Sans" size="13.0" />
             </font>
          </Label>
-         <Label fx:id="lblTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="19.0" prefHeight="33.0" prefWidth="672.0" text="Label" textAlignment="JUSTIFY">
+         <Label fx:id="lblTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="19.0" prefHeight="33.0" prefWidth="672.0" text="Label" textAlignment="JUSTIFY">
             <font>
                <Font name="Gill Sans" size="28.0" />
             </font>
          </Label>
-         <Label fx:id="lblReleaseYear" alignment="CENTER" layoutX="465.0" layoutY="59.0" prefHeight="26.0" prefWidth="79.0" text="Label" textAlignment="CENTER">
+         <Label fx:id="lblReleaseYear" alignment="CENTER" layoutX="327.0" layoutY="59.0" prefHeight="26.0" prefWidth="79.0" text="Label" textAlignment="CENTER">
             <font>
                <Font size="20.0" />
             </font>
@@ -65,4 +64,13 @@
          </left>
       </BorderPane>
    </top>
+   <left>
+      <AnchorPane prefHeight="536.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="536.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <AnchorPane prefHeight="0.0" prefWidth="1400.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
