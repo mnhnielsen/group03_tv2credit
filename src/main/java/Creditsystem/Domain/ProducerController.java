@@ -55,13 +55,15 @@ public class ProducerController
         production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText());
         persistenceHandler.createProduction(production);
 
-        //Create a role
-        role = new Role(txtJob.getText());
-        persistenceHandler.createRole(role);
+
 
         //Create a participant
         participant = new Participant(txtName.getText(), Integer.parseInt(participantPhone.getText()), participantEmail.getText());
         persistenceHandler.createParticipant(participant);
+
+        //Create a role
+        role = new Role(txtJob.getText());
+        persistenceHandler.createRole(role);
 
         //Create the credit
         credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
@@ -100,8 +102,6 @@ public class ProducerController
     {
         if (tblCredit.getItems() != null)
         {
-
-
 
         }
     }

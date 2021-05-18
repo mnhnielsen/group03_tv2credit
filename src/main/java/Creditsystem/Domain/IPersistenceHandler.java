@@ -17,8 +17,10 @@ public interface IPersistenceHandler
     boolean createRole(Role role);
     boolean createCredit(Credits credits);
     ArrayList getUsers();
+    int deleteUser(int userId);
     boolean createParticipant(Participant participant);
     int getProductionID();
     int getRoleID();
     int getParticipantID();
+    boolean checkRoleName(String roleName);
 }

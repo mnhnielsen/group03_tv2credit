@@ -2,6 +2,7 @@ package Creditsystem.Data;
 
 import Creditsystem.Domain.*;
 
+import javax.mail.Part;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -44,7 +45,6 @@ public class PersistenceHandler implements IPersistenceHandler
     {
         return participantID;
     }
-
 
 
     private void initializeConfiguration()
@@ -290,7 +290,7 @@ public class PersistenceHandler implements IPersistenceHandler
             ResultSet sqlReturnValues = stmt.executeQuery();
             while (sqlReturnValues.next())
             {
-                list.add(new CreditJoin(sqlReturnValues.getString(2), sqlReturnValues.getString(9),sqlReturnValues.getInt(13)));
+                list.add(new CreditJoin(sqlReturnValues.getString(2), sqlReturnValues.getString(9), sqlReturnValues.getInt(13)));
             }
             return list;
 
@@ -315,7 +315,13 @@ public class PersistenceHandler implements IPersistenceHandler
             PreparedStatement productionStatement = connection.prepareStatement("SELECT id FROM production WHERE title = ?");
             productionStatement.setString(1, production.getTitle());
             ResultSet resultSet = productionStatement.executeQuery();
-            Production productions = new Production(resultSet.getInt(1));
+            List<Production> productionList = new ArrayList<>();
+            Production productions = null;
+            while (resultSet.next())
+            {
+                productions = new Production(resultSet.getInt(1));
+                productionList.add(productions);
+            }
 
             productionID = productions.getId();
         } catch (SQLException throwables)
@@ -331,21 +337,54 @@ public class PersistenceHandler implements IPersistenceHandler
     {
         try
         {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO role(name) VALUES(?)");
+
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO role(name, productionid) VALUES(?,?)");
             statement.setString(1, role.getName());
+            statement.setInt(2, productionID);
+
             statement.execute();
 
-            PreparedStatement roleStatement = connection.prepareStatement("SELECT id FROM role WHERE name = ? AND role.\"productionID\" = ?");
+            PreparedStatement roleStatement = connection.prepareStatement("SELECT id FROM role WHERE name=? AND role.productionid=?");
             roleStatement.setString(1, role.getName());
             roleStatement.setInt(2, productionID);
-            ResultSet roleResult = roleStatement.executeQuery();
-            Role roles = new Role(roleResult.getInt(1));
 
-            roleID = roles.getId();
+            ResultSet roleResult = roleStatement.executeQuery();
+            List<Role> roleList = new ArrayList<>();
+            while (roleResult.next())
+            {
+                Role roles = new Role(roleResult.getInt(1));
+                roleList.add(roles);
+                roleID = roles.getId();
+            }
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
             return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean checkRoleName(String roleName)
+    {
+        try
+        {
+            int i = 0;
+            PreparedStatement roleStatement = connection.prepareStatement("SELECT name FROM role");
+            ResultSet resultSet = roleStatement.executeQuery();
+            while (resultSet.next())
+            {
+                i++;
+                String string = resultSet.getString(1);
+                if (roleName == string)
+                {
+                    roleID = i;
+                }
+            }
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
         }
         return true;
     }
@@ -357,14 +396,20 @@ public class PersistenceHandler implements IPersistenceHandler
         {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO participant(name, email, phonenumber) VALUES(?,?,?)");
             statement.setString(1, participant.getName());
-            statement.setString(2,participant.getEmail());
-            statement.setInt(3,participant.getPhoneNumber());
+            statement.setString(2, participant.getEmail());
+            statement.setInt(3, participant.getPhoneNumber());
             statement.execute();
 
             PreparedStatement participantStatement = connection.prepareStatement("SELECT id FROM participant WHERE name = ?");
             participantStatement.setString(1, participant.getName());
             ResultSet participantResult = participantStatement.executeQuery();
-            Participant participants = new Participant(participantResult.getInt(1));
+            List<Participant> participantList = new ArrayList<>();
+            Participant participants = null;
+            while (participantResult.next())
+            {
+                participants = new Participant(participantResult.getInt(1));
+                participantList.add(participants);
+            }
 
             participantID = participants.getId();
         } catch (SQLException throwables)
@@ -382,8 +427,8 @@ public class PersistenceHandler implements IPersistenceHandler
         {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO credit(productionid,roleid,participantid) VALUES(?,?,?)");
             statement.setInt(1, productionID);
-            statement.setInt(2,roleID);
-            statement.setInt(3,participantID);
+            statement.setInt(2, roleID);
+            statement.setInt(3, participantID);
             statement.execute();
 
         } catch (SQLException throwables)
@@ -393,6 +438,7 @@ public class PersistenceHandler implements IPersistenceHandler
         }
         return true;
     }
+
     public ArrayList getUsers()
     {
         try
@@ -410,5 +456,21 @@ public class PersistenceHandler implements IPersistenceHandler
             throwables.printStackTrace();
             return null;
         }
+    }
+
+    public int deleteUser(int userId)
+    {
+        int affectedRows = 0;
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM accounts WHERE id = ?");
+            statement.setInt(1, userId);
+            affectedRows = statement.executeUpdate();
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+        }
+        return affectedRows;
     }
 }
