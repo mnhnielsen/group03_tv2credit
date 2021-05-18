@@ -598,5 +598,26 @@ public class PersistenceHandler implements IPersistenceHandler
             return null;
         }
     }
+
+    @Override
+    public ArrayList<Production> getMyProductions(int id)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM production WHERE createdby = ?");
+            statement.setInt(1,id);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Production> returnValues = new ArrayList<>();
+            while (resultSet.next())
+            {
+                returnValues.add(new Production(resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),resultSet.getInt(5)));
+            }
+            return returnValues;
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
 }
 

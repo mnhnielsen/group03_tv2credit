@@ -14,8 +14,8 @@ public class ProducerController
     public TableView tblCredit;
     public TextField txtTitle, txtYear, txtName, txtJob, participantEmail, participantPhone;
     public TextArea txtDescription;
-    public Label lblTitle, lblReleaseYear, statusLabel;
-    public ListView listView;
+    public Label lblTitle, lblReleaseYear, statusLabel,welcomeLabel;
+    public ListView myProgramList;
 
     List<Credit> creditList;
     TableColumn roleColumn;
@@ -33,9 +33,12 @@ public class ProducerController
 
     public void initialize()
     {
+        welcomeLabel.setText("Velkommen " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
         creditList = new ArrayList<>();
-        System.out.println(LoginController.getLoggedInID());
-        
+        for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
+        {
+            myProgramList.getItems().add(pr.getTitle());
+        }
     }
 
     public void handleBackButton(ActionEvent event)

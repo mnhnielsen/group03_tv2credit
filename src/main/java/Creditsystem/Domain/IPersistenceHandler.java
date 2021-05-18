@@ -30,5 +30,6 @@ public interface IPersistenceHandler
     void getParticipantID(String name);
     void getRoleID(String name);
     ProducerAccount getProducerAccount(int id);
+    ArrayList<Production> getMyProductions(int id);
 
 }
