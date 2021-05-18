@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="550.0" minWidth="0.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
+<BorderPane minHeight="550.0" minWidth="0.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
    <center>
       <VBox alignment="CENTER" style="-fx-border-radius: 15px;">
          <BorderPane.margin>
@@ -27,14 +27,14 @@
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtUsername" layoutX="125.0" layoutY="268.0" prefHeight="36.0" prefWidth="289.0" />
+                  <TextField fx:id="txtUsername" layoutX="125.0" layoutY="268.0" prefHeight="36.0" prefWidth="289.0" promptText="Brugernavn" />
                   <Label layoutX="163.0" layoutY="163.0" text="Har du ikke et TV 2 Kreditering login?">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passwordField" layoutX="125.0" layoutY="336.0" prefHeight="36.0" prefWidth="289.0" />
-                  <Button fx:id="btnLogin" layoutX="234.0" layoutY="468.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="36.0" prefWidth="73.0" style="-fx-background-color: #69a727; -fx-background-radius: 15px;" text="Log Ind" textFill="WHITE">
+                  <PasswordField fx:id="passwordField" layoutX="125.0" layoutY="336.0" prefHeight="36.0" prefWidth="289.0" promptText="Kodeord" />
+                  <Button fx:id="btnLogin" layoutX="234.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="36.0" prefWidth="73.0" style="-fx-background-color: #69a727; -fx-background-radius: 15px;" text="Log Ind" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -58,7 +58,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ImageView fitHeight="65.0" fitWidth="105.0" layoutX="221.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="560.1405387878418" AnchorPane.leftAnchor="221.0">
+                  <ImageView fitHeight="65.0" fitWidth="105.0" layoutX="211.0" layoutY="18.670301818847634" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="554.8702369689942" AnchorPane.leftAnchor="211.0">
                      <image>
                         <Image url="@Images/TV_2_RGB.png" />
                      </image>

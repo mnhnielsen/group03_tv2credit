@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
    <center>
       <VBox alignment="CENTER" prefHeight="469.0" prefWidth="920.0">
          <children>
@@ -115,9 +115,12 @@
          <bottom>
             <Label text="Profil" BorderPane.alignment="CENTER">
                <graphic>
-                  <Label prefHeight="17.0" prefWidth="326.0" text="Publikations anmodninger">
+                  <Label prefHeight="17.0" prefWidth="354.0" text="Publikations anmodninger">
                      <graphic>
-                        <Label prefHeight="17.0" prefWidth="128.0" text="Opret bruger" />
+                        <Label prefHeight="17.0" prefWidth="181.0" text="Slet bruger">
+                           <graphic>
+                              <Label prefHeight="17.0" prefWidth="94.0" text="Opret bruger" />
+                           </graphic></Label>
                      </graphic>
                   </Label>
                </graphic>
