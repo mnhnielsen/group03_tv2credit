@@ -448,7 +448,7 @@ public class PersistenceHandler implements IPersistenceHandler
             ArrayList<Account> returnValues = new ArrayList<>();
             while (resultSet.next())
             {
-                returnValues.add(new Account(resultSet.getString(1), resultSet.getString(2), resultSet.getBoolean(3)));
+                returnValues.add(new Account(resultSet.getString(2), resultSet.getString(3), resultSet.getBoolean(4)));
             }
             return returnValues;
         } catch (SQLException throwables)

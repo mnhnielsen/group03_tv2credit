@@ -17,6 +17,13 @@ public class AdminPageController
 
     StageChange stageChange = new StageChange();
 
+    public void initialize()
+    {
+        for (Account account : persistenceHandler.getUsers())
+        {
+            System.out.println(account.getUsername());
+        }
+    }
 
     public void handleBackButton(ActionEvent event)
     {
@@ -68,5 +75,9 @@ public class AdminPageController
         {
             System.out.println("You must fill out all the fields");
         }
+    }
+
+    public void DeleteUser(ActionEvent event)
+    {
     }
 }

@@ -16,7 +16,7 @@ public interface IPersistenceHandler
     boolean createProduction(Production production);
     boolean createRole(Role role);
     boolean createCredit(Credits credits);
-    ArrayList getUsers();
+    ArrayList<Account> getUsers();
     int deleteUser(int userId);
     boolean createParticipant(Participant participant);
     int getProductionID();

@@ -55,8 +55,6 @@ public class ProducerController
         production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText());
         persistenceHandler.createProduction(production);
 
-
-
         //Create a participant
         participant = new Participant(txtName.getText(), Integer.parseInt(participantPhone.getText()), participantEmail.getText());
         persistenceHandler.createParticipant(participant);
