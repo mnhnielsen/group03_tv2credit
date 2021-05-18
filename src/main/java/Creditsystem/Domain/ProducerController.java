@@ -12,14 +12,14 @@ import java.util.List;
 public class ProducerController
 {
     public TableView tblCredit;
-    public TextField txtTitle, txtYear, txtName, txtJob, participantName, participantEmail, participantPhone;
+    public TextField txtTitle, txtYear, txtName, txtJob, participantEmail, participantPhone;
     public TextArea txtDescription;
-    public Label lblTitle, lblReleaseYear;
+    public Label lblTitle, lblReleaseYear, statusLabel;
+    public ListView listView;
 
     List<Credit> creditList;
     TableColumn roleColumn;
     StageChange stageChange = new StageChange();
-    LoginController controller = new LoginController();
 
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
@@ -34,7 +34,8 @@ public class ProducerController
     public void initialize()
     {
         creditList = new ArrayList<>();
-        System.out.println(controller.getLoggedInID());
+        System.out.println(LoginController.getLoggedInID());
+        
     }
 
     public void handleBackButton(ActionEvent event)
@@ -72,8 +73,8 @@ public class ProducerController
             {
                 foundRole = true;
                 break;
-            }
-            else{
+            } else
+            {
                 foundRole = false;
             }
         }
@@ -108,8 +109,7 @@ public class ProducerController
             //Create a role
             role = new Role(txtJob.getText());
             persistenceHandler.createRole(role);
-        }
-        else
+        } else
         {
             persistenceHandler.getRoleID(txtJob.getText());
         }
@@ -149,18 +149,30 @@ public class ProducerController
     //Creates a new production and resets all information when published.
     public void publishProduction(ActionEvent event)
     {
+        statusLabel.setText("Din produktion med titlen" + production.getTitle() + " er nu sendt til godkendelse. " + "\n" + "Du modtager en mail på: " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail() + " ved udgivelse");
 
+        clearInfo();
     }
 
 
     public void addProduction(ActionEvent event)
     {
         //Create production
-        production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText());
+        production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText(), LoginController.getLoggedInID());
         persistenceHandler.createProduction(production);
 
         lblTitle.setText(txtTitle.getText());
         lblReleaseYear.setText(String.valueOf(txtYear.getText()));
+    }
+
+    public void clearInfo()
+    {
+        lblTitle.setText("");
+        lblReleaseYear.setText("");
+        tblCredit.getItems().clear();
+        txtTitle.clear();
+        txtDescription.clear();
+        txtYear.clear();
     }
 
     //Deletes a selected credit from the list. Does not get published if deleted from list.

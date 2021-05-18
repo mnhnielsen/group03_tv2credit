@@ -43,7 +43,7 @@ public class LoginController
         {
             if (persistenceHandler.logIn(username, password))
             {
-                loggedInID = persistenceHandler.getID(username);
+                loggedInID = persistenceHandler.getAccountID(username);
 
                 if (persistenceHandler.checkAuthorization(username))
                 {
@@ -94,7 +94,7 @@ public class LoginController
         }
     }
 
-    public int getLoggedInID()
+    public static int getLoggedInID()
     {
         return loggedInID;
     }

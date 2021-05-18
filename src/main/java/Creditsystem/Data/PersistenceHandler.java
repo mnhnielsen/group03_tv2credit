@@ -213,7 +213,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public int getID(String username)
+    public int getAccountID(String username)
     {
         int id = 0;
         try
@@ -247,7 +247,7 @@ public class PersistenceHandler implements IPersistenceHandler
             ArrayList<Production> returnValues = new ArrayList<>();
             while (resultSet.next())
             {
-                returnValues.add(new Production(resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4)));
+                returnValues.add(new Production(resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),resultSet.getInt(5)));
             }
             return returnValues;
         } catch (SQLException throwables)
@@ -269,7 +269,7 @@ public class PersistenceHandler implements IPersistenceHandler
             {
                 return null;
             }
-            return new Production(sqlReturnValues.getString(2), sqlReturnValues.getInt(3), sqlReturnValues.getString(4));
+            return new Production(sqlReturnValues.getString(2), sqlReturnValues.getInt(3), sqlReturnValues.getString(4), sqlReturnValues.getInt(5));
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
@@ -306,10 +306,11 @@ public class PersistenceHandler implements IPersistenceHandler
     {
         try
         {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO production(title, releaseyear, description) VALUES(?,?,?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO production(title, releaseyear, description, createdby) VALUES(?,?,?,?)");
             statement.setString(1, production.getTitle());
             statement.setInt(2, production.getReleaseYear());
             statement.setString(3, production.getDescription());
+            statement.setInt(4,production.getCreatedby());
             statement.execute();
 
             PreparedStatement productionStatement = connection.prepareStatement("SELECT id FROM production WHERE title = ?");
@@ -576,6 +577,25 @@ public class PersistenceHandler implements IPersistenceHandler
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public ProducerAccount getProducerAccount(int id)
+    {
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM produceraccount WHERE id = ?");
+            stmt.setInt(1, id);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            if (!sqlReturnValues.next())
+            {
+                return null;
+            }
+            return new ProducerAccount(sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getBoolean(4), sqlReturnValues.getString(5), sqlReturnValues.getString(6), sqlReturnValues.getInt(7), sqlReturnValues.getString(8));
+        } catch (SQLException throwables)
+        {
+            return null;
         }
     }
 }

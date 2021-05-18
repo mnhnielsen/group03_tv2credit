@@ -8,22 +8,15 @@ public class Production
     private String title;
     private String description;
     private int releaseYear;
-    private List<Credit> creditList;
+    private int createdby;
 
-    public Production(int id, String title, String description, int releaseYear, List<Credit> creditList)
-    {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.releaseYear = releaseYear;
-        this.creditList = creditList;
-    }
 
-    public Production(String title, int releaseYear, String description)
+    public Production(String title, int releaseYear, String description, int createdby)
     {
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
+        this.createdby = createdby;
     }
     public Production(int id){
         this.id = id;
@@ -56,5 +49,10 @@ public class Production
     public int getId()
     {
         return id;
+    }
+
+    public int getCreatedby()
+    {
+        return createdby;
     }
 }

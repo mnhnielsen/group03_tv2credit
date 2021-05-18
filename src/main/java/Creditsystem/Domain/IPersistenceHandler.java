@@ -10,7 +10,7 @@ public interface IPersistenceHandler
     boolean checkUsername(String username);
     boolean createAdminAccount(Account account);
     boolean createProducerAccount(ProducerAccount producerAccount);
-    int getID(String username);
+    int getAccountID(String username);
     ArrayList getProductions();
     Production getProductionTitle(String title);
     ArrayList<CreditJoin> getCredits(String title);
@@ -29,5 +29,6 @@ public interface IPersistenceHandler
     Participant getParticipant(String name);
     void getParticipantID(String name);
     void getRoleID(String name);
+    ProducerAccount getProducerAccount(int id);
 
 }
