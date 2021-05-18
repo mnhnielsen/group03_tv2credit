@@ -106,7 +106,7 @@ public class LoginController
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
 
-        if (name.trim() != null & company.trim() != null & email.trim() != null & phone.trim() != null)
+        if (!name.trim().isEmpty() & !company.trim().isEmpty() & !email.trim().isEmpty() & !phone.trim().isEmpty())
         {
             Mail mail = new Mail();
             mail.receiveEmail("Ny konto hos krediteringssystemet", "navn: " + name + "\n" + "firma: " + company + "\n" + "email: " + email + "\n" + "telefon: " + phone);
@@ -118,9 +118,20 @@ public class LoginController
         } else
         {
             //Dialog boks skal tilføjes
-            System.out.println("Udfyld venligst alle felter");
+           /* try
+            {
+                stageChange.openPopup(event, "RequestLoginFail.fxml", "Felter ikke udfyldt", 368,165);
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+
+            */
+            receipt.setText("Udfyld alle felter");
         }
-    }
+
+
+        }
 
     public void goBack(ActionEvent event)
     {

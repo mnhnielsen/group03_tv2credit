@@ -5,7 +5,6 @@ public class Credit
     private int id;
     private String role;
     private Participant participant;
-
     private String name;
 
     public Credit(Participant participant, String role, String name)
@@ -32,4 +31,8 @@ public class Credit
         return "Rolle: " + role +"\n" + "Navn: " + getParticipant().getName() + "\n" + "\n";
     }
 
+    public String getName()
+    {
+        return name;
+    }
 }
