@@ -32,7 +32,7 @@ public class AdminPageController
 
     public void createNewUser(ActionEvent event)
     {
-        String username = txtCreateName.getText();
+        String username = txtCreateName.getText().toLowerCase();
         String password = pwrdPassword.getText();
         String reEnter = pswrdReEnterPassword.getText();
         if (username != "" && password != "" && reEnter != "")
