@@ -40,9 +40,12 @@
          <bottom>
             <Label text="Profil" BorderPane.alignment="CENTER">
                <graphic>
-                  <Label prefHeight="17.0" prefWidth="326.0" text="Publikations anmodninger">
+                  <Label prefHeight="17.0" prefWidth="375.0" text="Publikations anmodninger">
                      <graphic>
-                        <Label prefHeight="17.0" prefWidth="128.0" text="Opret bruger" />
+                        <Label prefHeight="17.0" prefWidth="200.0" text="Slet bruger">
+                           <graphic>
+                              <Label prefHeight="17.0" prefWidth="108.0" text="Opret bruger" />
+                           </graphic></Label>
                      </graphic>
                   </Label>
                </graphic>
