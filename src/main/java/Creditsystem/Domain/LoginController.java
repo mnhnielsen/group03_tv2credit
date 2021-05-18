@@ -118,9 +118,15 @@ public class LoginController
         } else
         {
             //Dialog boks skal tilføjes
-            System.out.println("Udfyld venligst alle felter");
+            try
+            {
+                stageChange.openPopup(event, "RequestLoginFail.fxml", "Felter ikke udfyldt", 368,165);
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
-    }
+        }
 
     public void goBack(ActionEvent event)
     {
