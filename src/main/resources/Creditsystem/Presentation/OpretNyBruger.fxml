@@ -152,7 +152,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparenttransparent;" text="Slet bruger">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Slet bruger">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -160,7 +160,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparenttransparent;" text="Publikationsanmodninger">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Publikationsanmodninger">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -168,7 +168,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparenttransparent;" text="Profil">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
