@@ -242,12 +242,12 @@ public class PersistenceHandler implements IPersistenceHandler
     {
         try
         {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM production");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM production WHERE ispublished = TRUE");
             ResultSet resultSet = statement.executeQuery();
             ArrayList<Production> returnValues = new ArrayList<>();
             while (resultSet.next())
             {
-                returnValues.add(new Production(resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),resultSet.getInt(5)));
+                returnValues.add(new Production(resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),resultSet.getInt(5),resultSet.getBoolean(6)));
             }
             return returnValues;
         } catch (SQLException throwables)
@@ -255,6 +255,43 @@ public class PersistenceHandler implements IPersistenceHandler
             throwables.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public ArrayList<Production> getUnreleasedProductions()
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM production WHERE ispublished = FALSE");
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Production> returnValues = new ArrayList<>();
+            while (resultSet.next())
+            {
+                returnValues.add(new Production(resultSet.getInt(1), resultSet.getString(2)));
+            }
+            return returnValues;
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public boolean releaseProduction(Production production)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("UPDATE production SET ispublished = TRUE WHERE id = ?");
+            statement.setInt(1, production.getId());
+            System.out.println(production.getId());
+            statement.executeQuery();
+        } catch (SQLException throwables)
+        {
+
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -269,7 +306,7 @@ public class PersistenceHandler implements IPersistenceHandler
             {
                 return null;
             }
-            return new Production(sqlReturnValues.getString(2), sqlReturnValues.getInt(3), sqlReturnValues.getString(4), sqlReturnValues.getInt(5));
+            return new Production(sqlReturnValues.getInt(1),sqlReturnValues.getString(2), sqlReturnValues.getInt(3), sqlReturnValues.getString(4), sqlReturnValues.getInt(5),sqlReturnValues.getBoolean(6));
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
@@ -306,11 +343,12 @@ public class PersistenceHandler implements IPersistenceHandler
     {
         try
         {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO production(title, releaseyear, description, createdby) VALUES(?,?,?,?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO production(title, releaseyear, description, createdby, ispublished) VALUES(?,?,?,?,?)");
             statement.setString(1, production.getTitle());
             statement.setInt(2, production.getReleaseYear());
             statement.setString(3, production.getDescription());
             statement.setInt(4,production.getCreatedby());
+            statement.setBoolean(5, false);
             statement.execute();
 
             PreparedStatement productionStatement = connection.prepareStatement("SELECT id FROM production WHERE title = ?");
@@ -610,7 +648,7 @@ public class PersistenceHandler implements IPersistenceHandler
             ArrayList<Production> returnValues = new ArrayList<>();
             while (resultSet.next())
             {
-                returnValues.add(new Production(resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),resultSet.getInt(5)));
+                returnValues.add(new Production(resultSet.getString(2), resultSet.getInt(3), resultSet.getString(4),resultSet.getInt(5),resultSet.getBoolean(6)));
             }
             return returnValues;
         } catch (SQLException throwables)
@@ -618,6 +656,7 @@ public class PersistenceHandler implements IPersistenceHandler
             throwables.printStackTrace();
             return null;
         }
+
     }
 }
 

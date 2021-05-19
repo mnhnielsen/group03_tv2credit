@@ -1,6 +1,7 @@
 package Creditsystem.Domain;
 
 import javax.mail.Part;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public interface IPersistenceHandler
@@ -31,5 +32,6 @@ public interface IPersistenceHandler
     void getRoleID(String name);
     ProducerAccount getProducerAccount(int id);
     ArrayList<Production> getMyProductions(int id);
-
+    ArrayList<Production> getUnreleasedProductions();
+    boolean releaseProduction(Production production);
 }

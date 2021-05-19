@@ -33,6 +33,8 @@ public class ProducerController
 
     public void initialize()
     {
+        System.out.println(LoginController.getLoggedInID());
+
         welcomeLabel.setText("Velkommen " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
         creditList = new ArrayList<>();
         for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
@@ -159,7 +161,7 @@ public class ProducerController
     public void addProduction(ActionEvent event)
     {
         //Create production
-        production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText(), LoginController.getLoggedInID());
+        production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText(), LoginController.getLoggedInID(),false);
         persistenceHandler.createProduction(production);
 
         lblTitle.setText(txtTitle.getText());

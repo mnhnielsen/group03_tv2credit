@@ -2,9 +2,11 @@ package Creditsystem.Domain;
 
 import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminPageController
 {
@@ -12,6 +14,8 @@ public class AdminPageController
     public PasswordField pwrdPassword;
     public PasswordField pswrdReEnterPassword;
     public CheckBox adminCheck;
+    public ListView unreleasedList, accountList;
+    private Production production = null;
 
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
@@ -19,11 +23,16 @@ public class AdminPageController
 
     public void initialize()
     {
+        for (Production production : persistenceHandler.getUnreleasedProductions())
+        {
+            unreleasedList.getItems().add(production.getTitle());
+        }
         for (Account account : persistenceHandler.getUsers())
         {
             System.out.println(account.getUsername());
         }
     }
+
 
     public void handleBackButton(ActionEvent event)
     {
@@ -79,5 +88,35 @@ public class AdminPageController
 
     public void DeleteUser(ActionEvent event)
     {
+    }
+
+    public void viewProduction(ActionEvent event)
+    {
+
+    }
+
+    public void getHighligtedProduction(ActionEvent event)
+    {
+        String data = (String) unreleasedList.getSelectionModel().getSelectedItem();
+        for (int i = 0; i < persistenceHandler.getUnreleasedProductions().size(); i++)
+        {
+            if (data.equals(persistenceHandler.getUnreleasedProductions().get(i).getTitle()))
+            {
+                production = persistenceHandler.getProductionTitle(data);
+            }
+        }
+        List<Integer> selectedItemsCopy = new ArrayList<>(unreleasedList.getSelectionModel().getSelectedItems());
+        unreleasedList.getItems().removeAll(selectedItemsCopy);
+    }
+
+    public void releaseProduction(ActionEvent event)
+    {
+        getHighligtedProduction(event);
+        persistenceHandler.releaseProduction(production);
+        Mail mail = new Mail();
+        mail.sendEmail(persistenceHandler.getProducerAccount(production.getCreatedby()).getEmail(), production.getTitle() + " er nu udgivet","" +
+                "Din produktion for " + production.getTitle() + " er nu udgivet. Se den inde på Krediteringssystemet.");
+        persistenceHandler.getProducerAccount(2);
+
     }
 }

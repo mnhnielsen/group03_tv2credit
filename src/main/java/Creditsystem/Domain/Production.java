@@ -9,19 +9,33 @@ public class Production
     private String description;
     private int releaseYear;
     private int createdby;
+    private boolean isPublished;
 
 
-    public Production(String title, int releaseYear, String description, int createdby)
+    public Production(String title, int releaseYear, String description, int createdby, boolean isPublished)
     {
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
         this.createdby = createdby;
+        this.isPublished = isPublished;
+    }
+    public Production(int id, String title, int releaseYear, String description, int createdby, boolean isPublished)
+    {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.createdby = createdby;
+        this.isPublished = isPublished;
     }
     public Production(int id){
         this.id = id;
     }
-
+    public Production(int id, String title){
+        this.id = id;
+        this.title = title;
+    }
     public String getTitle()
     {
         return title;
@@ -54,5 +68,10 @@ public class Production
     public int getCreatedby()
     {
         return createdby;
+    }
+
+    public boolean isPublished()
+    {
+        return isPublished;
     }
 }
