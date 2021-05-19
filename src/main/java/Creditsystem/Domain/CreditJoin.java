@@ -8,8 +8,8 @@ public class CreditJoin
 
     public CreditJoin(String name, String roleName, int releaseYear)
     {
-        this.name = name;
-        this.roleName = roleName;
+        this.setName(name);
+        this.setRoleName(roleName);
         this.releaseYear = releaseYear;
     }
 
@@ -26,5 +26,15 @@ public class CreditJoin
     public int getReleaseYear()
     {
         return releaseYear;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public void setRoleName(String roleName)
+    {
+        this.roleName = roleName;
     }
 }
