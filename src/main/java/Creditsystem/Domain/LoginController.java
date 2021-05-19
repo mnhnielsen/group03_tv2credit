@@ -27,9 +27,14 @@ public class LoginController
 
     public void handleForgotLogin(ActionEvent event)
     {
-        System.out.println("handleForgotLogin");
+        try
+        {
+            stageChange.openNewWindow(event, "ForgotLogin.fxml", "GlemtLogin");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
-
     public void handleLogin(ActionEvent event)
     {
         boolean pUsername = false;
@@ -89,9 +94,23 @@ public class LoginController
 
     }
 
-    public void handleRegisterLogin(ActionEvent event)
-    {
-        System.out.println("handleRegisterLogin");
+    public void handleRegisterLogin(ActionEvent event){
+        try
+        {
+            stageChange.openNewWindow(event, "RequestLogin.fxml", "RegistreringsSide");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleFrontpageButton(ActionEvent event){
+        try {
+            stageChange.openNewWindow(event, "FrontPage.fxml", "Forside");
+        }  catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 
@@ -100,6 +119,17 @@ public class LoginController
         try
         {
             stageChange.openNewWindow(event, "FrontPage.fxml", "Krediteringsforside");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleBackLoginButton(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "LoginPage.fxml", "LoginSide");
         } catch (IOException e)
         {
             e.printStackTrace();

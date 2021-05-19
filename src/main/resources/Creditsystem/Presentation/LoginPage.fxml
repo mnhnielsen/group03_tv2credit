@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="550.0" minWidth="0.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
+<BorderPane minHeight="550.0" minWidth="0.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
    <center>
       <VBox alignment="CENTER" style="-fx-border-radius: 15px;">
          <BorderPane.margin>
@@ -27,19 +28,28 @@
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtUsername" layoutX="125.0" layoutY="268.0" prefHeight="36.0" prefWidth="289.0" promptText="Brugernavn" />
+                  <TextField fx:id="txtUsername" layoutX="125.0" layoutY="268.0" prefHeight="36.0" prefWidth="289.0" promptText="Brugernavn">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></TextField>
                   <Label layoutX="163.0" layoutY="163.0" text="Har du ikke et TV 2 Kreditering login?">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passwordField" layoutX="125.0" layoutY="336.0" prefHeight="36.0" prefWidth="289.0" promptText="Kodeord" />
+                  <PasswordField fx:id="passwordField" layoutX="125.0" layoutY="336.0" prefHeight="36.0" prefWidth="289.0" promptText="Kodeord">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor></PasswordField>
                   <Button fx:id="btnLogin" layoutX="234.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="36.0" prefWidth="73.0" style="-fx-background-color: #69a727; -fx-background-radius: 15px;" text="Log Ind" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
-                  <Hyperlink fx:id="forgotLogin" layoutX="282.0" layoutY="387.0" onAction="#handleForgotLogin" text="Glemt adgangskode?" textFill="#406cab" underline="true">
+                  <Hyperlink fx:id="forgotLogin" layoutX="171.0" layoutY="384.0" onAction="#handleForgotLogin" prefHeight="24.0" prefWidth="206.0" text="Glemt brugernavn/adgangskode?" textFill="#406cab" underline="true">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -55,14 +65,26 @@
                            <image>
                               <Image url="@Images/circled-left.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <ImageView fitHeight="65.0" fitWidth="105.0" layoutX="211.0" layoutY="18.670301818847634" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="554.8702369689942" AnchorPane.leftAnchor="211.0">
                      <image>
                         <Image url="@Images/TV_2_RGB.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="214.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleFrontpageButton" opacity="0.0" prefHeight="46.0" prefWidth="101.0" text="Button">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="152.0" layoutY="506.0" prefHeight="18.0" prefWidth="244.0" text="Forkert brugernavn eller adgangskode." />
                </children>
             </AnchorPane>
          </children>

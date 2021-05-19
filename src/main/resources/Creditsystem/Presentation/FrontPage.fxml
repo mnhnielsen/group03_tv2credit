@@ -11,15 +11,21 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
    <center>
       <VBox alignment="CENTER">
          <children>
             <AnchorPane prefHeight="548.0" prefWidth="920.0">
                <children>
-                  <TableView fx:id="tblCredits" layoutX="57.0" layoutY="110.0" prefHeight="346.0" prefWidth="827.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="110.0" />
+                  <TableView fx:id="tblCredits" layoutX="57.0" layoutY="110.0" prefHeight="346.0" prefWidth="827.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="110.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></TableView>
                   <TextField fx:id="txtSearch" layoutX="180.0" layoutY="61.0" prefHeight="26.0" prefWidth="557.0" promptText="Søg på programmer" style="-fx-background-radius: 15px;" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="183.0" AnchorPane.topAnchor="61.0" />
-                  <Button fx:id="btnOpenCredit" layoutX="57.0" layoutY="468.0" mnemonicParsing="false" onAction="#showProduction" prefHeight="34.0" prefWidth="102.0" style="-fx-border-radius: 15px; -fx-background-radius: 15px;" text="Åbn Program" AnchorPane.bottomAnchor="14.399999999999977" />
+                  <Button fx:id="btnOpenCredit" layoutX="57.0" layoutY="468.0" mnemonicParsing="false" onAction="#showProduction" prefHeight="34.0" prefWidth="102.0" style="-fx-border-radius: 15px; -fx-background-radius: 15px;" text="Åbn Program" AnchorPane.bottomAnchor="14.399999999999977">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </AnchorPane>
          </children>
@@ -56,7 +62,7 @@
                   </ImageView>
                   <Button fx:id="btnLogin" layoutX="90.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleLogin" opacity="0.0" prefHeight="4.0" prefWidth="0.0" stylesheets="@Style/fullpackstyling.css" text="Log ind">
                      <cursor>
-                        <Cursor fx:constant="OPEN_HAND" />
+                        <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                </children>
