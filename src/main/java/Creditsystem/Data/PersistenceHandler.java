@@ -487,7 +487,7 @@ public class PersistenceHandler implements IPersistenceHandler
             ArrayList<Account> returnValues = new ArrayList<>();
             while (resultSet.next())
             {
-                returnValues.add(new Account(resultSet.getString(2), resultSet.getString(3), resultSet.getBoolean(4)));
+                returnValues.add(new Account(resultSet.getString(2), resultSet.getBoolean(4)));
             }
             return returnValues;
         } catch (SQLException throwables)
@@ -497,20 +497,20 @@ public class PersistenceHandler implements IPersistenceHandler
         }
     }
 
-    public int deleteUser(int userId)
+    public boolean deleteUser(String userName)
     {
-        int affectedRows = 0;
         try
         {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM accounts WHERE id = ?");
-            statement.setInt(1, userId);
-            affectedRows = statement.executeUpdate();
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM accounts WHERE username = ?");
+            statement.setString(1, userName);
+            statement.executeQuery();
 
         } catch (SQLException throwables)
         {
-            throwables.printStackTrace();
+            //throwables.printStackTrace();
+            return false;
         }
-        return affectedRows;
+        return true;
     }
 
     @Override

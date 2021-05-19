@@ -57,9 +57,6 @@ public class FrontPageController
         year.setPrefWidth(192);
         year.setMaxWidth(5000);
 
-
-
-
         tblCredits.getColumns().addAll(titleColumn,year);
     }
 

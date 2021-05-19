@@ -1,8 +1,10 @@
 package Creditsystem.Domain;
 
 import Creditsystem.Data.PersistenceHandler;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,25 +16,47 @@ public class AdminPageController
     public PasswordField pwrdPassword;
     public PasswordField pswrdReEnterPassword;
     public CheckBox adminCheck;
-    public ListView unreleasedList, accountList;
+    public ListView unreleasedList;
+    public TableView tblUsers;
     private Production production = null;
+    private TableColumn usernameColumn = new TableColumn();
+    private TableColumn isAdminColumn = new TableColumn();
+    public Button btnDeleteUser;
 
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
     StageChange stageChange = new StageChange();
+    //Account account;
 
     public void initialize()
     {
+        initializeColumns();
         for (Production production : persistenceHandler.getUnreleasedProductions())
         {
             unreleasedList.getItems().add(production.getTitle());
         }
         for (Account account : persistenceHandler.getUsers())
         {
-            System.out.println(account.getUsername());
+            tblUsers.getItems().add(account);
         }
-    }
 
+    }
+    private void initializeColumns()
+    {
+        usernameColumn.setText("Navn");
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        usernameColumn.setMinWidth(10);
+        usernameColumn.setPrefWidth(290);
+        //usernameColumn.setMaxWidth(5000);
+
+        isAdminColumn.setText("Er admin");
+        //isAdminColumn.setCellValueFactory(new PropertyValueFactory<>("isadmin"));
+        isAdminColumn.setMinWidth(10);
+        isAdminColumn.setPrefWidth(190);
+        //isAdminColumn.setMaxWidth(5000);
+
+        tblUsers.getColumns().addAll(usernameColumn,isAdminColumn);
+    }
 
     public void handleBackButton(ActionEvent event)
     {
@@ -88,6 +112,18 @@ public class AdminPageController
 
     public void DeleteUser(ActionEvent event)
     {
+        Object obj = tblUsers.getSelectionModel().getSelectedItem();
+        tblUsers.getItems().remove(obj);
+        String data = (String) usernameColumn.getCellObservableValue(obj).getValue();
+        for (int i = 0; i < persistenceHandler.getUsers().size(); i++)
+        {
+            if (data.equals(persistenceHandler.getUsers().get(i).getUsername()))
+            {
+                persistenceHandler.deleteUser(data);
+                System.out.println("User deleted");
+            }
+        }
+
     }
 
     public void viewProduction(ActionEvent event)

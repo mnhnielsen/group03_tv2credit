@@ -5,19 +5,19 @@ public class Account
     private int id;
     private String username;
     private String password;
-    private boolean isAdmin;
+    private boolean isadmin;
 
-    public Account(String username, String password, boolean isAdmin)
+    public Account(String username, String password, boolean isadmin)
     {
         this.username = username;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.isadmin = isadmin;
     }
 
-    public Account(String username, boolean isAdmin)
+    public Account(String username, boolean isadmin)
     {
         this.username = username;
-        this.isAdmin = isAdmin;
+        this.isadmin = isadmin;
     }
     public Account(int id, String username){
         this.id = id;
@@ -36,7 +36,7 @@ public class Account
 
     public boolean getAdminStatus()
     {
-        return isAdmin;
+        return isadmin;
     }
 
     public int getId()
