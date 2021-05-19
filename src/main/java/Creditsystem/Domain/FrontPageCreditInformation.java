@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 
-public class InformationController
+public class FrontPageCreditInformation
 {
     public Label lblTitle;
     public Label lblReleaseYear;

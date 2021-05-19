@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.skin.ListViewSkin;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,15 +23,25 @@ public class AdminPageController
     private TableColumn usernameColumn = new TableColumn();
     private TableColumn isAdminColumn = new TableColumn();
     public Button btnDeleteUser;
+    public ListView unreleasedList, accountList;
+    private static Production production = null;
+    private static ArrayList<CreditJoin> credits = new ArrayList<>();
+
 
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
     StageChange stageChange = new StageChange();
     //Account account;
 
+    public static ArrayList<CreditJoin> getCredits()
+    {
+        return credits;
+    }
+
     public void initialize()
     {
         initializeColumns();
+
         for (Production production : persistenceHandler.getUnreleasedProductions())
         {
             unreleasedList.getItems().add(production.getTitle());
@@ -38,6 +49,7 @@ public class AdminPageController
         for (Account account : persistenceHandler.getUsers())
         {
             tblUsers.getItems().add(account);
+            accountList.getItems().add(account.getUsername());
         }
 
     }
@@ -128,7 +140,22 @@ public class AdminPageController
 
     public void viewProduction(ActionEvent event)
     {
-
+        String data = (String) unreleasedList.getSelectionModel().getSelectedItem();
+        for (int i = 0; i < persistenceHandler.getUnreleasedProductions().size(); i++)
+        {
+            if (data.equals(persistenceHandler.getUnreleasedProductions().get(i).getTitle()))
+            {
+                production = persistenceHandler.getProductionTitle(data);
+                credits = persistenceHandler.getCredits(data);
+                try
+                {
+                    stageChange.openNewWindow(event, "AdminCreditInformation.fxml", "Informations side");
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     public void getHighligtedProduction(ActionEvent event)
@@ -141,6 +168,9 @@ public class AdminPageController
                 production = persistenceHandler.getProductionTitle(data);
             }
         }
+
+    }
+    public void removeFromList(){
         List<Integer> selectedItemsCopy = new ArrayList<>(unreleasedList.getSelectionModel().getSelectedItems());
         unreleasedList.getItems().removeAll(selectedItemsCopy);
     }
@@ -148,11 +178,17 @@ public class AdminPageController
     public void releaseProduction(ActionEvent event)
     {
         getHighligtedProduction(event);
-        persistenceHandler.releaseProduction(production);
+        removeFromList();
+        persistenceHandler.releaseProduction(getProduction());
         Mail mail = new Mail();
-        mail.sendEmail(persistenceHandler.getProducerAccount(production.getCreatedby()).getEmail(), production.getTitle() + " er nu udgivet","" +
-                "Din produktion for " + production.getTitle() + " er nu udgivet. Se den inde på Krediteringssystemet.");
+        mail.sendEmail(persistenceHandler.getProducerAccount(getProduction().getCreatedby()).getEmail(), getProduction().getTitle() + " er nu udgivet","" +
+                "Din produktion for " + getProduction().getTitle() + " er nu udgivet. Se den inde på Krediteringssystemet.");
         persistenceHandler.getProducerAccount(2);
 
+    }
+
+    public static Production getProduction()
+    {
+        return production;
     }
 }
