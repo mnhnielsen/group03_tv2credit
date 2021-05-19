@@ -20,7 +20,7 @@
          <children>
             <HBox>
                <children>
-                  <VBox prefHeight="500.0" prefWidth="376.0">
+                  <VBox prefHeight="500.0" prefWidth="479.0">
                      <children>
                         <Label text="Opret produktion">
                            <font>
@@ -32,17 +32,17 @@
                         </Label>
                         <TextField promptText="Titel">
                            <VBox.margin>
-                              <Insets bottom="5.0" />
+                              <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
                         </TextField>
                         <TextField alignment="TOP_LEFT" promptText="Udgivelsesår">
                            <VBox.margin>
-                              <Insets bottom="5.0" />
+                              <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
                         </TextField>
                         <TextField alignment="TOP_LEFT" prefHeight="213.0" prefWidth="161.0" promptText="Beskrivelse">
                            <VBox.margin>
-                              <Insets bottom="5.0" />
+                              <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
                         </TextField>
                         <Button mnemonicParsing="false" text="Tilføj">
@@ -52,7 +52,7 @@
                         </Button>
                      </children>
                   </VBox>
-                  <VBox prefHeight="500.0" prefWidth="368.0">
+                  <VBox prefHeight="500.0" prefWidth="408.0">
                      <children>
                         <Label text="Opret kreditering">
                            <font>
@@ -64,22 +64,22 @@
                         </Label>
                         <TextField promptText="Navn">
                            <VBox.margin>
-                              <Insets bottom="5.0" />
+                              <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
                         </TextField>
                         <TextField promptText="Jobtitel">
                            <VBox.margin>
-                              <Insets bottom="5.0" />
+                              <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
                         </TextField>
                         <TextField promptText="e-mail">
                            <VBox.margin>
-                              <Insets bottom="5.0" />
+                              <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
                         </TextField>
                         <TextField promptText="Telefon nummer">
                            <VBox.margin>
-                              <Insets bottom="5.0" />
+                              <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
                         </TextField>
                         <Button mnemonicParsing="false" text="Søg på person">
@@ -94,9 +94,9 @@
                         </Button>
                      </children>
                   </VBox>
-                  <VBox prefHeight="500.0" prefWidth="343.0">
+                  <VBox prefHeight="500.0" prefWidth="457.0">
                      <children>
-                        <TableView prefHeight="356.0" prefWidth="258.0">
+                        <TableView prefHeight="415.0" prefWidth="288.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="C1" />
                             <TableColumn prefWidth="75.0" text="C2" />
@@ -105,7 +105,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                            <VBox.margin>
-                              <Insets bottom="5.0" />
+                              <Insets bottom="5.0" top="26.0" />
                            </VBox.margin>
                         </TableView>
                         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Slet">
