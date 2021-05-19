@@ -6,6 +6,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 import java.io.*;
 
@@ -102,6 +103,9 @@ public class LoginController
         {
             e.printStackTrace();
         }
+    }
+
+    public void handleLabelColor(ActionEvent event){
     }
 
     public void handleFrontpageButton(ActionEvent event){

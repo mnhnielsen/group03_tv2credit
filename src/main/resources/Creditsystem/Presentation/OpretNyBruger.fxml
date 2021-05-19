@@ -147,7 +147,7 @@
                      <graphic>
                         <Label prefHeight="17.0" prefWidth="181.0" text="Slet bruger">
                            <graphic>
-                              <Label prefHeight="17.0" prefWidth="94.0" text="Opret bruger">
+                              <Label prefHeight="17.0" prefWidth="94.0" text="Opret bruger" textFill="#b42524">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></Label>

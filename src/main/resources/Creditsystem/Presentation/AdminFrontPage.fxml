@@ -38,7 +38,7 @@
             </ImageView>
          </center>
          <bottom>
-            <Label text="Profil" BorderPane.alignment="CENTER">
+            <Label text="Profil" BorderPane.alignment="CENTER" >
                <graphic>
                   <Label prefHeight="17.0" prefWidth="375.0" text="Publikations anmodninger">
                      <graphic>
