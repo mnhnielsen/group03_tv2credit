@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
 <BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
     <right>
@@ -35,20 +36,44 @@
                     </BorderPane.margin>
                 </ImageView>
             </center>
-            <bottom>
-                <Label text="Profil" BorderPane.alignment="CENTER">
-                    <graphic>
-                        <Label prefHeight="17.0" prefWidth="335.0" text="Publikations anmodninger" textFill="#b42524">
-                            <graphic>
-                                <Label prefHeight="17.0" prefWidth="174.0" text="Slet bruger">
-                           <graphic>
-                              <Label prefHeight="17.0" prefWidth="90.0" text="Opret bruger" />
-                           </graphic></Label>
-                            </graphic>
-                        </Label>
-                    </graphic>
-                </Label>
-            </bottom>
+         <bottom>
+            <HBox alignment="TOP_CENTER" prefHeight="28.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Opret bruger">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Slet Bruger">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Publikationsanmodninger" textFill="#b42524">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Profil">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
         </BorderPane>
     </top>
    <center>
