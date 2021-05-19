@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="810.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.InformationController">
+<BorderPane prefHeight="647.0" prefWidth="810.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.InformationController">
    <center>
       <VBox alignment="CENTER" prefHeight="472.0" prefWidth="763.0">
          <children>
@@ -90,12 +90,12 @@
          <left>
             <AnchorPane prefHeight="94.0" prefWidth="86.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="49.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleBackButton" opacity="0.0" prefHeight="27.0" prefWidth="25.0" text="Button" />
                   <ImageView fx:id="goBack" fitHeight="58.0" fitWidth="36.0" layoutX="45.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/circled-left.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="49.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleBackButton" opacity="0.0" prefHeight="27.0" prefWidth="25.0" text="Button" />
                </children>
             </AnchorPane>
          </left>
