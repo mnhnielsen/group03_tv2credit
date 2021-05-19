@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -169,6 +169,9 @@
                      </children>
                   </VBox>
                </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
@@ -195,24 +198,31 @@
             </ImageView>
          </center>
          <bottom>
-            <Label text="Profil" BorderPane.alignment="CENTER">
-               <graphic>
-                  <Label prefHeight="17.0" prefWidth="268.0" text="Mine produktioner" textAlignment="CENTER">
-                     <graphic>
-                        <Label prefHeight="17.0" prefWidth="131.0" text="Opret produktioner">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></Label>
-                     </graphic>
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Opret produktioner" textFill="#b42524">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
-                  </Label>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Mine produktioner">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Profil">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
          </bottom>
       </BorderPane>
    </top>
