@@ -67,7 +67,6 @@ public class LoginController
             } else
             {
                 lblWrong.setText("Forkert brugernavn eller adgangskode");
-
             }
         }
     }
