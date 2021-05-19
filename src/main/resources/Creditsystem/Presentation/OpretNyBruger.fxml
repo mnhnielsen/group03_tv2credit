@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
    <center>
       <VBox alignment="CENTER" prefHeight="469.0" prefWidth="920.0">
          <children>
@@ -60,15 +60,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <PasswordField fx:id="pswrdReEnterPassword" prefHeight="30.0" prefWidth="207.0" promptText="Genindtast password*" style="-fx-border-color: #075097#075097 #075097#075097;">
-                     <VBox.margin>
-                        <Insets left="100.0" right="100.0" top="10.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                  </PasswordField>
-                  <TextField fx:id="txtCreateName" prefHeight="25.0" prefWidth="207.0" promptText="Brugernavn*" style="-fx-border-color: #075097#075097 #075097#075097;">
+                  <TextField fx:id="txtCreateName" prefHeight="25.0" prefWidth="207.0" promptText="*Brugernavn" style="-fx-border-color: #075097#075097 #075097#075097;">
                      <VBox.margin>
                         <Insets left="100.0" right="100.0" top="10.0" />
                      </VBox.margin>
@@ -76,7 +68,15 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <PasswordField fx:id="pwrdPassword" prefHeight="25.0" prefWidth="207.0" promptText="Password*" style="-fx-border-color: #075097#075097 #075097#075097;">
+                  <PasswordField fx:id="pwrdPassword" prefHeight="25.0" prefWidth="207.0" promptText="*Kodeord" style="-fx-border-color: #075097#075097 #075097#075097;">
+                     <VBox.margin>
+                        <Insets left="100.0" right="100.0" top="10.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </PasswordField>
+                  <PasswordField fx:id="pswrdReEnterPassword" prefHeight="30.0" prefWidth="207.0" promptText="*Genindtast kodeord" style="-fx-border-color: #075097#075097 #075097#075097;">
                      <VBox.margin>
                         <Insets left="100.0" right="100.0" top="10.0" />
                      </VBox.margin>
