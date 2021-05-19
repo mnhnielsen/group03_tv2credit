@@ -96,8 +96,6 @@ public class ProducerController
     //Creates participants, credits, columns and adds to a credit list
     public void createCredit(ActionEvent event)
     {
-
-
         if (!foundParticipant)
         {
             //Create a participant

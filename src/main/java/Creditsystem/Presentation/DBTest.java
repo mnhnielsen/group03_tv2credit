@@ -8,8 +8,8 @@ public class DBTest
 {
     public static void main(String[] args)
     {
-        //IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
-        Mail mail = new Mail();
-        mail.sendEmail("mnhnielsen@gmail.com","Ny konto fra Krediteringssystem", "Indhold");
+        IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
+       // Mail mail = new Mail();
+        //mail.sendEmail("mnhnielsen@gmail.com","Ny konto fra Krediteringssystem", "Indhold");
     }
 }

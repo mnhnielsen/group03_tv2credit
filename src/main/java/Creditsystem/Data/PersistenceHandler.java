@@ -94,7 +94,7 @@ public class PersistenceHandler implements IPersistenceHandler
             System.out.println("Connected");
         } catch (SQLException | IllegalArgumentException ex)
         {
-            ex.printStackTrace(System.err);
+            System.out.println("Cannot connect");
         } finally
         {
             if (connection == null) System.exit(-1);

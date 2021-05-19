@@ -37,7 +37,7 @@ public class LoginController
 
     public void handleLogin(ActionEvent event)
     {
-        String username = txtUsername.getText();
+        String username = txtUsername.getText().toLowerCase();
         String password = passwordField.getText();
         if (username != null && password != null)
         {
