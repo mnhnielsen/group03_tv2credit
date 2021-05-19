@@ -39,12 +39,12 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="28.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Opret produktioner">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret produktioner">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Mine produktioner">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Mine produktioner">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

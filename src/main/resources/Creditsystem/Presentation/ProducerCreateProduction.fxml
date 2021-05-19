@@ -208,7 +208,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Mine produktioner">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Mine produktioner">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -216,7 +216,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Profil">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
