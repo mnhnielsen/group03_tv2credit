@@ -1,11 +1,9 @@
 package Creditsystem.Domain;
 
 import Creditsystem.Data.PersistenceHandler;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.skin.ListViewSkin;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,9 +15,7 @@ public class AdminPageController
     public PasswordField pwrdPassword;
     public PasswordField pswrdReEnterPassword;
     public CheckBox adminCheck;
-    public ListView unreleasedList;
     public TableView tblUsers;
-    private Production production = null;
     private TableColumn usernameColumn = new TableColumn();
     private TableColumn isAdminColumn = new TableColumn();
     public Button btnDeleteUser;
@@ -49,7 +45,6 @@ public class AdminPageController
         for (Account account : persistenceHandler.getUsers())
         {
             tblUsers.getItems().add(account);
-            accountList.getItems().add(account.getUsername());
         }
 
     }
