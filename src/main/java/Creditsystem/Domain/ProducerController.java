@@ -35,23 +35,12 @@ public class ProducerController
     {
         System.out.println(LoginController.getLoggedInID());
 
-        welcomeLabel.setText("Velkommen " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
+        //welcomeLabel.setText("Velkommen " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
         /*creditList = new ArrayList<>();
         for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
         {
             myProgramList.getItems().add(pr.getTitle());
         }*/
-    }
-
-    public void handleBackButton(ActionEvent event)
-    {
-        try
-        {
-            stageChange.openNewWindow(event, "FrontPage.fxml", "Krediterings Forside");
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     public void searchForPerson(ActionEvent event)

@@ -65,11 +65,7 @@ public class AdminPageController
 
         tblUsers.getColumns().addAll(usernameColumn,isAdminColumn);
     }
-
-    public void handleBackButton(ActionEvent event)
-    {
-        stageChange.handleBackButton(event, "FrontPage.fxml", "Krediterings forside");
-    }
+    
 
     public void createNewUser(ActionEvent event)
     {
