@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.ProducerController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.ProducerController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <HBox>
+            <HBox alignment="CENTER">
                <children>
                   <VBox prefHeight="500.0" prefWidth="479.0">
                      <children>
@@ -193,7 +193,7 @@
                   <Image url="@Images/TV_2_RGB.png" />
                </image>
                <BorderPane.margin>
-                  <Insets />
+                  <Insets right="420.0" />
                </BorderPane.margin>
             </ImageView>
          </center>
@@ -228,6 +228,13 @@
                </children>
             </HBox>
          </bottom>
+         <left>
+            <Label fx:id="welcomeLabel" prefHeight="17.0" prefWidth="420.0" text="Label" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" top="25.0" />
+               </BorderPane.margin>
+            </Label>
+         </left>
       </BorderPane>
    </top>
 </BorderPane>
