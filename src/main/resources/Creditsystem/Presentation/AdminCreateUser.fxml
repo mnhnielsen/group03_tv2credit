@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
    <center>
       <VBox alignment="CENTER" prefHeight="469.0" prefWidth="920.0">
          <children>
@@ -152,7 +152,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handleDeleteAccount" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Slet bruger">
+                  <Button mnemonicParsing="false" onAction="#handleDeleteAccount" style="-fx-background-color: transparenttransparent;" text="Slet bruger">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -160,7 +160,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Publikationsanmodninger">
+                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparenttransparent;" text="Publikationsanmodninger">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -168,7 +168,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
+                  <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparenttransparent;" text="Profil">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

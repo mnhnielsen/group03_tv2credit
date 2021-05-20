@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="550.0" minWidth="0.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
+<BorderPane minHeight="550.0" minWidth="0.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
    <center>
       <VBox alignment="CENTER" style="-fx-border-radius: 15px;">
          <BorderPane.margin>
@@ -59,24 +59,22 @@
                         <Font size="13.0" />
                      </font>
                   </Hyperlink>
-                  <Button layoutX="80.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleBackButton" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fx:id="goBack" accessibleRole="BUTTON" fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@DoneGui/Presentation/Images/circled-left.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </graphic>
+                  <ImageView fx:id="goBack" accessibleRole="BUTTON" fitHeight="29.0" fitWidth="31.0" layoutX="72.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/circled-left.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Button layoutX="74.0" layoutY="113.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="26.0" prefWidth="23.0" style="-fx-background-color: transparent;">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                   <ImageView fitHeight="65.0" fitWidth="105.0" layoutX="211.0" layoutY="18.670301818847634" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="554.8702369689942" AnchorPane.leftAnchor="211.0">
                      <image>
-                        <Image url="@DoneGui/Presentation/Images/TV_2_RGB.png" />
+                        <Image url="@Images/TV_2_RGB.png" />
                      </image>
                   </ImageView>
                   <Button layoutX="214.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleFrontpageButton" opacity="0.0" prefHeight="46.0" prefWidth="101.0" text="Button">
