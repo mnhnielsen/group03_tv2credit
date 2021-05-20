@@ -4,6 +4,7 @@ import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -185,5 +186,69 @@ public class AdminPageController
     public static Production getProduction()
     {
         return production;
+    }
+
+    public void handleMyAdminCreateUser(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "AdminCreateUser.fxml", "Opret bruger");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void handleDeleteAccount(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "DeleteAccount.fxml", "Slet bruger");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void handlePublications(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "Publications.fxml", "Publikations anmodninger");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleProgramValidation(ActionEvent event) {
+        try {
+            stageChange.openNewWindow(event, "ProgramValidation.fxml", "Offentliggør Produktion");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleDeleteAccountPopUp(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "DeleteAccountPopUp.fxml", "Slet bruger");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void handleAdminProfile(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "AdminProfile.fxml", "Min profil");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void handleCloseButtonAction(ActionEvent event) {
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
     }
 }

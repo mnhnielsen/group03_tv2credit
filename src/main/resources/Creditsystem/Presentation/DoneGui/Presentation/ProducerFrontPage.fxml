@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Presentation.ProducerFrontPage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Presentation.ProducerFrontPage">
    <children>
       <BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;">
          <right>
@@ -36,7 +36,7 @@
                <bottom>
                   <HBox alignment="CENTER" prefHeight="28.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret produktion">
+                        <Button fx:id="btnProducerCreateProduction" mnemonicParsing="false" onAction="#handleProducerCreateProduction" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret produktion">
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
@@ -44,7 +44,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Mine produktion">
+                        <Button fx:id="btnMyProductions" mnemonicParsing="false" onAction="#handleMyProductions" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Mine produktioner">
                            <HBox.margin>
                               <Insets right="30.0" />
                            </HBox.margin>
@@ -52,7 +52,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
+                        <Button fx:id="btnProducerProfile" mnemonicParsing="false" onAction="#handleMyProducerProfile" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

@@ -3,14 +3,18 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
     <right>
         <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
     </right>
@@ -20,8 +24,14 @@
     <bottom>
         <AnchorPane prefHeight="57.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="BOTTOM_CENTER">
          <children>
-            <Button layoutX="41.0" layoutY="7.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="175.0" style="-fx-background-radius: 20; -fx-background-color: #b42524; -fx-border-radius: 15;" text="Send tilbage til producer" textFill="WHITE" />
-            <Button layoutX="782.0" layoutY="7.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="175.0" style="-fx-background-radius: 20; -fx-background-color: #69a727#69a727;" text="Godkend &amp; offentliggør" textFill="WHITE" />
+            <Button layoutX="41.0" layoutY="7.0" mnemonicParsing="false" onAction="#editColumns" prefHeight="34.0" prefWidth="175.0" style="-fx-background-radius: 20; -fx-background-color: #69a727#69a727; -fx-border-radius: 15;" text="Opdater" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="782.0" layoutY="7.0" mnemonicParsing="false" onAction="#releaseProduction" prefHeight="34.0" prefWidth="175.0" style="-fx-background-radius: 20; -fx-background-color: #69a727#69a727;" text="Godkend &amp; offentliggør" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children></AnchorPane>
     </bottom>
     <top>
@@ -32,14 +42,14 @@
                         <Image url="@Images/TV_2_RGB.png" />
                     </image>
                     <BorderPane.margin>
-                        <Insets />
+                        <Insets right="110.0" />
                     </BorderPane.margin>
                 </ImageView>
             </center>
          <bottom>
             <HBox alignment="CENTER" prefHeight="28.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret bruger">
+                  <Button mnemonicParsing="false" onAction="#handleMyAdminCreateUser" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret bruger">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -47,7 +57,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Slet bruger">
+                  <Button mnemonicParsing="false" onAction="#handleDeleteAccount" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Slet bruger">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -55,7 +65,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Publikationsanmodninger" textFill="#b42524">
+                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparent;" text="Publikationsanmodninger" textFill="#b42524">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -63,7 +73,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
+                  <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -71,13 +81,77 @@
                </children>
             </HBox>
          </bottom>
+         <left>
+            <AnchorPane prefHeight="84.0" prefWidth="106.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <ImageView fitHeight="26.0" fitWidth="32.0" layoutX="40.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/circled-left.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="40.0" layoutY="30.0" mnemonicParsing="false" onAction="#handlePublications" prefHeight="25.0" prefWidth="26.0" style="-fx-background-color: transparent;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </left>
         </BorderPane>
     </top>
    <center>
-      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="30.0" />
          </BorderPane.margin>
-      </ListView>
+         <children>
+            <VBox alignment="CENTER">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <Label fx:id="lblTitle" text="Label">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblReleaseYear" text="Label">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Label text="Beskrivelse">
+               <font>
+                  <Font name="Gill Sans MT" size="13.0" />
+               </font>
+            </Label>
+            <ListView fx:id="txtDescription" prefHeight="141.0" prefWidth="920.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </ListView>
+            <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="80.0" text="Kreditteringer">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Gill Sans MT" size="13.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tabelView" prefHeight="321.0" prefWidth="920.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TableView>
+         </children>
+      </VBox>
    </center>
 </BorderPane>

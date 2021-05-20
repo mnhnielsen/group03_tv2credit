@@ -195,4 +195,35 @@ public class ProducerController
 
          */
     }
+
+    public void handleProducerCreateProduction(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "ProducerCreateProduction.fxml", "Opret produktion");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void handleMyProductions(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "ProducerMyProductions.fxml", "Mine Produktioner");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void handleMyProducerProfile(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "ProducerProfile.fxml", "Min profil");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }
