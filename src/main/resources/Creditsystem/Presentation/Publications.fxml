@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
     <right>
         <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
     </right>
@@ -20,7 +20,7 @@
     <bottom>
         <AnchorPane prefHeight="57.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="BOTTOM_CENTER">
          <children>
-            <Button layoutX="41.0" layoutY="7.0" mnemonicParsing="false" onAction="#viewProduction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Åbn produktion" />
+            <Button layoutX="41.0" layoutY="7.0" mnemonicParsing="false" onAction="#viewProduction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" stylesheets="@Style/fullpackstyling.css" text="Åbn produktion" />
          </children></AnchorPane>
     </bottom>
     <top>
@@ -70,6 +70,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#handleAdminLogOut" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Log ud" />
                </children>
             </HBox>
          </bottom>

@@ -77,7 +77,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#handleAdminLogOut" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Log ud" />
                </children>
             </HBox>
          </bottom>

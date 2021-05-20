@@ -66,7 +66,11 @@
                   <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparent;" text="Profil" textFill="#b42524">
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                     </cursor>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#handleAdminLogOut" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Log ud" />
                </children>
             </HBox>
          </bottom>

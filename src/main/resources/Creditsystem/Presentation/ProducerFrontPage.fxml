@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane prefWidth="923.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.ProducerController">
+<BorderPane prefWidth="923.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.ProducerController">
    <right>
       <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
    </right>
@@ -54,7 +54,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#handleProducerLogOut" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Log ud" />
                </children>
             </HBox>
          </bottom>

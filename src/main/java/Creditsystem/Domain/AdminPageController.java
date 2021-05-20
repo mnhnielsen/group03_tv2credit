@@ -251,4 +251,14 @@ public class AdminPageController
     public void handleCloseButtonAction(ActionEvent event) {
         ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
     }
+    public void handleAdminLogOut(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "FrontPage.fxml", "Login");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

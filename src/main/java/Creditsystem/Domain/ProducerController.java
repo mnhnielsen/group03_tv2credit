@@ -216,6 +216,16 @@ public class ProducerController
             e.printStackTrace();
         }
     }
+    public void handleProducerLogOut(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "FrontPage.fxml", "Login");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
     public void handleMyProducerProfile(ActionEvent event)
     {
         try
