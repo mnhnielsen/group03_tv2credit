@@ -37,8 +37,8 @@ public class AdminPageController
 
     public void initialize()
     {
-        initializeColumns();
-
+        //initializeColumns();
+/*
         for (Production production : persistenceHandler.getUnreleasedProductions())
         {
             unreleasedList.getItems().add(production.getTitle());
@@ -47,7 +47,7 @@ public class AdminPageController
         {
             tblUsers.getItems().add(account);
         }
-
+*/
     }
     private void initializeColumns()
     {

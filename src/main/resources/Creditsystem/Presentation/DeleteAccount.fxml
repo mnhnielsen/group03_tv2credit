@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
     <right>
         <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
     </right>
@@ -30,7 +30,7 @@
             <center>
                 <ImageView fitHeight="80.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                     <image>
-                        <Image url="@DoneGui/Presentation/Images/TV_2_RGB.png" />
+                        <Image url="@Images/TV_2_RGB.png" />
                     </image>
                     <BorderPane.margin>
                         <Insets />
@@ -50,12 +50,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Publikationsanmodninger">
+                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparenttransparent;" text="Publikationsanmodninger">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
+                  <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparent;" text="Profil">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

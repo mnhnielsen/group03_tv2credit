@@ -41,7 +41,7 @@
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor></PasswordField>
-                  <Button fx:id="btnLogin" layoutX="234.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="36.0" prefWidth="73.0" style="-fx-background-color: #69a727; -fx-background-radius: 15px;" text="Log Ind" textFill="WHITE">
+                  <Button fx:id="btnLogin" layoutX="234.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="36.0" prefWidth="73.0" style="-fx-background-color: #69a727; -fx-background-radius: 20px;" text="Log Ind" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
