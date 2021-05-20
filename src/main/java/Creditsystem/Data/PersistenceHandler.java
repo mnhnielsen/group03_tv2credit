@@ -659,5 +659,21 @@ public class PersistenceHandler implements IPersistenceHandler
         }
 
     }
+    public boolean deleteCredit(String title)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM credit WHERE title = ?");
+            statement.setString(1, title);
+            statement.execute();
+
+
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }
 

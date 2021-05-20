@@ -34,4 +34,5 @@ public interface IPersistenceHandler
     ArrayList<Production> getMyProductions(int id);
     ArrayList<Production> getUnreleasedProductions();
     boolean releaseProduction(Production production);
+    boolean deleteCredit(String title);
 }
