@@ -1,0 +1,23 @@
+.button {
+    -fx-font-weight: regular;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-fontsize: 22;
+    -fx-text-fill: black;
+    -fx-border-color: transparent;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+}
+
+
+
+.button:hover {
+    -fx-font-weight: regular;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-fontsize: 22;
+    -fx-text-fill: #b42524;
+    -fx-border-color: transparent;
+    -fx-border-radius: transparent;
+    -fx-border-width: 0;
+}

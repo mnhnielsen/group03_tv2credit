@@ -181,18 +181,18 @@ public class ProducerController
     //Deletes a selected credit from the list. Does not get published if deleted from list.
     public void deleteCredit(ActionEvent event)
     {
-        /*
+
         Object obj = tblCredit.getSelectionModel().getSelectedItem();
         tblCredit.getItems().remove(obj);
-        String data = (String) role.getCellObservableValue(obj).getValue();
-        for (int i = 0; i < creditList.size(); i++)
+        String data = (String) roleColumn.getCellObservableValue(obj).getValue();
+        for (int i = 0; i < persistenceHandler.getRoles().size(); i++)
         {
-            if (data == creditList.get(i).getRole())
+            if (data.equals(persistenceHandler.getRoles()))
             {
-                creditList.remove(i);
+                persistenceHandler.deleteCredit(data);
             }
         }
 
-         */
+
     }
 }

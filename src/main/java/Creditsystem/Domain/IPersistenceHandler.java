@@ -34,6 +34,7 @@ public interface IPersistenceHandler
     ArrayList<Production> getMyProductions(int id);
     ArrayList<Production> getUnreleasedProductions();
     boolean releaseProduction(Production production);
-    boolean changeCreditRoleID(Credits credits);
+    boolean deleteCredit(String title);
+	boolean changeCreditRoleID(Credits credits);
     boolean changeCreditParticipantID(Credits credits);
 }

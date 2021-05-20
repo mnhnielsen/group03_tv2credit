@@ -12,32 +12,6 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageCreditInformation">
-   <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="536.0" prefWidth="1000.0">
-         <TableView fx:id="tabelView" layoutX="611.0" layoutY="154.0" prefHeight="350.0" prefWidth="350.0" />
-         <TextArea fx:id="txtDescription" editable="false" layoutX="81.0" layoutY="155.0" prefHeight="350.0" prefWidth="350.0" wrapText="true" />
-         <Label layoutX="84.0" layoutY="135.0" text="Beskrivelse">
-            <font>
-               <Font name="Gill Sans" size="13.0" />
-            </font>
-         </Label>
-         <Label layoutX="612.0" layoutY="136.0" text="Krediteringer">
-            <font>
-               <Font name="Gill Sans" size="13.0" />
-            </font>
-         </Label>
-         <Label fx:id="lblTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="19.0" prefHeight="33.0" prefWidth="672.0" text="Label" textAlignment="JUSTIFY">
-            <font>
-               <Font name="Gill Sans" size="28.0" />
-            </font>
-         </Label>
-         <Label fx:id="lblReleaseYear" alignment="CENTER" layoutX="465.0" layoutY="59.0" prefHeight="26.0" prefWidth="79.0" text="Label" textAlignment="CENTER">
-            <font>
-               <Font size="20.0" />
-            </font>
-         </Label>
-      </AnchorPane>
-   </center>
    <top>
       <BorderPane prefHeight="90.0" prefWidth="1000.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <center>
@@ -64,4 +38,31 @@
          </left>
       </BorderPane>
    </top>
+   <bottom>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="536.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+         <TableView fx:id="tabelView" layoutX="611.0" layoutY="154.0" prefHeight="350.0" prefWidth="350.0" />
+         <TextArea fx:id="txtDescription" editable="false" layoutX="81.0" layoutY="155.0" prefHeight="350.0" prefWidth="350.0" wrapText="true" />
+         <Label layoutX="84.0" layoutY="135.0" text="Beskrivelse">
+            <font>
+               <Font name="Gill Sans" size="13.0" />
+            </font>
+         </Label>
+         <Label layoutX="612.0" layoutY="136.0" text="Krediteringer">
+            <font>
+               <Font name="Gill Sans" size="13.0" />
+            </font>
+         </Label>
+         <Label fx:id="lblTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="19.0" prefHeight="33.0" prefWidth="672.0" text="Label" textAlignment="JUSTIFY">
+            <font>
+               <Font name="Gill Sans" size="28.0" />
+            </font>
+         </Label>
+         <Label fx:id="lblReleaseYear" alignment="CENTER" layoutX="465.0" layoutY="59.0" prefHeight="26.0" prefWidth="79.0" text="Label" textAlignment="CENTER">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <Button layoutX="500.0" layoutY="455.0" mnemonicParsing="false" text="Slet kreditering" />
+      </AnchorPane>
+   </bottom>
 </BorderPane>
