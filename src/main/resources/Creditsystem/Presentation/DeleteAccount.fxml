@@ -50,12 +50,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparenttransparent;" text="Publikationsanmodninger">
+                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Publikationsanmodninger">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparent;" text="Profil">
+                  <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
    <center>
       <VBox alignment="CENTER">
          <children>
             <AnchorPane prefHeight="548.0" prefWidth="920.0">
                <children>
-                  <TableView fx:id="tblCredits" layoutX="57.0" layoutY="110.0" prefHeight="347.0" prefWidth="814.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="110.0">
+                  <TableView fx:id="tblCredits" layoutX="57.0" layoutY="110.0" prefHeight="347.0" prefWidth="814.0" stylesheets="@Style/tableviewscrollbar.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="110.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
