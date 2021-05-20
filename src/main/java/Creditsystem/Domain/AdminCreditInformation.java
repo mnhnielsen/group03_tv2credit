@@ -6,11 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class AdminCreditInformation
 {
