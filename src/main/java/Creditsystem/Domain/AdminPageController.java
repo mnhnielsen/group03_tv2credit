@@ -9,8 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminPageController
-{
+public class AdminPageController {
     public TextField txtCreateName, txtName, txtEmail, txtPhone, txtCompany;
     public PasswordField pwrdPassword;
     public PasswordField pswrdReEnterPassword;
@@ -29,27 +28,23 @@ public class AdminPageController
     StageChange stageChange = new StageChange();
     //Account account;
 
-    public static ArrayList<CreditJoin> getCredits()
-    {
+    public static ArrayList<CreditJoin> getCredits() {
         return credits;
     }
 
-    public void initialize()
-    {
+    public void initialize() {
         initializeColumns();
 
-        for (Production production : persistenceHandler.getUnreleasedProductions())
-        {
+        for (Production production : persistenceHandler.getUnreleasedProductions()) {
             unreleasedList.getItems().add(production.getTitle());
         }
-        for (Account account : persistenceHandler.getUsers())
-        {
+        for (Account account : persistenceHandler.getUsers()) {
             tblUsers.getItems().add(account);
         }
 
     }
-    private void initializeColumns()
-    {
+
+    private void initializeColumns() {
         usernameColumn.setText("Navn");
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         usernameColumn.setMinWidth(10);
@@ -62,27 +57,21 @@ public class AdminPageController
         isAdminColumn.setPrefWidth(190);
         //isAdminColumn.setMaxWidth(5000);
 
-        tblUsers.getColumns().addAll(usernameColumn,isAdminColumn);
+        tblUsers.getColumns().addAll(usernameColumn, isAdminColumn);
     }
 
-    public void handleBackButton(ActionEvent event)
-    {
+    public void handleBackButton(ActionEvent event) {
         stageChange.handleBackButton(event, "FrontPage.fxml", "Krediterings forside");
     }
 
-    public void createNewUser(ActionEvent event)
-    {
+    public void createNewUser(ActionEvent event) {
         String username = txtCreateName.getText().toLowerCase();
         String password = pwrdPassword.getText();
         String reEnter = pswrdReEnterPassword.getText();
-        if (username != "" && password != "" && reEnter != "")
-        {
-            if (password.equals(reEnter))
-            {
-                if (!persistenceHandler.checkUsername(username))
-                {
-                    if (adminCheck.isSelected())
-                    {
+        if (username != "" && password != "" && reEnter != "") {
+            if (password.equals(reEnter)) {
+                if (!persistenceHandler.checkUsername(username)) {
+                    if (adminCheck.isSelected()) {
                         Account account = new Account(username, password, adminCheck.isSelected());
                         persistenceHandler.createAdminAccount(account);
 
@@ -90,8 +79,7 @@ public class AdminPageController
                         pwrdPassword.clear();
                         pswrdReEnterPassword.clear();
                         adminCheck.setSelected(false);
-                    } else
-                    {
+                    } else {
                         ProducerAccount producerAccount = new ProducerAccount(username, password, false, txtName.getText(), txtEmail.getText(), Integer.valueOf(txtPhone.getText()), txtCompany.getText());
                         persistenceHandler.createProducerAccount(producerAccount);
                         txtCreateName.clear();
@@ -102,88 +90,82 @@ public class AdminPageController
                         txtPhone.clear();
                         txtCompany.clear();
                     }
-                } else
-                {
+                } else {
                     System.out.println("username already exists!");
                 }
 
-            } else
-            {
+            } else {
                 System.out.println("Passwords are not the same");
             }
-        } else
-        {
+        } else {
             System.out.println("You must fill out all the fields");
         }
     }
 
-    public void DeleteUser(ActionEvent event)
-    {
-        Object obj = tblUsers.getSelectionModel().getSelectedItem();
-        tblUsers.getItems().remove(obj);
-        String data = (String) usernameColumn.getCellObservableValue(obj).getValue();
-        for (int i = 0; i < persistenceHandler.getUsers().size(); i++)
-        {
-            if (data.equals(persistenceHandler.getUsers().get(i).getUsername()))
-            {
-                persistenceHandler.deleteUser(data);
-                System.out.println("User deleted");
+    public void DeleteUser(ActionEvent event) {
+
+        if (tblUsers.getSelectionModel().getSelectedItem() != null) {
+            Object obj = tblUsers.getSelectionModel().getSelectedItem();
+            tblUsers.getItems().remove(obj);
+            String data = (String) usernameColumn.getCellObservableValue(obj).getValue();
+            for (int i = 0; i < persistenceHandler.getUsers().size(); i++) {
+                if (data.equals(persistenceHandler.getUsers().get(i).getUsername())) {
+                    persistenceHandler.deleteUser(data);
+                    System.out.println("User deleted");
+                }
             }
         }
 
     }
 
-    public void viewProduction(ActionEvent event)
-    {
-        String data = (String) unreleasedList.getSelectionModel().getSelectedItem();
-        for (int i = 0; i < persistenceHandler.getUnreleasedProductions().size(); i++)
-        {
-            if (data.equals(persistenceHandler.getUnreleasedProductions().get(i).getTitle()))
-            {
-                production = persistenceHandler.getProductionTitle(data);
-                credits = persistenceHandler.getCredits(data);
-                try
-                {
-                    stageChange.openNewWindow(event, "AdminCreditInformation.fxml", "Informations side");
-                } catch (IOException e)
-                {
-                    e.printStackTrace();
+    public void viewProduction(ActionEvent event) {
+        if (unreleasedList.getSelectionModel().getSelectedItem() != null) {
+            String data = (String) unreleasedList.getSelectionModel().getSelectedItem();
+            for (int i = 0; i < persistenceHandler.getUnreleasedProductions().size(); i++) {
+                if (data.equals(persistenceHandler.getUnreleasedProductions().get(i).getTitle())) {
+                    production = persistenceHandler.getProductionTitle(data);
+                    credits = persistenceHandler.getCredits(data);
+                    try {
+                        stageChange.openNewWindow(event, "AdminCreditInformation.fxml", "Informations side");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
     }
 
-    public void getHighligtedProduction(ActionEvent event)
-    {
-        String data = (String) unreleasedList.getSelectionModel().getSelectedItem();
-        for (int i = 0; i < persistenceHandler.getUnreleasedProductions().size(); i++)
-        {
-            if (data.equals(persistenceHandler.getUnreleasedProductions().get(i).getTitle()))
-            {
-                production = persistenceHandler.getProductionTitle(data);
+    public void getHighligtedProduction(ActionEvent event) {
+        if (unreleasedList.getSelectionModel().getSelectedItem() != null) {
+            String data = (String) unreleasedList.getSelectionModel().getSelectedItem();
+            for (int i = 0; i < persistenceHandler.getUnreleasedProductions().size(); i++) {
+                if (data.equals(persistenceHandler.getUnreleasedProductions().get(i).getTitle())) {
+                    production = persistenceHandler.getProductionTitle(data);
+                }
             }
         }
 
     }
-    public void removeFromList(){
+
+    public void removeFromList() {
         List<Integer> selectedItemsCopy = new ArrayList<>(unreleasedList.getSelectionModel().getSelectedItems());
         unreleasedList.getItems().removeAll(selectedItemsCopy);
     }
 
-    public void releaseProduction(ActionEvent event)
-    {
-        getHighligtedProduction(event);
-        removeFromList();
-        persistenceHandler.releaseProduction(getProduction());
-        Mail mail = new Mail();
-        mail.sendEmail(persistenceHandler.getProducerAccount(getProduction().getCreatedby()).getEmail(), getProduction().getTitle() + " er nu udgivet","" +
-                "Din produktion for " + getProduction().getTitle() + " er nu udgivet. Se den inde på Krediteringssystemet.");
-        persistenceHandler.getProducerAccount(2);
+    public void releaseProduction(ActionEvent event) {
+        if (getProduction() != null) {
+            getHighligtedProduction(event);
+            removeFromList();
+            persistenceHandler.releaseProduction(getProduction());
+            Mail mail = new Mail();
+            mail.sendEmail(persistenceHandler.getProducerAccount(getProduction().getCreatedby()).getEmail(), getProduction().getTitle() + " er nu udgivet", "" +
+                    "Din produktion for " + getProduction().getTitle() + " er nu udgivet. Se den inde på Krediteringssystemet.");
+            persistenceHandler.getProducerAccount(2);
 
+        }
     }
 
-    public static Production getProduction()
-    {
+    public static Production getProduction() {
         return production;
     }
 }

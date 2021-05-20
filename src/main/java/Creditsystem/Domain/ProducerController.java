@@ -9,12 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProducerController
-{
+public class ProducerController {
     public TableView tblCredit;
     public TextField txtTitle, txtYear, txtName, txtJob, participantEmail, participantPhone;
     public TextArea txtDescription;
-    public Label lblTitle, lblReleaseYear, statusLabel,welcomeLabel;
+    public Label lblTitle, lblReleaseYear, statusLabel, welcomeLabel;
     public ListView myProgramList;
 
     List<Credit> creditList;
@@ -29,147 +28,133 @@ public class ProducerController
     Credits credits = null;
     boolean foundParticipant = false;
     boolean foundRole = false;
+    boolean hasAddedProduction = false;
 
 
-    public void initialize()
-    {
+    public void initialize() {
         System.out.println(LoginController.getLoggedInID());
 
         welcomeLabel.setText("Velkommen " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
         creditList = new ArrayList<>();
-        for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
-        {
+        for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID())) {
             myProgramList.getItems().add(pr.getTitle());
         }
     }
 
-    public void handleBackButton(ActionEvent event)
-    {
-        try
-        {
+    public void handleBackButton(ActionEvent event) {
+        try {
             stageChange.openNewWindow(event, "FrontPage.fxml", "Krediterings Forside");
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void searchForPerson(ActionEvent event)
-    {
+    public void searchForPerson(ActionEvent event) {
         participantPhone.clear();
         participantEmail.clear();
         participantPhone.setStyle(null);
         participantEmail.setStyle(null);
-        for (Participant participant : persistenceHandler.getParticipants())
-        {
-            if (txtName.getText().equals(participant.getName()))
-            {
+        for (Participant participant : persistenceHandler.getParticipants()) {
+            if (txtName.getText().equals(participant.getName())) {
                 foundParticipant = true;
                 break;
-            } else
-            {
+            } else {
                 foundParticipant = false;
             }
         }
 
-        for (Role role : persistenceHandler.getRoles())
-        {
-            if (txtJob.getText().equals(role.getName()))
-            {
+        for (Role role : persistenceHandler.getRoles()) {
+            if (txtJob.getText().equals(role.getName())) {
                 foundRole = true;
                 break;
-            } else
-            {
+            } else {
                 foundRole = false;
             }
         }
 
-        if (foundParticipant)
-        {
+        if (foundParticipant) {
             participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
             participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
-        } else
-        {
+        } else {
             participantEmail.setStyle("-fx-border-color: red;");
             participantPhone.setStyle("-fx-border-color: red;");
         }
     }
 
     //Creates participants, credits, columns and adds to a credit list
-    public void createCredit(ActionEvent event)
-    {
-        if (!foundParticipant)
-        {
-            //Create a participant
-            participant = new Participant(txtName.getText(), Integer.parseInt(participantPhone.getText()), participantEmail.getText());
-            persistenceHandler.createParticipant(participant);
-        } else
-        {
-            persistenceHandler.getParticipantID(txtName.getText());
+    public void createCredit(ActionEvent event) {
+        if (!txtName.getText().isEmpty() && !txtJob.getText().isEmpty() && !participantPhone.getText().isEmpty() && !participantEmail.getText().isEmpty() && hasAddedProduction) {
+            if (!foundParticipant) {
+                //Create a participant
+                participant = new Participant(txtName.getText(), Integer.parseInt(participantPhone.getText()), participantEmail.getText());
+                persistenceHandler.createParticipant(participant);
+            } else {
+                persistenceHandler.getParticipantID(txtName.getText());
+            }
+
+            if (!foundRole) {
+                //Create a role
+                role = new Role(txtJob.getText());
+                persistenceHandler.createRole(role);
+            } else {
+                persistenceHandler.getRoleID(txtJob.getText());
+            }
+
+            //Create Credit
+            credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
+            persistenceHandler.createCredit(credits);
+
+            //Visual stuff
+            Participant participants = new Participant(txtName.getText());
+            Credit credit = new Credit(participants, txtJob.getText(), participants.getName());
+
+
+            roleColumn = new TableColumn("Rolle");
+            roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
+            roleColumn.setMinWidth(10);
+            roleColumn.setPrefWidth(192);
+            roleColumn.setMaxWidth(5000);
+
+            TableColumn name = new TableColumn("Navn");
+            name.setCellValueFactory(new PropertyValueFactory<>("name"));
+            name.setMinWidth(10);
+            name.setPrefWidth(192);
+            name.setMaxWidth(5000);
+            //Add to columns
+            tblCredit.getColumns().addAll(roleColumn, name);
+            tblCredit.getItems().add(credit);
+
+            //Clear name and job
+            txtJob.clear();
+            txtName.clear();
+            participantEmail.clear();
+            participantPhone.clear();
         }
-        if (!foundRole)
-        {
-            //Create a role
-            role = new Role(txtJob.getText());
-            persistenceHandler.createRole(role);
-        } else
-        {
-            persistenceHandler.getRoleID(txtJob.getText());
-        }
-
-        //Create Credit
-        credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
-        persistenceHandler.createCredit(credits);
-
-        //Visual stuff
-        Participant participants = new Participant(txtName.getText());
-        Credit credit = new Credit(participants, txtJob.getText(), participants.getName());
-
-
-        roleColumn = new TableColumn("Rolle");
-        roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
-        roleColumn.setMinWidth(10);
-        roleColumn.setPrefWidth(192);
-        roleColumn.setMaxWidth(5000);
-
-        TableColumn name = new TableColumn("Navn");
-        name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        name.setMinWidth(10);
-        name.setPrefWidth(192);
-        name.setMaxWidth(5000);
-        //Add to columns
-        tblCredit.getColumns().addAll(roleColumn, name);
-        tblCredit.getItems().add(credit);
-
-        //Clear name and job
-        txtJob.clear();
-        txtName.clear();
-        participantEmail.clear();
-        participantPhone.clear();
     }
 
 
     //Creates a new production and resets all information when published.
-    public void publishProduction(ActionEvent event)
-    {
-        statusLabel.setText("Din produktion med titlen" + production.getTitle() + " er nu sendt til godkendelse. " + "\n" + "Du modtager en mail på: " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail() + " ved udgivelse");
+    public void publishProduction(ActionEvent event) {
+        if (this.production != null) {
+            statusLabel.setText("Din produktion med titlen" + production.getTitle() + " er nu sendt til godkendelse. " + "\n" + "Du modtager en mail på: " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail() + " ved udgivelse");
 
-        clearInfo();
+            clearInfo();
+        }
     }
 
 
-    public void addProduction(ActionEvent event)
-    {
-        //Create production
-        production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText(), LoginController.getLoggedInID(),false);
-        persistenceHandler.createProduction(production);
-
-        lblTitle.setText(txtTitle.getText());
-        lblReleaseYear.setText(String.valueOf(txtYear.getText()));
+    public void addProduction(ActionEvent event) {
+        if (!txtTitle.getText().isEmpty() && !txtYear.getText().isEmpty() && !txtDescription.getText().isEmpty()) {
+            //Create production
+            production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText(), LoginController.getLoggedInID(), false);
+            persistenceHandler.createProduction(production);
+            hasAddedProduction = true;
+            lblTitle.setText(txtTitle.getText());
+            lblReleaseYear.setText(String.valueOf(txtYear.getText()));
+        }
     }
 
-    public void clearInfo()
-    {
+    public void clearInfo() {
         lblTitle.setText("");
         lblReleaseYear.setText("");
         tblCredit.getItems().clear();
@@ -179,20 +164,16 @@ public class ProducerController
     }
 
     //Deletes a selected credit from the list. Does not get published if deleted from list.
-    public void deleteCredit(ActionEvent event)
-    {
-
-        Object obj = tblCredit.getSelectionModel().getSelectedItem();
-        tblCredit.getItems().remove(obj);
-        String data = (String) roleColumn.getCellObservableValue(obj).getValue();
-        for (int i = 0; i < persistenceHandler.getRoles().size(); i++)
-        {
-            if (data.equals(persistenceHandler.getRoles()))
-            {
-                persistenceHandler.deleteCredit(data);
+    public void deleteCredit(ActionEvent event) {
+        if (tblCredit.getSelectionModel().getSelectedItem() != null) {
+            Object obj = tblCredit.getSelectionModel().getSelectedItem();
+            tblCredit.getItems().remove(obj);
+            String data = (String) roleColumn.getCellObservableValue(obj).getValue();
+            for (int i = 0; i < persistenceHandler.getRoles().size(); i++) {
+                if (data.equals(persistenceHandler.getRoles())) {
+                    persistenceHandler.deleteCredit(data);
+                }
             }
         }
-
-
     }
 }
