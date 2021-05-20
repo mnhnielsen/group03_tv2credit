@@ -9,66 +9,62 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.ProducerController">
-   <children>
-      <BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;">
-         <right>
-            <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
-         </right>
-         <left>
-            <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_LEFT" />
-         </left>
-         <bottom>
-            <AnchorPane prefHeight="35.0" prefWidth="1281.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="BOTTOM_CENTER" />
-         </bottom>
-         <top>
-            <BorderPane prefHeight="112.0" prefWidth="1000.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-               <center>
-                  <ImageView fitHeight="80.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@Images/TV_2_RGB.png" />
-                     </image>
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                  </ImageView>
-               </center>
-               <bottom>
-                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="btnProducerCreateProduction" mnemonicParsing="false" onAction="#handleProducerCreateProduction" style="-fx-background-color: transparent;" text="Opret produktion">
-                           <HBox.margin>
-                              <Insets right="30.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="btnMyProductions" mnemonicParsing="false" onAction="#handleMyProductions" style="-fx-background-color: transparenttransparent;" text="Mine produktioner">
-                           <HBox.margin>
-                              <Insets right="30.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="btnProducerProfile" mnemonicParsing="false" onAction="#handleMyProducerProfile" style="-fx-background-color: transparenttransparent;" text="Profil">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </HBox>
-               </bottom>
-            </BorderPane>
-         </top>
+<BorderPane prefWidth="923.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <right>
+      <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
+   </right>
+   <left>
+      <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_LEFT" />
+   </left>
+   <bottom>
+      <AnchorPane prefHeight="35.0" prefWidth="1281.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="BOTTOM_CENTER" />
+   </bottom>
+   <top>
+      <BorderPane prefHeight="112.0" prefWidth="1000.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <center>
-            <ImageView fitHeight="417.0" fitWidth="821.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="80.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
-                  <Image url="@Images/altdetvideler.jpg" />
+                  <Image url="@Images/TV_2_RGB.png" />
                </image>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
             </ImageView>
          </center>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnProducerCreateProduction" mnemonicParsing="false" onAction="#handleProducerCreateProduction" style="-fx-background-color: transparent;" text="Opret produktion">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btnMyProductions" mnemonicParsing="false" onAction="#handleMyProductions" style="-fx-background-color: transparenttransparent;" text="Mine produktioner">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btnProducerProfile" mnemonicParsing="false" onAction="#handleMyProducerProfile" style="-fx-background-color: transparenttransparent;" text="Profil">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
       </BorderPane>
-   </children>
-</AnchorPane>
+   </top>
+   <center>
+      <ImageView fitHeight="417.0" fitWidth="821.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@Images/altdetvideler.jpg" />
+         </image>
+      </ImageView>
+   </center>
+</BorderPane>
