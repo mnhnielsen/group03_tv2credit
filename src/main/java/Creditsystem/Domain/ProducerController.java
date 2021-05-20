@@ -35,7 +35,7 @@ public class ProducerController
     {
         System.out.println(LoginController.getLoggedInID());
 
-        //welcomeLabel.setText("Velkommen " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
+        welcomeLabel.setText("Velkommen " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
         /*creditList = new ArrayList<>();
         for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
         {
