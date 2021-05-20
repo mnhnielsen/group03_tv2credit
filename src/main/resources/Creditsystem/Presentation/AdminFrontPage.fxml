@@ -24,7 +24,7 @@
          <center>
             <ImageView fitHeight="80.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
-                  <Image url="@Images/TV_2_RGB.png" />
+                  <Image url="@DoneGui/Presentation/Images/TV_2_RGB.png" />
                </image>
                <BorderPane.margin>
                   <Insets />
