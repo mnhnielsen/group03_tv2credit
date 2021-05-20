@@ -228,7 +228,7 @@ public class AdminPageController
     {
         try
         {
-            stageChange.openNewWindow(event, "DeleteAccountPopUp.fxml", "Slet bruger");
+            stageChange.openPopup(event, "DeleteAccountPopUp.fxml", "Slet bruger",361,171);
         } catch (IOException e)
         {
             e.printStackTrace();

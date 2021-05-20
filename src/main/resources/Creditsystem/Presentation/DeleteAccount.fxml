@@ -73,9 +73,6 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <TableView prefHeight="500.0" prefWidth="451.0">
-              <columns>
-                <TableColumn fx:id="tblUsers" prefWidth="75.0" />
-              </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
