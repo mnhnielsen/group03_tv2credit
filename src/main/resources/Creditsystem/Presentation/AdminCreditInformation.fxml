@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,7 +37,10 @@
                <Font size="20.0" />
             </font>
          </Label>
-         <Button layoutX="500.0" layoutY="430.0" mnemonicParsing="false" onAction="#editColumns" text="Update" />
+         <Button layoutX="447.0" layoutY="243.0" mnemonicParsing="false" onAction="#editColumns" text="Update" />
+         <TextField fx:id="phone" layoutX="447.0" layoutY="213.0" promptText="Telefon" />
+         <TextField fx:id="email" layoutX="447.0" layoutY="180.0" promptText="Email" />
+         <Button layoutX="906.0" layoutY="504.0" mnemonicParsing="false" onAction="#saveProduction" text="Gem" />
       </AnchorPane>
    </center>
    <top>

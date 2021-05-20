@@ -28,10 +28,12 @@ public interface IPersistenceHandler
     ArrayList<Participant> getParticipants();
     ArrayList<Role> getRoles();
     Participant getParticipant(String name);
-    void getParticipantID(String name);
-    void getRoleID(String name);
+    Participant getParticipantID(String name);
+    Role getRoleID(String name);
     ProducerAccount getProducerAccount(int id);
     ArrayList<Production> getMyProductions(int id);
     ArrayList<Production> getUnreleasedProductions();
     boolean releaseProduction(Production production);
+    boolean changeCreditRoleID(Credits credits);
+    boolean changeCreditParticipantID(Credits credits);
 }

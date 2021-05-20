@@ -13,12 +13,22 @@ public class Participant
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+
     public Participant(int id)
     {
         this.id = id;
     }
 
-    public Participant(String name, String email, int Phone){
+    public Participant(String name, String email, int Phone)
+    {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = Phone;
+    }
+
+    public Participant(int id, String name, String email, int Phone)
+    {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = Phone;

@@ -116,16 +116,7 @@ public class LoginController
             txtPhone.clear();
         } else
         {
-            //Dialog boks skal tilføjes
-           /* try
-            {
-                stageChange.openPopup(event, "RequestLoginFail.fxml", "Felter ikke udfyldt", 368,165);
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
 
-            */
             receipt.setText("Udfyld alle felter");
         }
     }

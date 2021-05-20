@@ -284,7 +284,6 @@ public class PersistenceHandler implements IPersistenceHandler
         {
             PreparedStatement statement = connection.prepareStatement("UPDATE production SET ispublished = TRUE WHERE id = ?");
             statement.setInt(1, production.getId());
-            System.out.println(production.getId());
             statement.execute();
         } catch (SQLException throwables)
         {
@@ -403,6 +402,7 @@ public class PersistenceHandler implements IPersistenceHandler
         return true;
     }
 
+
     @Override
     public boolean checkRoleName(String roleName)
     {
@@ -415,15 +415,20 @@ public class PersistenceHandler implements IPersistenceHandler
             {
                 i++;
                 String string = resultSet.getString(1);
-                if (roleName == string)
+                if (roleName.equals(string))
                 {
                     roleID = i;
+                    return true;
+                } else
+                {
+                    return false;
                 }
             }
 
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
+            return false;
         }
         return true;
     }
@@ -574,7 +579,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public void getParticipantID(String name)
+    public Participant getParticipantID(String name)
     {
         try
         {
@@ -590,14 +595,18 @@ public class PersistenceHandler implements IPersistenceHandler
                 returnValue.add(participant);
             }
             participantID = participant.getId();
+
+            return new Participant(sqlReturnValues.getInt(1),sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getInt(4));
+
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
+            return null;
         }
     }
 
     @Override
-    public void getRoleID(String name)
+    public Role getRoleID(String name)
     {
         try
         {
@@ -613,9 +622,12 @@ public class PersistenceHandler implements IPersistenceHandler
                 returnValue.add(role);
             }
             roleID = role.getId();
+
+            return new Role(sqlReturnValues.getInt(1));
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
+            return null;
         }
     }
 
@@ -657,7 +669,45 @@ public class PersistenceHandler implements IPersistenceHandler
             throwables.printStackTrace();
             return null;
         }
+    }
 
+    @Override
+    public boolean changeCreditRoleID(Credits credits)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("UPDATE credit SET roleid = ? WHERE productionid = ? AND participantid = ?");
+            statement.setInt(1, credits.getRoleId());
+            System.out.println(credits.getRoleId());
+            statement.setInt(2,credits.getProductionId());
+            System.out.println(credits.getProductionId());
+            statement.setInt(3,credits.getParticipantId());
+            System.out.println(credits.getParticipantId());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean changeCreditParticipantID(Credits credits)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("UPDATE credit SET participantid = ? WHERE productionid = ? AND roleid = ?");
+            statement.setInt(1, credits.getParticipantId());
+            statement.setInt(2,credits.getProductionId());
+            statement.setInt(3,credits.getRoleId());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }
 
