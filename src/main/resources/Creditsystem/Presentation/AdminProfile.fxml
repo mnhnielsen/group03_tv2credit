@@ -29,7 +29,7 @@
          <center>
             <ImageView fitHeight="80.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
-                  <Image url="@DoneGui/Presentation/Images/TV_2_RGB.png" />
+                  <Image url="@Images/TV_2_RGB.png" />
                </image>
                <BorderPane.margin>
                   <Insets />
@@ -75,7 +75,7 @@
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="500.0" prefWidth="392.0">
+            <VBox prefHeight="518.0" prefWidth="392.0">
                <children>
                   <Label text="Rediger profil">
                      <font>
@@ -94,6 +94,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Nyt navn">
                      <font>
@@ -120,6 +123,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Button alignment="BOTTOM_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
@@ -141,6 +147,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Nyt telefonnummer">
                      <font>
@@ -154,6 +163,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Gentag nyt telefonnummer">
                      <font>
@@ -167,6 +179,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Button mnemonicParsing="false" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
@@ -181,7 +196,7 @@
                   <Insets right="100.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="500.0" prefWidth="392.0">
+            <VBox prefHeight="490.0" prefWidth="392.0">
                <children>
                   <Label text="Nuværende email">
                      <font>
@@ -195,6 +210,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Ny email">
                      <VBox.margin>
@@ -208,6 +226,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Gengtag ny email">
                      <font>
@@ -221,6 +242,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Button mnemonicParsing="false" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
@@ -242,6 +266,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </PasswordField>
                   <Label text="Ny adgangskode">
                      <font>
@@ -255,6 +282,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </PasswordField>
                   <Label text="Gentag ny adgangskode">
                      <font>
@@ -268,6 +298,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </PasswordField>
                   <Button mnemonicParsing="false" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
