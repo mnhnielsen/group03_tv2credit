@@ -126,7 +126,6 @@ public class AdminProfile
                     txtNewPassword.clear();
                     txtRepeatNewPassword.setStyle(null);
                     lblStatusPassword.setText("Password ændret");
-
             } else
             {
                 txtRepeatNewPassword.setStyle("-fx-border-color: red;");

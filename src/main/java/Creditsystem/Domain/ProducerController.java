@@ -37,7 +37,7 @@ public class ProducerController
 
     public void initialize()
     {
-        welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
+        //welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
     }
 
     public void searchForPerson(ActionEvent event)
