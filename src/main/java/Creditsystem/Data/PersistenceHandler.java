@@ -625,7 +625,7 @@ public class PersistenceHandler implements IPersistenceHandler
             return new Role(sqlReturnValues.getInt(1));
         } catch (SQLException throwables)
         {
-            throwables.printStackTrace();
+            
             return null;
         }
     }
