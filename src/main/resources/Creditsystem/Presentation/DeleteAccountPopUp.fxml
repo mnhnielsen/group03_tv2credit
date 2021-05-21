@@ -13,11 +13,11 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnDeleteUser" layoutX="70.0" layoutY="103.0" mnemonicParsing="false" onAction="#DeleteUser" prefHeight="34.0" prefWidth="78.0" style="-fx-background-radius: 20; -fx-background-color: #69a727#69a727;" text="Ja" textFill="WHITE">
+      <Button fx:id="btnDeleteUser" defaultButton="true" layoutX="70.0" layoutY="103.0" mnemonicParsing="false" onAction="#DeleteUser" prefHeight="34.0" prefWidth="78.0" style="-fx-background-radius: 20; -fx-background-color: #69a727#69a727;" text="Ja" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button layoutX="214.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="34.0" prefWidth="78.0" style="-fx-background-radius: 20; -fx-background-color: #b42524;" text="Nej" textFill="WHITE">
+      <Button cancelButton="true" layoutX="214.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="34.0" prefWidth="78.0" style="-fx-background-radius: 20; -fx-background-color: #b42524;" text="Nej" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
