@@ -37,13 +37,7 @@ public class ProducerController
 
     public void initialize()
     {
-        //welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
-        //creditList = new ArrayList<>();
-        /*for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
-        {
-            myProgramList.getItems().add(pr.getTitle());
-        }
-         */
+        welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
     }
 
     public void handleBackButton(ActionEvent event)

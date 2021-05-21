@@ -36,7 +36,6 @@ public class AdminCreditInformation
         role.setMaxWidth(5000);
         role.setEditable(true);
 
-
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         name.setMinWidth(10);
         name.setPrefWidth(192);

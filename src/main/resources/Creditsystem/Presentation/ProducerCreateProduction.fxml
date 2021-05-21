@@ -195,7 +195,7 @@
                   <Image url="@Images/TV_2_RGB.png" />
                </image>
                <BorderPane.margin>
-                  <Insets right="420.0" />
+                  <Insets />
                </BorderPane.margin>
             </ImageView>
          </center>
@@ -230,13 +230,6 @@
                </children>
             </HBox>
          </bottom>
-         <left>
-            <Label fx:id="welcomeLabel" prefHeight="17.0" prefWidth="420.0" text="Label" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="20.0" top="25.0" />
-               </BorderPane.margin>
-            </Label>
-         </left>
       </BorderPane>
    </top>
 </BorderPane>
