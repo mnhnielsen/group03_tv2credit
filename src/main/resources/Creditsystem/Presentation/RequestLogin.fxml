@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="550.0" minWidth="0.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
+<BorderPane minHeight="550.0" minWidth="0.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.LoginController">
     <center>
         <VBox alignment="CENTER" style="-fx-border-radius: 15px;">
             <BorderPane.margin>
@@ -27,7 +27,7 @@
                                 <Font name="Gill Sans MT" size="28.0" />
                             </font>
                         </Label>
-                        <Button fx:id="btnRequest" layoutX="148.0" layoutY="462.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="226.0" style="-fx-background-color: #69a727#69a727; -fx-background-radius: 10;" text="Ansøg" textFill="WHITE">
+                        <Button fx:id="btnRequest" defaultButton="true" layoutX="148.0" layoutY="462.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="226.0" style="-fx-background-color: #69a727#69a727; -fx-background-radius: 10;" text="Ansøg" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
