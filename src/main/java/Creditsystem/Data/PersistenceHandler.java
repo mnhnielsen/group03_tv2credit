@@ -650,6 +650,25 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
+    public Account getAccount(int id)
+    {
+        try
+        {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM accounts WHERE id = ?");
+            stmt.setInt(1, id);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            if (!sqlReturnValues.next())
+            {
+                return null;
+            }
+            return new Account(sqlReturnValues.getInt(1),sqlReturnValues.getString(2),sqlReturnValues.getString(3),sqlReturnValues.getBoolean(4));
+        } catch (SQLException throwables)
+        {
+            return null;
+        }
+    }
+
+    @Override
     public ArrayList<Production> getMyProductions(int id)
     {
         try
@@ -770,6 +789,41 @@ public class PersistenceHandler implements IPersistenceHandler
         try
         {
             PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET password = ? WHERE id = ?");
+            statement.setString(1,account.getPassword());
+            statement.setInt(2,account.getId());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean changeAccountUsername(Account account)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("UPDATE accounts SET username = ? WHERE id = ?");
+            statement.setString(1,account.getUsername());
+            statement.setInt(2,account.getId());
+            System.out.println(account.getId());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean changeAccountPassword(Account account)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("UPDATE accounts SET password = ? WHERE id = ?");
             statement.setString(1,account.getPassword());
             statement.setInt(2,account.getId());
             statement.execute();

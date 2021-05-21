@@ -19,7 +19,6 @@ public class ProducerProfileInfoController
 
     public void initialize()
     {
-        System.out.println(LoginController.getLoggedInID());
         currentProducerAccount = persistenceHandler.getProducerAccount(LoginController.getLoggedInID());
         txtOldName.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
         txtOldMail.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail());

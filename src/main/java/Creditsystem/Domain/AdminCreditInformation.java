@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+
 import java.io.IOException;
 
 public class AdminCreditInformation
@@ -21,6 +22,7 @@ public class AdminCreditInformation
     private StageChange stageChange = new StageChange();
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
     private AdminProductionList adminProductionList = new AdminProductionList();
+
     public void initialize()
     {
         phone.setDisable(true);

@@ -40,18 +40,6 @@ public class ProducerController
         welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
     }
 
-    public void handleBackButton(ActionEvent event)
-    {
-        try
-        {
-            stageChange.openNewWindow(event, "FrontPage.fxml", "Krediterings Forside");
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-    }
-
     public void searchForPerson(ActionEvent event)
     {
         participantPhone.clear();

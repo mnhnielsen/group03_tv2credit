@@ -9,14 +9,11 @@ import java.io.IOException;
 public class MyProductionsController
 {
     public ListView myProgramList;
-
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
     private StageChange stageChange = new StageChange();
 
     public void initialize()
     {
-        //welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
-        //creditList = new ArrayList<>();
         for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
         {
             myProgramList.getItems().add(pr.getTitle());

@@ -31,6 +31,7 @@ public interface IPersistenceHandler
     Participant getParticipantID(String name);
     Role getRoleID(String name);
     ProducerAccount getProducerAccount(int id);
+    Account getAccount(int id);
     ArrayList<Production> getMyProductions(int id);
     ArrayList<Production> getUnreleasedProductions();
     boolean releaseProduction(Production production);
@@ -39,5 +40,6 @@ public interface IPersistenceHandler
     boolean changeAccountEmail(ProducerAccount account);
     boolean changeAccountName(ProducerAccount account);
     boolean changeAccountPassword(ProducerAccount account);
-
+    boolean changeAccountUsername(Account account);
+    boolean changeAccountPassword(Account account);
 }

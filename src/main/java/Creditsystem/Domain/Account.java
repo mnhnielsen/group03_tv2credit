@@ -19,9 +19,19 @@ public class Account
         this.username = username;
         this.isadmin = isadmin;
     }
-    public Account(int id, String username){
+
+    public Account(int id, String username)
+    {
         this.id = id;
         this.username = username;
+    }
+
+    public Account(int id, String username, String password, boolean isadmin)
+    {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.isadmin = isadmin;
     }
 
     public String getUsername()

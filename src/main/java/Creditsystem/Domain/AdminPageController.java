@@ -10,33 +10,31 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminPageController {
+public class AdminPageController
+{
+
     public TextField txtCreateName, txtName, txtEmail, txtPhone, txtCompany;
     public PasswordField pwrdPassword;
     public PasswordField pswrdReEnterPassword;
     public CheckBox adminCheck;
-    public TableView tblUsers;
-    private TableColumn usernameColumn = new TableColumn();
-    private TableColumn isAdminColumn = new TableColumn();
     public Button btnDeleteUser;
-    public ListView unreleasedList, accountList;
-    private static Production production = null;
-    private static ArrayList<CreditJoin> credits = new ArrayList<>();
+    private IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
+    private StageChange stageChange = new StageChange();
 
 
-    IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
-
-    StageChange stageChange = new StageChange();
-
-
-    public void createNewUser(ActionEvent event) {
+    public void createNewUser(ActionEvent event)
+    {
         String username = txtCreateName.getText().toLowerCase();
         String password = pwrdPassword.getText();
         String reEnter = pswrdReEnterPassword.getText();
-        if (username != "" && password != "" && reEnter != "") {
-            if (password.equals(reEnter)) {
-                if (!persistenceHandler.checkUsername(username)) {
-                    if (adminCheck.isSelected()) {
+        if (username != "" && password != "" && reEnter != "")
+        {
+            if (password.equals(reEnter))
+            {
+                if (!persistenceHandler.checkUsername(username))
+                {
+                    if (adminCheck.isSelected())
+                    {
                         Account account = new Account(username, password, adminCheck.isSelected());
                         persistenceHandler.createAdminAccount(account);
 
@@ -44,7 +42,8 @@ public class AdminPageController {
                         pwrdPassword.clear();
                         pswrdReEnterPassword.clear();
                         adminCheck.setSelected(false);
-                    } else {
+                    } else
+                    {
                         ProducerAccount producerAccount = new ProducerAccount(username, password, false, txtName.getText(), txtEmail.getText(), Integer.valueOf(txtPhone.getText()), txtCompany.getText());
                         persistenceHandler.createProducerAccount(producerAccount);
                         txtCreateName.clear();
@@ -55,14 +54,17 @@ public class AdminPageController {
                         txtPhone.clear();
                         txtCompany.clear();
                     }
-                } else {
+                } else
+                {
                     System.out.println("username already exists!");
                 }
 
-            } else {
+            } else
+            {
                 System.out.println("Passwords are not the same");
             }
-        } else {
+        } else
+        {
             System.out.println("You must fill out all the fields");
         }
     }
@@ -78,6 +80,7 @@ public class AdminPageController {
             e.printStackTrace();
         }
     }
+
     public void handleDeleteAccount(ActionEvent event)
     {
         try
@@ -100,24 +103,6 @@ public class AdminPageController {
         }
     }
 
-    public void handleProgramValidation(ActionEvent event) {
-        try {
-            stageChange.openNewWindow(event, "ProgramValidation.fxml", "Offentliggør Produktion");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void handleDeleteAccountPopUp(ActionEvent event)
-    {
-        try
-        {
-            stageChange.openPopup(event, "DeleteAccountPopUp.fxml", "Slet bruger",361,171);
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
     public void handleAdminProfile(ActionEvent event)
     {
         try
@@ -128,9 +113,7 @@ public class AdminPageController {
             e.printStackTrace();
         }
     }
-    public void handleCloseButtonAction(ActionEvent event) {
-        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-    }
+
     public void handleAdminLogOut(ActionEvent event)
     {
         try
@@ -140,8 +123,5 @@ public class AdminPageController {
         {
             e.printStackTrace();
         }
-    }
-	public void handleBackButton(ActionEvent event) {
-        stageChange.handleBackButton(event, "FrontPage.fxml", "Krediterings forside");
     }
 }
