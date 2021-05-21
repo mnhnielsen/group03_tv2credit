@@ -20,7 +20,7 @@
     <bottom>
         <AnchorPane prefHeight="57.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="BOTTOM_CENTER">
          <children>
-            <Button layoutX="41.0" layoutY="7.0" mnemonicParsing="false" onAction="#viewProduction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" stylesheets="@Style/fullpackstyling.css" text="Åbn produktion" />
+            <Button defaultButton="true" layoutX="41.0" layoutY="7.0" mnemonicParsing="false" onAction="#viewProduction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" stylesheets="@Style/fullpackstyling.css" text="Åbn produktion" />
          </children></AnchorPane>
     </bottom>
     <top>
