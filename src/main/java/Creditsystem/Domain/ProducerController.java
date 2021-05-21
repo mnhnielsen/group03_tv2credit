@@ -31,7 +31,7 @@ public class ProducerController
     Credits credits = null;
     boolean foundParticipant = false;
     boolean foundRole = false;
-    boolean hasAddedProduction = false;
+    boolean hasAddedProduction = false, hasCreatedColumns = false;
 
 
     public void initialize()
@@ -131,27 +131,32 @@ public class ProducerController
             Participant participants = new Participant(txtName.getText());
             Credit credit = new Credit(participants, txtJob.getText(), participants.getName());
 
+            if (!hasCreatedColumns)
+            {
+                roleColumn = new TableColumn("Rolle");
+                roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
+                roleColumn.setMinWidth(10);
+                roleColumn.setPrefWidth(192);
+                roleColumn.setMaxWidth(5000);
 
-            roleColumn = new TableColumn("Rolle");
-            roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
-            roleColumn.setMinWidth(10);
-            roleColumn.setPrefWidth(192);
-            roleColumn.setMaxWidth(5000);
+                TableColumn name = new TableColumn("Navn");
+                name.setCellValueFactory(new PropertyValueFactory<>("name"));
+                name.setMinWidth(10);
+                name.setPrefWidth(192);
+                name.setMaxWidth(5000);
 
-            TableColumn name = new TableColumn("Navn");
-            name.setCellValueFactory(new PropertyValueFactory<>("name"));
-            name.setMinWidth(10);
-            name.setPrefWidth(192);
-            name.setMaxWidth(5000);
-            //Add to columns
-            tblCredit.getColumns().addAll(roleColumn, name);
-            tblCredit.getItems().add(credit);
+                //Add to columns
+                tblCredit.getColumns().addAll(roleColumn, name);
+                hasCreatedColumns = true;
+            }
+                tblCredit.getItems().add(credit);
 
-            //Clear name and job
-            txtJob.clear();
-            txtName.clear();
-            participantEmail.clear();
-            participantPhone.clear();
+                //Clear name and job
+                txtJob.clear();
+                txtName.clear();
+                participantEmail.clear();
+                participantPhone.clear();
+
         }
     }
 
@@ -166,7 +171,6 @@ public class ProducerController
             clearInfo();
         }
     }
-
 
     public void addProduction(ActionEvent event)
     {
