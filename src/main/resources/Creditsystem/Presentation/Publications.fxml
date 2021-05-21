@@ -3,14 +3,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminProductionList">
     <right>
         <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
     </right>
@@ -21,6 +23,12 @@
         <AnchorPane prefHeight="57.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="BOTTOM_CENTER">
          <children>
             <Button layoutX="41.0" layoutY="7.0" mnemonicParsing="false" onAction="#viewProduction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" stylesheets="@Style/fullpackstyling.css" text="Åbn produktion" />
+            <Button layoutX="837.0" layoutY="12.0" mnemonicParsing="false" onAction="#releaseProduction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" stylesheets="@Style/fullpackstyling.css" text="Udgiv" />
+            <Label fx:id="lblStatus" layoutX="319.0" layoutY="9.0" minHeight="40.0" prefHeight="40.0" prefWidth="362.0" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
     </bottom>
     <top>
@@ -54,7 +62,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparent;" text="Publikationsanmodninger" textFill="#b42524">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Publikationsanmodninger" textFill="#b42524">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>

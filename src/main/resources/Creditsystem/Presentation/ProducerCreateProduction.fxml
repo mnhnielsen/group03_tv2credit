@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -46,14 +47,11 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TextField fx:id="txtDescription" alignment="TOP_LEFT" prefHeight="213.0" prefWidth="161.0" promptText="Beskrivelse">
+                        <TextArea fx:id="txtDescription" prefHeight="213.0" prefWidth="161.0" wrapText="true">
                            <VBox.margin>
                               <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                        </TextField>
+                        </TextArea>
                         <Button mnemonicParsing="false" onAction="#addProduction" text="Tilføj">
                            <VBox.margin>
                               <Insets bottom="5.0" />

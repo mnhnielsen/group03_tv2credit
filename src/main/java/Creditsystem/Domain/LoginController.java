@@ -2,6 +2,7 @@ package Creditsystem.Domain;
 
 import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
@@ -62,6 +63,7 @@ public class LoginController
 
                 if (persistenceHandler.checkAuthorization(username))
                 {
+                    
                     try
                     {
                         new StageChange().openNewWindow(event, "AdminFrontPage.fxml", "Systemadministrator forside");

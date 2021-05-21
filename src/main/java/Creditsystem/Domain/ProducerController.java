@@ -8,6 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,7 +16,7 @@ public class ProducerController
 {
     public TableView tblCredit;
     public TextField txtTitle, txtYear, txtName, txtJob, participantEmail, participantPhone;
-    public TextField txtDescription;
+    public TextArea txtDescription;
     public Label lblTitle, lblReleaseYear, statusLabel, welcomeLabel;
     public ListView myProgramList;
 
@@ -65,7 +66,7 @@ public class ProducerController
         participantEmail.setStyle(null);
         for (Participant participant : persistenceHandler.getParticipants())
         {
-            if (txtName.getText().equals(participant.getName()))
+            if (txtName.getText().toLowerCase().equals(participant.getName()))
             {
                 foundParticipant = true;
                 break;
@@ -77,7 +78,7 @@ public class ProducerController
 
         for (Role role : persistenceHandler.getRoles())
         {
-            if (txtJob.getText().equals(role.getName()))
+            if (txtJob.getText().toLowerCase().equals(role.getName()))
             {
                 foundRole = true;
                 break;
@@ -89,8 +90,8 @@ public class ProducerController
 
         if (foundParticipant)
         {
-            participantEmail.setText(persistenceHandler.getParticipant(txtName.getText()).getEmail());
-            participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText()).getPhoneNumber()));
+            participantEmail.setText(persistenceHandler.getParticipant(txtName.getText().toLowerCase()).getEmail());
+            participantPhone.setText(String.valueOf(persistenceHandler.getParticipant(txtName.getText().toLowerCase()).getPhoneNumber()));
         } else
         {
             participantEmail.setStyle("-fx-border-color: red;");
@@ -106,21 +107,21 @@ public class ProducerController
             if (!foundParticipant)
             {
                 //Create a participant
-                participant = new Participant(txtName.getText(), Integer.parseInt(participantPhone.getText()), participantEmail.getText());
+                participant = new Participant(txtName.getText().toLowerCase(), Integer.parseInt(participantPhone.getText()), participantEmail.getText().toLowerCase());
                 persistenceHandler.createParticipant(participant);
             } else
             {
-                persistenceHandler.getParticipantID(txtName.getText());
+                persistenceHandler.getParticipantID(txtName.getText().toLowerCase());
             }
 
             if (!foundRole)
             {
                 //Create a role
-                role = new Role(txtJob.getText());
+                role = new Role(txtJob.getText().toLowerCase());
                 persistenceHandler.createRole(role);
             } else
             {
-                persistenceHandler.getRoleID(txtJob.getText());
+                persistenceHandler.getRoleID(txtJob.getText().toLowerCase());
             }
 
             //Create Credit

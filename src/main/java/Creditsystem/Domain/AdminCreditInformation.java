@@ -20,14 +20,14 @@ public class AdminCreditInformation
     private String newName, newRoleName;
     private StageChange stageChange = new StageChange();
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
-
+    private AdminProductionList adminProductionList = new AdminProductionList();
     public void initialize()
     {
         phone.setDisable(true);
         email.setDisable(true);
-        lblTitle.setText(AdminPageController.getProduction().getTitle());
-        lblReleaseYear.setText(String.valueOf(AdminPageController.getProduction().getReleaseYear()));
-        txtDescription.setText(AdminPageController.getProduction().getDescription());
+        lblTitle.setText(AdminProductionList.getProduction().getTitle());
+        lblReleaseYear.setText(String.valueOf(AdminProductionList.getProduction().getReleaseYear()));
+        txtDescription.setText(AdminProductionList.getProduction().getDescription());
         tabelView.setEditable(true);
 
         role.setCellValueFactory(new PropertyValueFactory<>("roleName"));
@@ -92,7 +92,7 @@ public class AdminCreditInformation
         //Add to columns
         tabelView.getColumns().addAll(role, name);
 
-        for (CreditJoin creditJoin : AdminPageController.getCredits())
+        for (CreditJoin creditJoin : AdminProductionList.getCredits())
         {
             tabelView.getItems().add(creditJoin);
         }
@@ -165,7 +165,7 @@ public class AdminCreditInformation
     {
         try
         {
-            new StageChange().openNewWindow(event, "AdminPage.fxml", "Systemadministrator forside");
+            new StageChange().openNewWindow(event, "Publications.fxml", "Systemadministrator forside");
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -175,5 +175,25 @@ public class AdminCreditInformation
     public void handleBackButton(ActionEvent event)
     {
         stageChange.handleBackButton(event, "AdminPage.fxml", "Krediterings forside");
+    }
+
+    public void handleMyAdminCreateUser(ActionEvent event)
+    {
+    }
+
+    public void handleDeleteAccount(ActionEvent event)
+    {
+    }
+
+    public void handlePublications(ActionEvent event)
+    {
+    }
+
+    public void handleAdminProfile(ActionEvent event)
+    {
+    }
+
+    public void handleAdminLogOut(ActionEvent event)
+    {
     }
 }

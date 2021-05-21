@@ -27,41 +27,7 @@ public class AdminPageController {
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
     StageChange stageChange = new StageChange();
-    //Account account;
 
-    public static ArrayList<CreditJoin> getCredits() {
-        return credits;
-    }
-
-    public void initialize()
-    {
-        //initializeColumns();
-/*
-        for (Production production : persistenceHandler.getUnreleasedProductions())
-        {
-            unreleasedList.getItems().add(production.getTitle());
-        }
-        for (Account account : persistenceHandler.getUsers()) {
-            tblUsers.getItems().add(account);
-        }
-*/
-    }
-
-    private void initializeColumns() {
-        usernameColumn.setText("Navn");
-        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-        usernameColumn.setMinWidth(10);
-        usernameColumn.setPrefWidth(290);
-        //usernameColumn.setMaxWidth(5000);
-
-        isAdminColumn.setText("Er admin");
-        //isAdminColumn.setCellValueFactory(new PropertyValueFactory<>("isadmin"));
-        isAdminColumn.setMinWidth(10);
-        isAdminColumn.setPrefWidth(190);
-        //isAdminColumn.setMaxWidth(5000);
-
-        tblUsers.getColumns().addAll(usernameColumn, isAdminColumn);
-    }
 
     public void createNewUser(ActionEvent event) {
         String username = txtCreateName.getText().toLowerCase();
@@ -101,72 +67,6 @@ public class AdminPageController {
         }
     }
 
-    public void DeleteUser(ActionEvent event) {
-
-        if (tblUsers.getSelectionModel().getSelectedItem() != null) {
-            Object obj = tblUsers.getSelectionModel().getSelectedItem();
-            tblUsers.getItems().remove(obj);
-            String data = (String) usernameColumn.getCellObservableValue(obj).getValue();
-            for (int i = 0; i < persistenceHandler.getUsers().size(); i++) {
-                if (data.equals(persistenceHandler.getUsers().get(i).getUsername())) {
-                    persistenceHandler.deleteUser(data);
-                    System.out.println("User deleted");
-                }
-            }
-        }
-
-    }
-
-    public void viewProduction(ActionEvent event) {
-        if (unreleasedList.getSelectionModel().getSelectedItem() != null) {
-            String data = (String) unreleasedList.getSelectionModel().getSelectedItem();
-            for (int i = 0; i < persistenceHandler.getUnreleasedProductions().size(); i++) {
-                if (data.equals(persistenceHandler.getUnreleasedProductions().get(i).getTitle())) {
-                    production = persistenceHandler.getProductionTitle(data);
-                    credits = persistenceHandler.getCredits(data);
-                    try {
-                        stageChange.openNewWindow(event, "AdminCreditInformation.fxml", "Informations side");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
-
-    public void getHighligtedProduction(ActionEvent event) {
-        if (unreleasedList.getSelectionModel().getSelectedItem() != null) {
-            String data = (String) unreleasedList.getSelectionModel().getSelectedItem();
-            for (int i = 0; i < persistenceHandler.getUnreleasedProductions().size(); i++) {
-                if (data.equals(persistenceHandler.getUnreleasedProductions().get(i).getTitle())) {
-                    production = persistenceHandler.getProductionTitle(data);
-                }
-            }
-        }
-
-    }
-
-    public void removeFromList() {
-        List<Integer> selectedItemsCopy = new ArrayList<>(unreleasedList.getSelectionModel().getSelectedItems());
-        unreleasedList.getItems().removeAll(selectedItemsCopy);
-    }
-
-    public void releaseProduction(ActionEvent event) {
-        if (getProduction() != null) {
-            getHighligtedProduction(event);
-            removeFromList();
-            persistenceHandler.releaseProduction(getProduction());
-            Mail mail = new Mail();
-            mail.sendEmail(persistenceHandler.getProducerAccount(getProduction().getCreatedby()).getEmail(), getProduction().getTitle() + " er nu udgivet", "" +
-                    "Din produktion for " + getProduction().getTitle() + " er nu udgivet. Se den inde på Krediteringssystemet.");
-            persistenceHandler.getProducerAccount(2);
-
-        }
-    }
-
-    public static Production getProduction() {
-        return production;
-    }
 
     public void handleMyAdminCreateUser(ActionEvent event)
     {

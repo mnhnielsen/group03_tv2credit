@@ -670,7 +670,7 @@ public class PersistenceHandler implements IPersistenceHandler
         }
     }
 
-    @Override
+    /*@Override
     public boolean changeCreditRoleID(Credits credits)
     {
         try
@@ -708,6 +708,8 @@ public class PersistenceHandler implements IPersistenceHandler
         }
         return true;
     }
+
+     */
 
     @Override
     public boolean changeAccountPhone(ProducerAccount account)
