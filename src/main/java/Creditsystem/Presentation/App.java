@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * JavaFX App
@@ -37,6 +39,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        Logger.getLogger("").setLevel(Level.WARNING);
+
         launch();
     }
 

@@ -17,3 +17,5 @@
 .list-view .virtual-flow .scroll-bar:horizontal .thumb {
     -fx-background-color:  linear-gradient(to right, #cecece, #cecece);
 }
+.table-view:focused{
+    -fx-background-color: white;}

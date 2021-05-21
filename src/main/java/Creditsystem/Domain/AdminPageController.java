@@ -4,6 +4,7 @@ import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,16 +33,18 @@ public class AdminPageController {
         return credits;
     }
 
-    public void initialize() {
-        initializeColumns();
-
-        for (Production production : persistenceHandler.getUnreleasedProductions()) {
+    public void initialize()
+    {
+        //initializeColumns();
+/*
+        for (Production production : persistenceHandler.getUnreleasedProductions())
+        {
             unreleasedList.getItems().add(production.getTitle());
         }
         for (Account account : persistenceHandler.getUsers()) {
             tblUsers.getItems().add(account);
         }
-
+*/
     }
 
     private void initializeColumns() {
@@ -58,10 +61,6 @@ public class AdminPageController {
         //isAdminColumn.setMaxWidth(5000);
 
         tblUsers.getColumns().addAll(usernameColumn, isAdminColumn);
-    }
-
-    public void handleBackButton(ActionEvent event) {
-        stageChange.handleBackButton(event, "FrontPage.fxml", "Krediterings forside");
     }
 
     public void createNewUser(ActionEvent event) {
@@ -167,5 +166,82 @@ public class AdminPageController {
 
     public static Production getProduction() {
         return production;
+    }
+
+    public void handleMyAdminCreateUser(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "AdminCreateUser.fxml", "Opret bruger");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void handleDeleteAccount(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "DeleteAccount.fxml", "Slet bruger");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void handlePublications(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "Publications.fxml", "Publikations anmodninger");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleProgramValidation(ActionEvent event) {
+        try {
+            stageChange.openNewWindow(event, "ProgramValidation.fxml", "Offentliggør Produktion");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleDeleteAccountPopUp(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openPopup(event, "DeleteAccountPopUp.fxml", "Slet bruger",361,171);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void handleAdminProfile(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "AdminProfile.fxml", "Min profil");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void handleCloseButtonAction(ActionEvent event) {
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    }
+    public void handleAdminLogOut(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "FrontPage.fxml", "Login");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+	public void handleBackButton(ActionEvent event) {
+        stageChange.handleBackButton(event, "FrontPage.fxml", "Krediterings forside");
     }
 }

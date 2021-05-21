@@ -18,7 +18,6 @@ public class FrontPageController {
     public TableView tblCredits;
     public Button btnOpenCredit;
 
-
     private StageChange stageChange = new StageChange();
     private TableColumn titleColumn = new TableColumn();
 
@@ -44,7 +43,7 @@ public class FrontPageController {
         titleColumn.setText("Title");
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         titleColumn.setMinWidth(10);
-        titleColumn.setPrefWidth(1170);
+        titleColumn.setPrefWidth(400);
         titleColumn.setMaxWidth(5000);
 
         TableColumn year = new TableColumn("År");

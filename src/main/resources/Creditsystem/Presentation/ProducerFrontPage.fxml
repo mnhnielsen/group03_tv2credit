@@ -3,14 +3,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefWidth="923.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.ProducerController">
    <right>
       <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
    </right>
@@ -33,17 +35,9 @@
             </ImageView>
          </center>
          <bottom>
-            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" stylesheets="@Style/buttonstyling.css" text="Opret produktion">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Mine produktioner" textFill="#b42524">
+                  <Button fx:id="btnProducerCreateProduction" mnemonicParsing="false" onAction="#handleProducerCreateProduction" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret produktion">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -51,21 +45,48 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" stylesheets="@Style/buttonstyling.css" text="Profil">
+                  <Button fx:id="btnMyProductions" mnemonicParsing="false" onAction="#handleMyProductions" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Mine produktioner">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button fx:id="btnProducerProfile" mnemonicParsing="false" onAction="#handleMyProducerProfile" style="-fx-background-color: transparenttransparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#handleProducerLogOut" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Log ud" />
                </children>
             </HBox>
          </bottom>
       </BorderPane>
    </top>
    <center>
-      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="welcomeLabel" text="Label" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="364.0" fitWidth="811.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/altdetvideler.jpg" />
+               </image>
+            </ImageView>
+         </children>
          <BorderPane.margin>
             <Insets top="30.0" />
          </BorderPane.margin>
-      </ListView>
+      </VBox>
    </center>
 </BorderPane>

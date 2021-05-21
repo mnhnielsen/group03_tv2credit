@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
    <right>
       <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
    </right>
@@ -39,21 +39,38 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="28.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret produktioner">
+                  <Button mnemonicParsing="false" onAction="#handleMyAdminCreateUser" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret bruger">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Mine produktioner">
+                  <Button mnemonicParsing="false" onAction="#handleDeleteAccount" style="-fx-background-color: t;" stylesheets="@Style/buttonstyling.css" text="Slet bruger">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Profil" textFill="#b42524">
+                  <Button mnemonicParsing="false" onAction="#handleProgramValidation" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Publikationsanmodninger">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparent;" text="Profil" textFill="#b42524">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#handleAdminLogOut" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Log ud" />
                </children>
             </HBox>
          </bottom>
@@ -62,7 +79,7 @@
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="500.0" prefWidth="392.0">
+            <VBox prefHeight="518.0" prefWidth="392.0">
                <children>
                   <Label text="Rediger profil">
                      <font>
@@ -81,6 +98,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Nyt navn">
                      <font>
@@ -107,6 +127,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Button alignment="BOTTOM_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
@@ -128,6 +151,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Nyt telefonnummer">
                      <font>
@@ -141,6 +167,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Gentag nyt telefonnummer">
                      <font>
@@ -154,6 +183,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Button mnemonicParsing="false" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
@@ -168,7 +200,7 @@
                   <Insets right="100.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="500.0" prefWidth="392.0">
+            <VBox prefHeight="490.0" prefWidth="392.0">
                <children>
                   <Label text="Nuværende email">
                      <font>
@@ -182,6 +214,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Ny email">
                      <VBox.margin>
@@ -195,6 +230,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Label text="Gengtag ny email">
                      <font>
@@ -208,6 +246,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </TextField>
                   <Button mnemonicParsing="false" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
@@ -229,6 +270,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </PasswordField>
                   <Label text="Ny adgangskode">
                      <font>
@@ -242,6 +286,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </PasswordField>
                   <Label text="Gentag ny adgangskode">
                      <font>
@@ -255,6 +302,9 @@
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                   </PasswordField>
                   <Button mnemonicParsing="false" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>

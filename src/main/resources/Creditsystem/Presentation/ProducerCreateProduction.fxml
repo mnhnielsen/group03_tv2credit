@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.ProducerController">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <HBox>
+            <HBox alignment="CENTER">
                <children>
                   <VBox prefHeight="500.0" prefWidth="479.0">
                      <children>
@@ -31,7 +31,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField promptText="Titel">
+                        <TextField fx:id="txtTitle" promptText="Titel">
                            <VBox.margin>
                               <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
@@ -39,7 +39,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TextField alignment="TOP_LEFT" promptText="Udgivelsesår">
+                        <TextField fx:id="txtYear" alignment="TOP_LEFT" promptText="Udgivelsesår">
                            <VBox.margin>
                               <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
@@ -47,7 +47,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TextField alignment="TOP_LEFT" prefHeight="213.0" prefWidth="161.0" promptText="Beskrivelse">
+                        <TextField fx:id="txtDescription" alignment="TOP_LEFT" prefHeight="213.0" prefWidth="161.0" promptText="Beskrivelse">
                            <VBox.margin>
                               <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
@@ -55,7 +55,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <Button mnemonicParsing="false" text="Tilføj">
+                        <Button mnemonicParsing="false" onAction="#addProduction" text="Tilføj">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin>
@@ -75,7 +75,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField promptText="Navn">
+                        <TextField fx:id="txtName" promptText="Navn">
                            <VBox.margin>
                               <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
@@ -83,7 +83,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TextField promptText="Jobtitel">
+                        <TextField fx:id="txtJob" promptText="Jobtitel">
                            <VBox.margin>
                               <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
@@ -91,7 +91,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TextField promptText="e-mail">
+                        <TextField fx:id="participantEmail" promptText="e-mail">
                            <VBox.margin>
                               <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
@@ -99,7 +99,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <TextField promptText="Telefon nummer">
+                        <TextField fx:id="participantPhone" promptText="Telefon nummer">
                            <VBox.margin>
                               <Insets bottom="5.0" right="10.0" />
                            </VBox.margin>
@@ -107,7 +107,7 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <Button mnemonicParsing="false" text="Søg på person">
+                        <Button mnemonicParsing="false" onAction="#searchForPerson" text="Søg på person">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin>
@@ -115,7 +115,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" text="Tilføj til produktion">
+                        <Button fx:id="btnAddCredit" mnemonicParsing="false" onAction="#createCredit" text="Tilføj til produktion">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin>
@@ -142,7 +142,7 @@
                               <Insets left="150.0" top="30.0" />
                            </VBox.margin>
                         </Label>
-                        <TableView prefHeight="415.0" prefWidth="288.0">
+                        <TableView fx:id="tblCredit" prefHeight="415.0" prefWidth="288.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="C1" />
                             <TableColumn prefWidth="75.0" text="C2" />
@@ -154,7 +154,7 @@
                               <Insets bottom="5.0" top="26.0" />
                            </VBox.margin>
                         </TableView>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Slet">
+                        <Button fx:id="btnDeleteCredit" mnemonicParsing="false" onAction="#deleteCredit" prefHeight="26.0" prefWidth="60.0" text="Slet">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin>
@@ -162,7 +162,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Send">
+                        <Button fx:id="btnSendCredit" mnemonicParsing="false" onAction="#publishProduction" prefHeight="26.0" prefWidth="60.0" text="Send">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
@@ -193,14 +193,14 @@
                   <Image url="@Images/TV_2_RGB.png" />
                </image>
                <BorderPane.margin>
-                  <Insets />
+                  <Insets right="420.0" />
                </BorderPane.margin>
             </ImageView>
          </center>
          <bottom>
             <HBox alignment="CENTER" prefHeight="28.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Opret produktioner" textFill="#b42524">
+                  <Button mnemonicParsing="false" onAction="#handleProducerCreateProduction" style="-fx-background-color: transparent;" text="Opret produktioner" textFill="#b42524">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -208,7 +208,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Mine produktioner">
+                  <Button mnemonicParsing="false" onAction="#handleMyProductions" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Mine produktioner">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -216,14 +216,25 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
+                  <Button mnemonicParsing="false" onAction="#handleMyProducerProfile" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#handleProducerLogOut" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Log ud" />
                </children>
             </HBox>
          </bottom>
+         <left>
+            <Label fx:id="welcomeLabel" prefHeight="17.0" prefWidth="420.0" text="Label" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" top="25.0" />
+               </BorderPane.margin>
+            </Label>
+         </left>
       </BorderPane>
    </top>
 </BorderPane>

@@ -28,7 +28,7 @@ public class LoginController
     {
         try
         {
-            stageChange.openPopup(event, "ForgotPassword.fxml", "Glemt login", 368, 191);
+            stageChange.openPopup(event, "ForgotLogin.fxml", "Glemt login", 522, 633);
         } catch (IOException e)
         {
             e.printStackTrace();
@@ -49,7 +49,7 @@ public class LoginController
                 {
                     try
                     {
-                        new StageChange().openNewWindow(event, "AdminPage.fxml", "Systemadministrator forside");
+                        new StageChange().openNewWindow(event, "AdminFrontPage.fxml", "Systemadministrator forside");
                     } catch (IOException e)
                     {
                         e.printStackTrace();
@@ -58,7 +58,7 @@ public class LoginController
                 {
                     try
                     {
-                        new StageChange().openNewWindow(event, "producerPage.fxml", "Producer forside");
+                        new StageChange().openNewWindow(event, "ProducerFrontPage.fxml", "Producer forside");
                     } catch (IOException e)
                     {
                         e.printStackTrace();
@@ -75,7 +75,7 @@ public class LoginController
     {
         try
         {
-            stageChange.openPopup(event, "RequestLogin.fxml", "Ansøg om login", 368, 372);
+            stageChange.openPopup(event, "RequestLogin.fxml", "Ansøg om login", 522, 633);
         } catch (IOException e)
         {
             e.printStackTrace();

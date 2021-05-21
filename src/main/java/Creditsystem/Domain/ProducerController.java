@@ -8,11 +8,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProducerController {
     public TableView tblCredit;
     public TextField txtTitle, txtYear, txtName, txtJob, participantEmail, participantPhone;
-    public TextArea txtDescription;
+    public TextField txtDescription;
     public Label lblTitle, lblReleaseYear, statusLabel, welcomeLabel;
     public ListView myProgramList;
 
@@ -33,13 +35,14 @@ public class ProducerController {
 
     public void initialize() {
         System.out.println(LoginController.getLoggedInID());
-
-        welcomeLabel.setText("Velkommen " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
-        creditList = new ArrayList<>();
-        for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID())) {
+        //welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
+        //creditList = new ArrayList<>();
+        /*for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
+        {
             myProgramList.getItems().add(pr.getTitle());
         }
-    }
+		*/
+	}
 
     public void handleBackButton(ActionEvent event) {
         try {
@@ -47,6 +50,7 @@ public class ProducerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+         
     }
 
     public void searchForPerson(ActionEvent event) {
@@ -152,6 +156,14 @@ public class ProducerController {
             lblTitle.setText(txtTitle.getText());
             lblReleaseYear.setText(String.valueOf(txtYear.getText()));
         }
+    public void addProduction(ActionEvent event)
+    {
+        //Create production
+        production = new Production(txtTitle.getText(), Integer.parseInt(txtYear.getText()), txtDescription.getText(), LoginController.getLoggedInID(), false);
+        persistenceHandler.createProduction(production);
+
+        lblTitle.setText(txtTitle.getText());
+        lblReleaseYear.setText(String.valueOf(txtYear.getText()));
     }
 
     public void clearInfo() {
@@ -174,6 +186,50 @@ public class ProducerController {
                     persistenceHandler.deleteCredit(data);
                 }
             }
+        }
+    }
+
+    public void handleProducerCreateProduction(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "ProducerCreateProduction.fxml", "Opret produktion");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleMyProductions(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "ProducerMyProductions.fxml", "Mine Produktioner");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleProducerLogOut(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "FrontPage.fxml", "Login");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleMyProducerProfile(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "ProducerProfile.fxml", "Min profil");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 }

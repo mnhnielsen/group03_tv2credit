@@ -3,15 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.FrontPageController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
     <right>
         <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
     </right>
@@ -21,7 +20,7 @@
     <bottom>
         <AnchorPane prefHeight="57.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="BOTTOM_CENTER">
          <children>
-            <Button layoutX="41.0" layoutY="7.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="124.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Åbn produktion" />
+            <Button layoutX="41.0" layoutY="7.0" mnemonicParsing="false" onAction="#viewProduction" prefHeight="34.0" prefWidth="124.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" stylesheets="@Style/fullpackstyling.css" text="Åbn produktion" />
          </children></AnchorPane>
     </bottom>
     <top>
@@ -39,7 +38,7 @@
          <bottom>
             <HBox alignment="TOP_CENTER" prefHeight="28.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Opret bruger">
+                  <Button mnemonicParsing="false" onAction="#handleMyAdminCreateUser" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret bruger">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -47,7 +46,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Slet Bruger">
+                  <Button mnemonicParsing="false" onAction="#handleDeleteAccount" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Slet Bruger">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -55,7 +54,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Publikationsanmodninger" textFill="#b42524">
+                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparent;" text="Publikationsanmodninger" textFill="#b42524">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -63,7 +62,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Profil">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -71,23 +70,20 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#handleAdminLogOut" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Log ud" />
                </children>
             </HBox>
          </bottom>
         </BorderPane>
     </top>
    <center>
-      <TableView prefHeight="479.0" prefWidth="867.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
+      <ListView fx:id="unreleasedList" prefHeight="479.0" prefWidth="867.0" stylesheets="@Style/Listviewscrollbar.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="30.0" />
          </BorderPane.margin>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ListView>
    </center>
 </BorderPane>
