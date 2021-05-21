@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.ProducerController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.MyProductionsController">
    <right>
       <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
    </right>

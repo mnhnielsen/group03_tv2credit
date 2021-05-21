@@ -600,7 +600,6 @@ public class PersistenceHandler implements IPersistenceHandler
 
         } catch (SQLException throwables)
         {
-            throwables.printStackTrace();
             return null;
         }
     }
