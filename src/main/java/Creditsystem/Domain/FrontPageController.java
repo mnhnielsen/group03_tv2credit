@@ -19,7 +19,6 @@ public class FrontPageController
     public TableView tblCredits;
     public Button btnOpenCredit;
 
-
     private StageChange stageChange = new StageChange();
     private TableColumn titleColumn = new TableColumn();
 

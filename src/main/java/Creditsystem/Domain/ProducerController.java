@@ -37,11 +37,13 @@ public class ProducerController
     {
         System.out.println(LoginController.getLoggedInID());
         welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
-        /*creditList = new ArrayList<>();
-        for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
+        creditList = new ArrayList<>();
+        /*for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
         {
             myProgramList.getItems().add(pr.getTitle());
-        }*/
+        }
+
+         */
     }
 
     public void searchForPerson(ActionEvent event)
