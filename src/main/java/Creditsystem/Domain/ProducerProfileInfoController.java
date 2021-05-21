@@ -19,6 +19,7 @@ public class ProducerProfileInfoController
 
     public void initialize()
     {
+        System.out.println(LoginController.getLoggedInID());
         currentProducerAccount = persistenceHandler.getProducerAccount(LoginController.getLoggedInID());
         txtOldName.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
         txtOldMail.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail());
@@ -65,28 +66,119 @@ public class ProducerProfileInfoController
         {
             if (txtNewName.getText().equals(txtRepeatNewName.getText()))
             {
-                int id ;
-                String username;
-                String password;
-                String name;
-                String email;
-                int phone;
-                String company;
-                ProducerAccount account = new ProducerAccount();
-                persistenceHandler.changeAccountName()
+                int id = LoginController.getLoggedInID();
+                String username = currentProducerAccount.getUsername();
+                String password = currentProducerAccount.getPassword();
+                String name = txtRepeatNewName.getText();
+                String email = currentProducerAccount.getEmail();
+                int phone = currentProducerAccount.getPhoneNumber();
+                String company = currentProducerAccount.getCompany();
+                ProducerAccount account = new ProducerAccount(id, username, password, false, name, email, phone, company);
+                persistenceHandler.changeAccountName(account);
+                txtRepeatNewName.clear();
+                txtNewName.clear();
+                txtOldName.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
+            } else
+            {
+                System.out.println("Not the same");
             }
+        } else
+        {
+            System.out.println("Fill out more field");
         }
+
     }
 
     public void saveNewPhone(ActionEvent event)
     {
+
+        if (!txtOldPhone.getText().isEmpty() && !txtNewPhone.getText().isEmpty() && !txtRepeatNewPhone.getText().isEmpty())
+        {
+            if (txtNewPhone.getText().equals(txtRepeatNewPhone.getText()))
+            {
+                int id = LoginController.getLoggedInID();
+                String username = currentProducerAccount.getUsername();
+                String password = currentProducerAccount.getPassword();
+                String name = txtRepeatNewName.getText();
+                String email = currentProducerAccount.getEmail();
+                int phone = Integer.parseInt(txtNewPhone.getText());
+                String company = currentProducerAccount.getCompany();
+                ProducerAccount account = new ProducerAccount(id, username, password, false, name, email, phone, company);
+                persistenceHandler.changeAccountPhone(account);
+                txtNewPhone.clear();
+                txtRepeatNewPhone.clear();
+                txtOldPhone.setText(String.valueOf(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getPhoneNumber()));
+            }
+            else
+            {
+                System.out.println("Not the same");
+            }
+        }
+        else
+        {
+            System.out.println("Fill out more field");
+        }
+
     }
 
     public void saveNewMail(ActionEvent event)
     {
+        if (!txtOldMail.getText().isEmpty() & !txtNewMail.getText().isEmpty() && !txtRepeatNewMail.getText().isEmpty())
+        {
+            if (txtNewMail.getText().equals(txtRepeatNewMail.getText()))
+            {
+                int id = LoginController.getLoggedInID();
+                String username = currentProducerAccount.getUsername();
+                String password = currentProducerAccount.getPassword();
+                String name = txtRepeatNewName.getText();
+                String email = txtNewMail.getText();
+                int phone = currentProducerAccount.getPhoneNumber();
+                String company = currentProducerAccount.getCompany();
+                ProducerAccount account = new ProducerAccount(id, username, password, false, name, email, phone, company);
+                persistenceHandler.changeAccountEmail(account);
+                txtNewMail.clear();
+                txtRepeatNewMail.clear();
+                txtOldMail.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail());
+            }
+            else
+            {
+                System.out.println("Not the same");
+            }
+        }
+        else
+        {
+            System.out.println("Fill out more field");
+        }
     }
 
     public void saveNewPassword(ActionEvent event)
     {
+        if (!txtOldPassword.getText().isEmpty() && !txtNewPassword.getText().isEmpty() && !txtRepeatNewPassword.getText().isEmpty())
+        {
+            if (txtNewPassword.getText().equals(txtRepeatNewPassword.getText()))
+            {
+                int id = LoginController.getLoggedInID();
+                String username = currentProducerAccount.getUsername();
+                String password = txtNewPassword.getText();
+                String name = txtRepeatNewName.getText();
+                String email = currentProducerAccount.getEmail();
+                int phone = currentProducerAccount.getPhoneNumber();
+                String company = currentProducerAccount.getCompany();
+                ProducerAccount account = new ProducerAccount(id, username, password, false, name, email, phone, company);
+                persistenceHandler.changeAccountPassword(account);
+                txtNewPassword.clear();
+                txtRepeatNewPassword.clear();
+                txtOldPassword.setText(String.valueOf(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getPassword()));
+            }
+            else
+            {
+                System.out.println("Error with saveNewPassword()");
+            }
+        }
+        else
+        {
+            System.out.println("Fill out more field");
+        }
+
     }
 }

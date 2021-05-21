@@ -50,4 +50,10 @@ public class ProducerAccount extends Account
     {
         return company;
     }
+
+    @Override
+    public int getId()
+    {
+        return id;
+    }
 }

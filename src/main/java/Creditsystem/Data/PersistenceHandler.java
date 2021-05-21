@@ -721,9 +721,9 @@ public class PersistenceHandler implements IPersistenceHandler
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -738,9 +738,9 @@ public class PersistenceHandler implements IPersistenceHandler
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -751,13 +751,15 @@ public class PersistenceHandler implements IPersistenceHandler
             PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET name = ? WHERE id = ?");
             statement.setString(1,account.getName());
             statement.setInt(2,account.getId());
+            System.out.println(account.getId());
+            System.out.println(account.getName());
             statement.execute();
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -772,9 +774,9 @@ public class PersistenceHandler implements IPersistenceHandler
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public boolean deleteCredit(String title)
