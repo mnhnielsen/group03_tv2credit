@@ -708,6 +708,75 @@ public class PersistenceHandler implements IPersistenceHandler
         }
         return true;
     }
+
+    @Override
+    public boolean changeAccountPhone(ProducerAccount account)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET phonenumber = ? WHERE id = ?");
+            statement.setInt(1,account.getPhoneNumber());
+            statement.setInt(2,account.getId());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean changeAccountEmail(ProducerAccount account)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET email = ? WHERE id = ?");
+            statement.setString(1,account.getEmail());
+            statement.setInt(2,account.getId());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean changeAccountName(ProducerAccount account)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET name = ? WHERE id = ?");
+            statement.setString(1,account.getName());
+            statement.setInt(2,account.getId());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean changeAccountPassword(ProducerAccount account)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET password = ? WHERE id = ?");
+            statement.setString(1,account.getPassword());
+            statement.setInt(2,account.getId());
+            statement.execute();
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
+            return true;
+        }
+        return false;
+    }
+
     public boolean deleteCredit(String title)
     {
         try

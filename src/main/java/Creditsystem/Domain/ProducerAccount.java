@@ -16,6 +16,15 @@ public class ProducerAccount extends Account
         this.phoneNumber = phoneNumber;
         this.company = company;
     }
+    public ProducerAccount(int id, String username, String password, boolean isAdmin, String name, String email, int phoneNumber, String company)
+    {
+        super(username, password, isAdmin);
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.company = company;
+    }
 
     public ProducerAccount(int id, String username)
     {

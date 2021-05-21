@@ -37,4 +37,9 @@ public interface IPersistenceHandler
     boolean deleteCredit(String title);
 	boolean changeCreditRoleID(Credits credits);
     boolean changeCreditParticipantID(Credits credits);
+    boolean changeAccountPhone(ProducerAccount account);
+    boolean changeAccountEmail(ProducerAccount account);
+    boolean changeAccountName(ProducerAccount account);
+    boolean changeAccountPassword(ProducerAccount account);
+
 }

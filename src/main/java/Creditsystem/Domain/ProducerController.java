@@ -166,7 +166,7 @@ public class ProducerController
     {
         if (this.production != null)
         {
-            statusLabel.setText("Din produktion med titlen" + production.getTitle() + " er nu sendt til godkendelse. " + "\n" + "Du modtager en mail på: " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail() + " ved udgivelse");
+            statusLabel.setText("Din produktion med titlen: " + production.getTitle() + " er nu sendt til godkendelse. " + "Du modtager en mail på: " + persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail() + " ved udgivelse");
 
             clearInfo();
         }
