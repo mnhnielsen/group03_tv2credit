@@ -1,7 +1,5 @@
 package Creditsystem.Domain;
 
-import javax.mail.Part;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public interface IPersistenceHandler
@@ -10,7 +8,7 @@ public interface IPersistenceHandler
     boolean checkAuthorization(String username);
     boolean checkUsername(String username);
     boolean createAdminAccount(Account account);
-    boolean createProducerAccount(ProducerAccount producerAccount);
+    boolean createProducerAccount(Producer producerAccount);
     int getAccountID(String username);
     ArrayList getProductions();
     Production getProductionTitle(String title);
@@ -30,16 +28,16 @@ public interface IPersistenceHandler
     Participant getParticipant(String name);
     Participant getParticipantID(String name);
     Role getRoleID(String name);
-    ProducerAccount getProducerAccount(int id);
+    Producer getProducerAccount(int id);
     Account getAccount(int id);
     ArrayList<Production> getMyProductions(int id);
     ArrayList<Production> getUnreleasedProductions();
     boolean releaseProduction(Production production);
     boolean deleteCredit(String title);
-    boolean changeAccountPhone(ProducerAccount account);
-    boolean changeAccountEmail(ProducerAccount account);
-    boolean changeAccountName(ProducerAccount account);
-    boolean changeAccountPassword(ProducerAccount account);
+    boolean changeAccountPhone(Producer account);
+    boolean changeAccountEmail(Producer account);
+    boolean changeAccountName(Producer account);
+    boolean changeAccountPassword(Producer account);
     boolean changeAccountUsername(Account account);
     boolean changeAccountPassword(Account account);
 }

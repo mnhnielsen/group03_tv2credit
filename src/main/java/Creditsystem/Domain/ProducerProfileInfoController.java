@@ -13,7 +13,7 @@ public class ProducerProfileInfoController
             txtOldPhone, txtNewPhone, txtRepeatNewPhone, txtOldMail,
             txtNewMail, txtRepeatNewMail, txtOldPassword, txtNewPassword,
             txtRepeatNewPassword;
-    private ProducerAccount currentProducerAccount;
+    private Producer currentProducerAccount;
     private StageChange stageChange = new StageChange();
     private IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
@@ -72,7 +72,7 @@ public class ProducerProfileInfoController
                 String email = currentProducerAccount.getEmail();
                 int phone = currentProducerAccount.getPhoneNumber();
                 String company = currentProducerAccount.getCompany();
-                ProducerAccount account = new ProducerAccount(id, username, password, false, name, email, phone, company);
+                Producer account = new Producer(id, username, password, false, name, email, phone, company);
                 persistenceHandler.changeAccountName(account);
                 txtRepeatNewName.clear();
                 txtNewName.clear();
@@ -102,7 +102,7 @@ public class ProducerProfileInfoController
                 String email = currentProducerAccount.getEmail();
                 int phone = Integer.parseInt(txtNewPhone.getText());
                 String company = currentProducerAccount.getCompany();
-                ProducerAccount account = new ProducerAccount(id, username, password, false, name, email, phone, company);
+                Producer account = new Producer(id, username, password, false, name, email, phone, company);
                 persistenceHandler.changeAccountPhone(account);
                 txtNewPhone.clear();
                 txtRepeatNewPhone.clear();
@@ -133,7 +133,7 @@ public class ProducerProfileInfoController
                 String email = txtNewMail.getText();
                 int phone = currentProducerAccount.getPhoneNumber();
                 String company = currentProducerAccount.getCompany();
-                ProducerAccount account = new ProducerAccount(id, username, password, false, name, email, phone, company);
+                Producer account = new Producer(id, username, password, false, name, email, phone, company);
                 persistenceHandler.changeAccountEmail(account);
                 txtNewMail.clear();
                 txtRepeatNewMail.clear();
@@ -163,7 +163,7 @@ public class ProducerProfileInfoController
                 String email = currentProducerAccount.getEmail();
                 int phone = currentProducerAccount.getPhoneNumber();
                 String company = currentProducerAccount.getCompany();
-                ProducerAccount account = new ProducerAccount(id, username, password, false, name, email, phone, company);
+                Producer account = new Producer(id, username, password, false, name, email, phone, company);
                 persistenceHandler.changeAccountPassword(account);
                 txtNewPassword.clear();
                 txtRepeatNewPassword.clear();

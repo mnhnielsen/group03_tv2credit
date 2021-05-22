@@ -3,12 +3,8 @@ package Creditsystem.Domain;
 import Creditsystem.Data.PersistenceHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AdminPageController
 {
@@ -44,7 +40,7 @@ public class AdminPageController
                         adminCheck.setSelected(false);
                     } else
                     {
-                        ProducerAccount producerAccount = new ProducerAccount(username, password, false, txtName.getText(), txtEmail.getText(), Integer.valueOf(txtPhone.getText()), txtCompany.getText());
+                        Producer producerAccount = new Producer(username, password, false, txtName.getText(), txtEmail.getText(), Integer.valueOf(txtPhone.getText()), txtCompany.getText());
                         persistenceHandler.createProducerAccount(producerAccount);
                         txtCreateName.clear();
                         pwrdPassword.clear();

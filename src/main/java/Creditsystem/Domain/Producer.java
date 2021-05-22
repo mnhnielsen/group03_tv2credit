@@ -1,6 +1,6 @@
 package Creditsystem.Domain;
 
-public class ProducerAccount extends Account
+public class Producer extends Account
 {
     private int id;
     private String name;
@@ -8,7 +8,7 @@ public class ProducerAccount extends Account
     private int phoneNumber;
     private String company;
 
-    public ProducerAccount(String username, String password, boolean isAdmin, String name, String email, int phoneNumber, String company)
+    public Producer(String username, String password, boolean isAdmin, String name, String email, int phoneNumber, String company)
     {
         super(username, password, isAdmin);
         this.name = name;
@@ -16,7 +16,7 @@ public class ProducerAccount extends Account
         this.phoneNumber = phoneNumber;
         this.company = company;
     }
-    public ProducerAccount(int id, String username, String password, boolean isAdmin, String name, String email, int phoneNumber, String company)
+    public Producer(int id, String username, String password, boolean isAdmin, String name, String email, int phoneNumber, String company)
     {
         super(username, password, isAdmin);
         this.id = id;
@@ -26,7 +26,7 @@ public class ProducerAccount extends Account
         this.company = company;
     }
 
-    public ProducerAccount(int id, String username)
+    public Producer(int id, String username)
     {
         super(id,username);
     }

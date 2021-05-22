@@ -2,9 +2,7 @@ package Creditsystem.Data;
 
 import Creditsystem.Domain.*;
 
-import javax.mail.Part;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -190,7 +188,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean createProducerAccount(ProducerAccount producerAccount)
+    public boolean createProducerAccount(Producer producerAccount)
     {
         try
         {
@@ -631,7 +629,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public ProducerAccount getProducerAccount(int id)
+    public Producer getProducerAccount(int id)
     {
         try
         {
@@ -642,7 +640,7 @@ public class PersistenceHandler implements IPersistenceHandler
             {
                 return null;
             }
-            return new ProducerAccount(sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getBoolean(4), sqlReturnValues.getString(5), sqlReturnValues.getString(6), sqlReturnValues.getInt(7), sqlReturnValues.getString(8));
+            return new Producer(sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getBoolean(4), sqlReturnValues.getString(5), sqlReturnValues.getString(6), sqlReturnValues.getInt(7), sqlReturnValues.getString(8));
         } catch (SQLException throwables)
         {
             return null;
@@ -731,7 +729,7 @@ public class PersistenceHandler implements IPersistenceHandler
      */
 
     @Override
-    public boolean changeAccountPhone(ProducerAccount account)
+    public boolean changeAccountPhone(Producer account)
     {
         try
         {
@@ -748,7 +746,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean changeAccountEmail(ProducerAccount account)
+    public boolean changeAccountEmail(Producer account)
     {
         try
         {
@@ -765,7 +763,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean changeAccountName(ProducerAccount account)
+    public boolean changeAccountName(Producer account)
     {
         try
         {
@@ -784,7 +782,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean changeAccountPassword(ProducerAccount account)
+    public boolean changeAccountPassword(Producer account)
     {
         try
         {
