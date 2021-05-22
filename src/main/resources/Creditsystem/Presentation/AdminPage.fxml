@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.AdminPageController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.Controllers.AdminPageController">
    <children>
       <AnchorPane prefHeight="700.0" prefWidth="359.0" style="-fx-background-color: #d21e1e;">
          <children>

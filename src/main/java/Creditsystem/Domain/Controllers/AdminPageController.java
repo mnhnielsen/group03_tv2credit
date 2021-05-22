@@ -1,6 +1,10 @@
-package Creditsystem.Domain;
+package Creditsystem.Domain.Controllers;
 
 import Creditsystem.Data.PersistenceHandler;
+import Creditsystem.Domain.Account;
+import Creditsystem.Domain.Helpers.StageChange;
+import Creditsystem.Domain.IPersistenceHandler;
+import Creditsystem.Domain.Producer;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 

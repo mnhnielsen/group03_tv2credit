@@ -1,16 +1,14 @@
-package Creditsystem.Domain;
+package Creditsystem.Domain.Controllers;
 
 import Creditsystem.Data.PersistenceHandler;
+import Creditsystem.Domain.*;
+import Creditsystem.Domain.Helpers.StageChange;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ProducerController
 {

@@ -1,4 +1,4 @@
-package Creditsystem.Domain;
+package Creditsystem.Domain.Helpers;
 
 import Creditsystem.Presentation.App;
 import javafx.event.ActionEvent;

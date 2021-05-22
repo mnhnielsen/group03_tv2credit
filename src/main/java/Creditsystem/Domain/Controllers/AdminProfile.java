@@ -1,11 +1,12 @@
-package Creditsystem.Domain;
+package Creditsystem.Domain.Controllers;
 
 import Creditsystem.Data.PersistenceHandler;
+import Creditsystem.Domain.Account;
+import Creditsystem.Domain.Helpers.StageChange;
+import Creditsystem.Domain.IPersistenceHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 import java.io.IOException;
 

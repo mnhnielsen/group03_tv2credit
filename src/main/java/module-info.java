@@ -11,4 +11,6 @@ module Creditsystem{
     opens Creditsystem.Data;
     opens Creditsystem.Presentation;
     opens Creditsystem.Domain;
+    opens Creditsystem.Domain.Controllers;
+    opens Creditsystem.Domain.Helpers;
 }

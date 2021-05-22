@@ -1,4 +1,4 @@
-package Creditsystem.Domain;
+package Creditsystem.Domain.Helpers;
 
 import javax.mail.*;
 import javax.mail.internet.*;

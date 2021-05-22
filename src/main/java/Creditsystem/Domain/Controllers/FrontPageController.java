@@ -1,6 +1,10 @@
-package Creditsystem.Domain;
+package Creditsystem.Domain.Controllers;
 
 import Creditsystem.Data.PersistenceHandler;
+import Creditsystem.Domain.CreditJoin;
+import Creditsystem.Domain.IPersistenceHandler;
+import Creditsystem.Domain.Production;
+import Creditsystem.Domain.Helpers.StageChange;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class FrontPageController {
     //Javafx attributes
