@@ -68,7 +68,7 @@ public class PersistenceHandler implements IPersistenceHandler
         }
     }
 
-    private PersistenceHandler()
+    public PersistenceHandler()
     {
         initializeConfiguration();
         initializePostgresqlDatabase();
