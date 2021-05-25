@@ -594,7 +594,7 @@ public class PersistenceHandler implements IPersistenceHandler
             }
             participantID = participant.getId();
 
-            return new Participant(sqlReturnValues.getInt(1),sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getInt(4));
+            return new Participant(sqlReturnValues.getInt(1), sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getInt(4));
 
         } catch (SQLException throwables)
         {
@@ -623,7 +623,7 @@ public class PersistenceHandler implements IPersistenceHandler
             return new Role(sqlReturnValues.getInt(1));
         } catch (SQLException throwables)
         {
-            
+
             return null;
         }
     }
@@ -659,7 +659,7 @@ public class PersistenceHandler implements IPersistenceHandler
             {
                 return null;
             }
-            return new Account(sqlReturnValues.getInt(1),sqlReturnValues.getString(2),sqlReturnValues.getString(3),sqlReturnValues.getBoolean(4));
+            return new Account(sqlReturnValues.getInt(1), sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getBoolean(4));
         } catch (SQLException throwables)
         {
             return null;
@@ -734,8 +734,8 @@ public class PersistenceHandler implements IPersistenceHandler
         try
         {
             PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET phonenumber = ? WHERE id = ?");
-            statement.setInt(1,account.getPhoneNumber());
-            statement.setInt(2,account.getId());
+            statement.setInt(1, account.getPhoneNumber());
+            statement.setInt(2, account.getId());
             statement.execute();
         } catch (SQLException throwables)
         {
@@ -751,8 +751,8 @@ public class PersistenceHandler implements IPersistenceHandler
         try
         {
             PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET email = ? WHERE id = ?");
-            statement.setString(1,account.getEmail());
-            statement.setInt(2,account.getId());
+            statement.setString(1, account.getEmail());
+            statement.setInt(2, account.getId());
             statement.execute();
         } catch (SQLException throwables)
         {
@@ -768,8 +768,8 @@ public class PersistenceHandler implements IPersistenceHandler
         try
         {
             PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET name = ? WHERE id = ?");
-            statement.setString(1,account.getName());
-            statement.setInt(2,account.getId());
+            statement.setString(1, account.getName());
+            statement.setInt(2, account.getId());
             System.out.println(account.getId());
             System.out.println(account.getName());
             statement.execute();
@@ -787,8 +787,8 @@ public class PersistenceHandler implements IPersistenceHandler
         try
         {
             PreparedStatement statement = connection.prepareStatement("UPDATE produceraccount SET password = ? WHERE id = ?");
-            statement.setString(1,account.getPassword());
-            statement.setInt(2,account.getId());
+            statement.setString(1, account.getPassword());
+            statement.setInt(2, account.getId());
             statement.execute();
         } catch (SQLException throwables)
         {
@@ -804,8 +804,8 @@ public class PersistenceHandler implements IPersistenceHandler
         try
         {
             PreparedStatement statement = connection.prepareStatement("UPDATE accounts SET username = ? WHERE id = ?");
-            statement.setString(1,account.getUsername());
-            statement.setInt(2,account.getId());
+            statement.setString(1, account.getUsername());
+            statement.setInt(2, account.getId());
             System.out.println(account.getId());
             statement.execute();
         } catch (SQLException throwables)
@@ -822,8 +822,8 @@ public class PersistenceHandler implements IPersistenceHandler
         try
         {
             PreparedStatement statement = connection.prepareStatement("UPDATE accounts SET password = ? WHERE id = ?");
-            statement.setString(1,account.getPassword());
-            statement.setInt(2,account.getId());
+            statement.setString(1, account.getPassword());
+            statement.setInt(2, account.getId());
             statement.execute();
         } catch (SQLException throwables)
         {

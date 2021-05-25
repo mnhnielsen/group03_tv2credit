@@ -91,6 +91,7 @@ public class ProducerController
                 persistenceHandler.createParticipant(participant);
             } else
             {
+                //Set participant ID to existing participant
                 persistenceHandler.getParticipantID(txtName.getText().toLowerCase());
             }
 
@@ -100,11 +101,10 @@ public class ProducerController
                 role = new Role(txtJob.getText().toLowerCase());
                 persistenceHandler.createRole(role);
             } else
-            {
+            {   //Set role id to existing role
                 persistenceHandler.getRoleID(txtJob.getText().toLowerCase());
             }
-
-            //Create Credit
+            //Create a Credit
             credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
             persistenceHandler.createCredit(credits);
 
