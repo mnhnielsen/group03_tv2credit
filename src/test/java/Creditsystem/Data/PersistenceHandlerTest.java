@@ -4,6 +4,8 @@ import Creditsystem.Domain.Production;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
+import java.sql.PreparedStatement;
+
 import static org.junit.Assert.assertEquals;
 
 public class PersistenceHandlerTest {
@@ -19,7 +21,7 @@ public class PersistenceHandlerTest {
     @Test
     public void logIn()
     {
-        Assertions.assertEquals(true,persistenceHandler.logIn("mathias","1234"));
+        Assertions.assertEquals(true,persistenceHandler.logIn("Mathias","1234"));
     }
 
 }

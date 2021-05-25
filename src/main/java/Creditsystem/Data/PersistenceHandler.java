@@ -9,6 +9,7 @@ import java.net.URISyntaxException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 public class PersistenceHandler implements IPersistenceHandler
@@ -105,7 +106,7 @@ public class PersistenceHandler implements IPersistenceHandler
         try
         {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM accounts WHERE username = ? and password = ?");
-            statement.setString(1, username);
+            statement.setString(1, username.toLowerCase(Locale.ROOT));
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             if (!resultSet.next())
