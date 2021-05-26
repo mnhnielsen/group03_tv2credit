@@ -88,6 +88,14 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
+                        <Button mnemonicParsing="false" onAction="#searchForPerson" text="Søg på person">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                         <TextField fx:id="participantEmail" promptText="e-mail">
                            <VBox.margin>
                               <Insets bottom="5.0" right="10.0" />
@@ -104,14 +112,6 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#searchForPerson" text="Søg på person">
-                           <VBox.margin>
-                              <Insets bottom="5.0" />
-                           </VBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                         <Button fx:id="btnAddCredit" mnemonicParsing="false" onAction="#createCredit" text="Tilføj til produktion">
                            <VBox.margin>
                               <Insets bottom="5.0" />
