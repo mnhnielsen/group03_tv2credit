@@ -15,7 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FrontPageController {
+public class FrontPageController
+{
     //Javafx attributes
     public TextField txtSearch;
     public TableView tblCredits;
@@ -31,10 +32,12 @@ public class FrontPageController {
 
     static Production production = null;
 
-    public void initialize() {
+    public void initialize()
+    {
         initializeColumns();
 
-        for (Production pr : lists) {
+        for (Production pr : lists)
+        {
             tblCredits.getItems().add(pr);
         }
         txtSearch.textProperty().addListener((observable, oldValue, newValue) ->
@@ -42,7 +45,8 @@ public class FrontPageController {
         );
     }
 
-    private void initializeColumns() {
+    private void initializeColumns()
+    {
         titleColumn.setText("Title");
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         titleColumn.setMinWidth(10);
@@ -58,25 +62,34 @@ public class FrontPageController {
         tblCredits.getColumns().addAll(titleColumn, year);
     }
 
-    public void handleLogin(ActionEvent event) {
-        try {
+    public void handleLogin(ActionEvent event)
+    {
+        try
+        {
             stageChange.openNewWindow(event, "LoginPage.fxml", "Login");
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
 
-    public void showProduction(ActionEvent event) {
-        if (tblCredits.getSelectionModel().getSelectedItem() != null) {
+    public void showProduction(ActionEvent event)
+    {
+        if (tblCredits.getSelectionModel().getSelectedItem() != null)
+        {
             Object obj = tblCredits.getSelectionModel().getSelectedItem();
             String data = (String) titleColumn.getCellObservableValue(obj).getValue();
-            for (int i = 0; i < lists.size(); i++) {
-                if (data == lists.get(i).getTitle()) {
+            for (int i = 0; i < lists.size(); i++)
+            {
+                if (data == lists.get(i).getTitle())
+                {
                     production = persistenceHandler.getProductionTitle(data);
                     credits = persistenceHandler.getCredits(data);
-                    try {
+                    try
+                    {
                         stageChange.openNewWindow(event, "CreditInfomationPage.fxml", "Informations side");
-                    } catch (IOException e) {
+                    } catch (IOException e)
+                    {
                         e.printStackTrace();
                     }
                 }
@@ -85,28 +98,34 @@ public class FrontPageController {
     }
 
     // Denne metoder konverterer teksten i søgefeltet til lowercase.
-    private boolean searchFindsProduction(Production production, String searchText) {
+    private boolean searchFindsProduction(Production production, String searchText)
+    {
         return (production.getTitle().toLowerCase().contains(searchText.toLowerCase())) ||
                 (production.getDescription().toLowerCase().contains(searchText.toLowerCase())) ||
                 Integer.valueOf(production.getReleaseYear()).toString().equals(searchText.toLowerCase());
     }
 
     //Søgefunktion
-    private ObservableList<Production> filterList(List<Production> list, String searchText) {
+    private ObservableList<Production> filterList(List<Production> productionList, String searchText)
+    {
         List<Production> filteredList = new ArrayList<>();
-        for (Production production : list) {
-            if (searchFindsProduction(production, searchText)) {
+        for (Production production : productionList)
+        {
+            if (searchFindsProduction(production, searchText))
+            {
                 filteredList.add(production);
             }
         }
         return FXCollections.observableList(filteredList);
     }
 
-    public static Production getProduction() {
+    public static Production getProduction()
+    {
         return production;
     }
 
-    public static ArrayList<CreditJoin> getCredits() {
+    public static ArrayList<CreditJoin> getCredits()
+    {
         return credits;
     }
 }
