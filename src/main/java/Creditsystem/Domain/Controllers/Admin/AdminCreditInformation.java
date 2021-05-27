@@ -69,9 +69,8 @@ public class AdminCreditInformation
 
                             } else
                             {
-                                phone.setText(String.valueOf(persistenceHandler.getParticipant(newName).getPhoneNumber()));
-                                email.setText(persistenceHandler.getParticipant(newName).getEmail().toLowerCase());
-                                email.setText("testset");
+                                phone.setText(String.valueOf(persistenceHandler.getParticipant(newName.toLowerCase()).getPhoneNumber()));
+                                email.setText(persistenceHandler.getParticipant(newName.toLowerCase()).getEmail().toLowerCase());
                                 phone.setDisable(true);
                                 email.setDisable(true);
                                 phone.setEditable(false);
