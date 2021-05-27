@@ -1,45 +1,46 @@
-package Creditsystem.Domain.Controllers;
+package Creditsystem.Domain.Controllers.Producer;
 
 import Creditsystem.Data.PersistenceHandler;
 import Creditsystem.Domain.*;
+import Creditsystem.Domain.Controllers.LoginController;
+import Creditsystem.Domain.Helpers.CreditTable;
 import Creditsystem.Domain.Helpers.StageChange;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.List;
 
-public class ProducerController
+public class ProducerCreateProduction
 {
     public TableView tblCredit;
     public TextField txtTitle, txtYear, txtName, txtJob, participantEmail, participantPhone;
     public TextArea txtDescription;
-    public Label lblTitle, lblReleaseYear, statusLabel, welcomeLabel;
-    public ListView myProgramList;
+    public Label lblTitle, lblReleaseYear, statusLabel, lblParticipantStatus;
 
-    List<Credit> creditList;
-    TableColumn roleColumn;
-    StageChange stageChange = new StageChange();
+    private TableColumn roleColumn;
+    private StageChange stageChange = new StageChange();
+    private IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
-    IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
-
-    Production production = null;
-    Role role = null;
-    Participant participant = null;
-    Credits credits = null;
-    boolean foundParticipant = false;
-    boolean foundRole = false;
-    boolean hasAddedProduction = false, hasCreatedColumns = false;
-
+    private Production production = null;
+    private Role role = null;
+    private Participant participant = null;
+    private Credit credits = null;
+    private boolean foundParticipant = false;
+    private boolean foundRole = false;
+    private boolean hasAddedProduction = false, hasCreatedColumns = false, hasSearchedPerson = false;
 
     public void initialize()
     {
-        //welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
+        participantEmail.setEditable(false);
+        participantPhone.setEditable(false);
     }
 
     public void searchForPerson(ActionEvent event)
     {
+        participantEmail.setEditable(true);
+        participantPhone.setEditable(true);
+        hasSearchedPerson = true;
         participantPhone.clear();
         participantEmail.clear();
         participantPhone.setStyle(null);
@@ -82,6 +83,13 @@ public class ProducerController
     //Creates participants, credits, columns and adds to a credit list
     public void createCredit(ActionEvent event)
     {
+        lblParticipantStatus.setText("");
+        participantPhone.setEditable(false);
+        participantEmail.setEditable(false);
+        hasSearchedPerson = false;
+        participantEmail.setStyle(null);
+        participantPhone.setStyle(null);
+
         if (!txtName.getText().isEmpty() && !txtJob.getText().isEmpty() && !participantPhone.getText().isEmpty() && !participantEmail.getText().isEmpty() && hasAddedProduction)
         {
             if (!foundParticipant)
@@ -95,6 +103,7 @@ public class ProducerController
                 persistenceHandler.getParticipantID(txtName.getText().toLowerCase());
             }
 
+
             if (!foundRole)
             {
                 //Create a role
@@ -104,13 +113,15 @@ public class ProducerController
             {   //Set role id to existing role
                 persistenceHandler.getRoleID(txtJob.getText().toLowerCase());
             }
+
             //Create a Credit
-            credits = new Credits(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
+            credits = new Credit(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
             persistenceHandler.createCredit(credits);
+
 
             //Visual stuff
             Participant participants = new Participant(txtName.getText());
-            Credit credit = new Credit(participants, txtJob.getText(), participants.getName());
+            CreditTable credit = new CreditTable(participants, txtJob.getText(), participants.getName());
 
             if (!hasCreatedColumns)
             {
@@ -130,14 +141,13 @@ public class ProducerController
                 tblCredit.getColumns().addAll(roleColumn, name);
                 hasCreatedColumns = true;
             }
-                tblCredit.getItems().add(credit);
+            tblCredit.getItems().add(credit);
 
-                //Clear name and job
-                txtJob.clear();
-                txtName.clear();
-                participantEmail.clear();
-                participantPhone.clear();
-
+            //Clear name and job
+            txtJob.clear();
+            txtName.clear();
+            participantEmail.clear();
+            participantPhone.clear();
         }
     }
 
@@ -166,7 +176,7 @@ public class ProducerController
         }
     }
 
-    public void clearInfo ()
+    public void clearInfo()
     {
         lblTitle.setText("");
         lblReleaseYear.setText("");
@@ -176,64 +186,37 @@ public class ProducerController
         txtYear.clear();
     }
 
-        //Deletes a selected credit from the list. Does not get published if deleted from list.
-        public void deleteCredit (ActionEvent event){
-        if (tblCredit.getSelectionModel().getSelectedItem() != null)
+
+    public void handleMyProductions(ActionEvent event)
+    {
+        try
         {
-            Object obj = tblCredit.getSelectionModel().getSelectedItem();
-            tblCredit.getItems().remove(obj);
-            String data = (String) roleColumn.getCellObservableValue(obj).getValue();
-            for (int i = 0; i < persistenceHandler.getRoles().size(); i++)
-            {
-                if (data.equals(persistenceHandler.getRoles()))
-                {
-                    persistenceHandler.deleteCredit(data);
-                }
-            }
+            stageChange.openNewWindow(event, "ProducerMyProductions.fxml", "Mine Produktioner");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
         }
     }
 
-        public void handleProducerCreateProduction (ActionEvent event)
+    public void handleProducerLogOut(ActionEvent event)
+    {
+        try
         {
-            try
-            {
-                stageChange.openNewWindow(event, "ProducerCreateProduction.fxml", "Opret produktion");
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-        public void handleMyProductions (ActionEvent event)
+            stageChange.openNewWindow(event, "FrontPage.fxml", "Login");
+        } catch (IOException e)
         {
-            try
-            {
-                stageChange.openNewWindow(event, "ProducerMyProductions.fxml", "Mine Produktioner");
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-        public void handleProducerLogOut (ActionEvent event)
-        {
-            try
-            {
-                stageChange.openNewWindow(event, "FrontPage.fxml", "Login");
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-        public void handleMyProducerProfile (ActionEvent event)
-        {
-            try
-            {
-                stageChange.openNewWindow(event, "ProducerProfile.fxml", "Min profil");
-            } catch (IOException e)
-            {
-                e.printStackTrace();
-            }
+            e.printStackTrace();
         }
     }
+
+    public void handleMyProducerProfile(ActionEvent event)
+    {
+        try
+        {
+            stageChange.openNewWindow(event, "ProducerProfile.fxml", "Min profil");
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+}

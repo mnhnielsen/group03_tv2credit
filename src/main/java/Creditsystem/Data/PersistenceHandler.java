@@ -401,37 +401,6 @@ public class PersistenceHandler implements IPersistenceHandler
         return true;
     }
 
-
-    @Override
-    public boolean checkRoleName(String roleName)
-    {
-        try
-        {
-            int i = 0;
-            PreparedStatement roleStatement = connection.prepareStatement("SELECT name FROM role");
-            ResultSet resultSet = roleStatement.executeQuery();
-            while (resultSet.next())
-            {
-                i++;
-                String string = resultSet.getString(1);
-                if (roleName.equals(string))
-                {
-                    roleID = i;
-                    return true;
-                } else
-                {
-                    return false;
-                }
-            }
-
-        } catch (SQLException throwables)
-        {
-            throwables.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
     @Override
     public boolean createParticipant(Participant participant)
     {
@@ -464,7 +433,7 @@ public class PersistenceHandler implements IPersistenceHandler
     }
 
     @Override
-    public boolean createCredit(Credits credits)
+    public boolean createCredit(Credit credit)
     {
         try
         {
@@ -834,19 +803,56 @@ public class PersistenceHandler implements IPersistenceHandler
         return true;
     }
 
-    public boolean deleteCredit(String title)
+    @Override
+    public boolean checkAccountEmail(String email)
     {
         try
         {
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM credit WHERE title = ?");
-            statement.setString(1, title);
-            statement.execute();
-
-
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM produceraccount WHERE email = ?");
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (!resultSet.next())
+            {
+                return false;
+            }
+            if (resultSet.getString(1).equals(email))
+            {
+                System.out.println("Same email");
+                return false;
+            }
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
-            return false;
+        }
+        return true;
+    }
+    @Override
+    public boolean checkPhone(int phone)
+    {
+        try
+        {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM produceraccount");
+            ResultSet sqlReturnValues = statement.executeQuery();
+            if (!sqlReturnValues.next())
+            {
+                return false;
+            }
+            ArrayList<Producer> producers = new ArrayList<>();
+            while (sqlReturnValues.next())
+            {
+                Producer producer = new Producer(sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getBoolean(4), sqlReturnValues.getString(5), sqlReturnValues.getString(6), sqlReturnValues.getInt(7), sqlReturnValues.getString(8));
+                producers.add(producer);
+            }
+            for (Producer pr : producers)
+            {
+                if (pr.getPhoneNumber() == phone)
+                {
+                    return false;
+                }
+            }
+        } catch (SQLException throwables)
+        {
+            throwables.printStackTrace();
         }
         return true;
     }

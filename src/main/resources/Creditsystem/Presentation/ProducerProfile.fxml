@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.Controllers.ProducerProfileInfoController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.Controllers.Producer.ProducerProfileInfoController">
    <right>
       <AnchorPane prefHeight="482.0" prefWidth="40.0" style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER_RIGHT" />
    </right>
@@ -87,7 +87,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtOldName">
+                  <TextField fx:id="txtOldName" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -118,6 +118,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
+                  <Label fx:id="lblNameStatus" prefHeight="24.0" prefWidth="377.0" />
                   <Button alignment="BOTTOM_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveNewName" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -134,7 +135,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtOldPhone">
+                  <TextField fx:id="txtOldPhone" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -165,6 +166,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
+                  <Label fx:id="lblPhoneStatus" layoutX="10.0" layoutY="235.0" prefHeight="24.0" prefWidth="377.0" />
                   <Button mnemonicParsing="false" onAction="#saveNewPhone" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -188,7 +190,7 @@
                         <Insets top="42.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtOldMail">
+                  <TextField fx:id="txtOldMail" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -219,6 +221,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
+                  <Label fx:id="lblPasswordStatus1" prefHeight="24.0" prefWidth="377.0" />
                   <Button mnemonicParsing="false" onAction="#saveNewMail" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
                         <Insets top="10.0" />
@@ -235,7 +238,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="txtOldPassword">
+                  <PasswordField fx:id="txtOldPassword" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -266,6 +269,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </PasswordField>
+                  <Label fx:id="lblPasswordStatus" prefHeight="24.0" prefWidth="377.0" />
                   <Button mnemonicParsing="false" onAction="#saveNewPassword" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
                         <Insets top="10.0" />

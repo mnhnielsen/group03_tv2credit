@@ -1,4 +1,4 @@
-package Creditsystem.Domain.Controllers;
+package Creditsystem.Domain.Controllers.Admin;
 
 import Creditsystem.Data.PersistenceHandler;
 import Creditsystem.Domain.CreditJoin;
@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.io.IOException;
 
@@ -26,7 +27,6 @@ public class AdminCreditInformation
     private String newName, newRoleName;
     private StageChange stageChange = new StageChange();
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
-    private AdminProductionList adminProductionList = new AdminProductionList();
 
     public void initialize()
     {
@@ -70,7 +70,8 @@ public class AdminCreditInformation
                             } else
                             {
                                 phone.setText(String.valueOf(persistenceHandler.getParticipant(newName).getPhoneNumber()));
-                                email.setText(persistenceHandler.getParticipant(newName).getEmail());
+                                email.setText(persistenceHandler.getParticipant(newName).getEmail().toLowerCase());
+                                email.setText("testset");
                                 phone.setDisable(true);
                                 email.setDisable(true);
                                 phone.setEditable(false);
@@ -100,7 +101,10 @@ public class AdminCreditInformation
 
         for (CreditJoin creditJoin : AdminProductionList.getCredits())
         {
-            tabelView.getItems().add(creditJoin);
+            String actorName = WordUtils.capitalize(creditJoin.getName());
+            String roleName = WordUtils.capitalize(creditJoin.getRoleName());
+            CreditJoin cj = new CreditJoin(actorName , roleName, creditJoin.getReleaseYear());
+            tabelView.getItems().add(cj);
         }
     }
 

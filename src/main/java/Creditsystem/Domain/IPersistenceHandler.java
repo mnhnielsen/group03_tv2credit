@@ -15,14 +15,13 @@ public interface IPersistenceHandler
     ArrayList<CreditJoin> getCredits(String title);
     boolean createProduction(Production production);
     boolean createRole(Role role);
-    boolean createCredit(Credits credits);
+    boolean createCredit(Credit credit);
     ArrayList<Account> getUsers();
     boolean deleteUser(String userName);
     boolean createParticipant(Participant participant);
     int getProductionID();
     int getRoleID();
     int getParticipantID();
-    boolean checkRoleName(String roleName);
     ArrayList<Participant> getParticipants();
     ArrayList<Role> getRoles();
     Participant getParticipant(String name);
@@ -33,11 +32,12 @@ public interface IPersistenceHandler
     ArrayList<Production> getMyProductions(int id);
     ArrayList<Production> getUnreleasedProductions();
     boolean releaseProduction(Production production);
-    boolean deleteCredit(String title);
     boolean changeAccountPhone(Producer account);
     boolean changeAccountEmail(Producer account);
     boolean changeAccountName(Producer account);
     boolean changeAccountPassword(Producer account);
     boolean changeAccountUsername(Account account);
     boolean changeAccountPassword(Account account);
+    boolean checkAccountEmail(String email);
+    boolean checkPhone(int phone);
 }

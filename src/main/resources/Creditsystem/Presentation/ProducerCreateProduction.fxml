@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.Controllers.ProducerController">
+<BorderPane prefHeight="647.0" prefWidth="1000.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.Controllers.Producer.ProducerCreateProduction">
    <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -120,6 +120,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Label fx:id="lblParticipantStatus" prefHeight="46.0" prefWidth="261.0" />
                      </children>
                   </VBox>
                   <VBox prefHeight="500.0" prefWidth="457.0">
@@ -156,14 +157,6 @@
                               <Insets bottom="5.0" top="26.0" />
                            </VBox.margin>
                         </TableView>
-                        <Button fx:id="btnDeleteCredit" mnemonicParsing="false" onAction="#deleteCredit" prefHeight="26.0" prefWidth="60.0" text="Slet">
-                           <VBox.margin>
-                              <Insets bottom="5.0" />
-                           </VBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                         <Button fx:id="btnSendCredit" mnemonicParsing="false" onAction="#publishProduction" prefHeight="26.0" prefWidth="60.0" text="Send">
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -202,7 +195,7 @@
          <bottom>
             <HBox alignment="CENTER" prefHeight="28.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleProducerCreateProduction" style="-fx-background-color: transparent;" text="Opret produktioner" textFill="#b42524">
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Opret produktioner" textFill="#b42524">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>

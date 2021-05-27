@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="173.0" maxWidth="398.0" minHeight="173.0" minWidth="361.0" prefHeight="173.0" prefWidth="375.0" style="-fx-border-color: #b42524; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.Controllers.AdminUserList">
+<AnchorPane maxHeight="173.0" maxWidth="398.0" minHeight="173.0" minWidth="361.0" prefHeight="173.0" prefWidth="375.0" style="-fx-border-color: #b42524; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.Controllers.Admin.AdminUserList">
    <children>
       <Label layoutX="26.0" layoutY="46.0" prefHeight="26.0" prefWidth="334.0" text="Er du sikker på, at du vil slette denne bruger?">
          <font>

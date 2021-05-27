@@ -6,6 +6,7 @@ import Creditsystem.Domain.Helpers.StageChange;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.commons.lang3.text.WordUtils;
 
 
 public class FrontPageCreditInformation
@@ -42,7 +43,10 @@ public class FrontPageCreditInformation
 
         for (CreditJoin creditJoin : FrontPageController.getCredits())
         {
-            tabelView.getItems().add(creditJoin);
+            String actorName = WordUtils.capitalize(creditJoin.getName());
+            String roleName = WordUtils.capitalize(creditJoin.getRoleName());
+            CreditJoin cj = new CreditJoin(actorName , roleName, creditJoin.getReleaseYear());
+            tabelView.getItems().add(cj);
         }
     }
 

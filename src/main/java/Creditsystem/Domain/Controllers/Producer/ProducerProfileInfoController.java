@@ -1,10 +1,12 @@
-package Creditsystem.Domain.Controllers;
+package Creditsystem.Domain.Controllers.Producer;
 
 import Creditsystem.Data.PersistenceHandler;
+import Creditsystem.Domain.Controllers.LoginController;
 import Creditsystem.Domain.Helpers.StageChange;
 import Creditsystem.Domain.IPersistenceHandler;
 import Creditsystem.Domain.Producer;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -16,6 +18,7 @@ public class ProducerProfileInfoController
             txtOldPhone, txtNewPhone, txtRepeatNewPhone, txtOldMail,
             txtNewMail, txtRepeatNewMail, txtOldPassword, txtNewPassword,
             txtRepeatNewPassword;
+    public Label lblPhoneStatus, lblNameStatus, lblEmailStatus, lblPasswordStatus;
     private Producer currentProducerAccount;
     private StageChange stageChange = new StageChange();
     private IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
@@ -49,7 +52,6 @@ public class ProducerProfileInfoController
             e.printStackTrace();
         }
     }
-
 
     public void handleProducerLogOut(ActionEvent event)
     {
@@ -93,63 +95,88 @@ public class ProducerProfileInfoController
 
     public void saveNewPhone(ActionEvent event)
     {
-
         if (!txtOldPhone.getText().isEmpty() && !txtNewPhone.getText().isEmpty() && !txtRepeatNewPhone.getText().isEmpty())
         {
             if (txtNewPhone.getText().equals(txtRepeatNewPhone.getText()))
             {
-                int id = LoginController.getLoggedInID();
-                String username = currentProducerAccount.getUsername();
-                String password = currentProducerAccount.getPassword();
-                String name = txtRepeatNewName.getText();
-                String email = currentProducerAccount.getEmail();
-                int phone = Integer.parseInt(txtNewPhone.getText());
-                String company = currentProducerAccount.getCompany();
-                Producer account = new Producer(id, username, password, false, name, email, phone, company);
-                persistenceHandler.changeAccountPhone(account);
-                txtNewPhone.clear();
-                txtRepeatNewPhone.clear();
-                txtOldPhone.setText(String.valueOf(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getPhoneNumber()));
-            }
-            else
-            {
-                System.out.println("Not the same");
-            }
-        }
-        else
-        {
-            System.out.println("Fill out more field");
-        }
+                if (!persistenceHandler.checkPhone(Integer.parseInt(txtNewPhone.getText())))
+                {
+                    txtNewPhone.setStyle("-fx-border-color: red;");
+                    lblPhoneStatus.setStyle("-fx-text-fill: red");
+                    lblPhoneStatus.setText("Telefonnr. eksisterer allerede");
+                }
+                else
+                {
+                    txtNewPhone.setStyle(null);
+                    txtRepeatNewPhone.setStyle(null);
+                    lblPhoneStatus.setStyle(null);
 
+                    int id = LoginController.getLoggedInID();
+                    String username = currentProducerAccount.getUsername();
+                    String password = currentProducerAccount.getPassword();
+                    String name = txtRepeatNewName.getText();
+                    String email = currentProducerAccount.getEmail();
+                    int phone = Integer.parseInt(txtNewPhone.getText());
+                    String company = currentProducerAccount.getCompany();
+                    Producer account = new Producer(id, username, password, false, name, email, phone, company);
+                    persistenceHandler.changeAccountPhone(account);
+
+                    txtNewPhone.clear();
+                    txtRepeatNewPhone.clear();
+                    txtOldPhone.setText(String.valueOf(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getPhoneNumber()));
+                    lblPhoneStatus.setText("Telefonnr. ændret");
+                }
+            } else
+            {
+                txtRepeatNewPhone.setStyle("-fx-border-color: red;");
+                lblPhoneStatus.setStyle("-fx-text-fill: red");
+                lblPhoneStatus.setText("Det genindtastede telefonnr. stemmer ikke");
+            }
+        }
     }
 
     public void saveNewMail(ActionEvent event)
     {
+        System.out.println(persistenceHandler.checkAccountEmail(txtNewMail.getText()));
         if (!txtOldMail.getText().isEmpty() & !txtNewMail.getText().isEmpty() && !txtRepeatNewMail.getText().isEmpty())
         {
             if (txtNewMail.getText().equals(txtRepeatNewMail.getText()))
             {
-                int id = LoginController.getLoggedInID();
-                String username = currentProducerAccount.getUsername();
-                String password = currentProducerAccount.getPassword();
-                String name = txtRepeatNewName.getText();
-                String email = txtNewMail.getText();
-                int phone = currentProducerAccount.getPhoneNumber();
-                String company = currentProducerAccount.getCompany();
-                Producer account = new Producer(id, username, password, false, name, email, phone, company);
-                persistenceHandler.changeAccountEmail(account);
-                txtNewMail.clear();
-                txtRepeatNewMail.clear();
-                txtOldMail.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail());
-            }
-            else
+                if (persistenceHandler.checkAccountEmail(txtNewMail.getText()))
+                {
+                    System.out.println("The same");
+                    txtNewMail.setStyle("-fx-border-color: red;");
+                    lblEmailStatus.setStyle("-fx-text-fill: red");
+                    lblEmailStatus.setText("Email eksisterer allerede");
+
+                }
+                else
+                {
+                    txtNewMail.setStyle(null);
+                    txtRepeatNewMail.setStyle(null);
+                    lblEmailStatus.setStyle(null);
+
+                    int id = LoginController.getLoggedInID();
+                    String username = currentProducerAccount.getUsername();
+                    String password = currentProducerAccount.getPassword();
+                    String name = txtRepeatNewName.getText();
+                    String email = txtNewMail.getText();
+                    int phone = currentProducerAccount.getPhoneNumber();
+                    String company = currentProducerAccount.getCompany();
+                    Producer account = new Producer(id, username, password, false, name, email, phone, company);
+                    persistenceHandler.changeAccountEmail(account);
+
+                    txtNewMail.clear();
+                    txtRepeatNewMail.clear();
+                    txtOldMail.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getEmail());
+                    lblEmailStatus.setText("Email ændret");
+                }
+            } else
             {
-                System.out.println("Not the same");
+                txtRepeatNewMail.setStyle("-fx-border-color: red;");
+                lblEmailStatus.setStyle("-fx-text-fill: red");
+                lblEmailStatus.setText("Den genindtastede email stemmer ikke");
             }
-        }
-        else
-        {
-            System.out.println("Fill out more field");
         }
     }
 
@@ -171,16 +198,13 @@ public class ProducerProfileInfoController
                 txtNewPassword.clear();
                 txtRepeatNewPassword.clear();
                 txtOldPassword.setText(String.valueOf(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getPassword()));
-            }
-            else
+            } else
             {
                 System.out.println("Error with saveNewPassword()");
             }
-        }
-        else
+        } else
         {
             System.out.println("Fill out more field");
         }
-
     }
 }

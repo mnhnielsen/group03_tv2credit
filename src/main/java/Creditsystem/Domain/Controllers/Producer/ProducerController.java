@@ -1,27 +1,24 @@
-package Creditsystem.Domain.Controllers;
+package Creditsystem.Domain.Controllers.Producer;
 
 import Creditsystem.Data.PersistenceHandler;
+import Creditsystem.Domain.*;
+import Creditsystem.Domain.Controllers.LoginController;
 import Creditsystem.Domain.Helpers.StageChange;
-import Creditsystem.Domain.IPersistenceHandler;
-import Creditsystem.Domain.Production;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.List;
 
-public class MyProductionsController
+public class ProducerController
 {
-    public ListView myProgramList;
-    IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
+    public Label welcomeLabel;
     private StageChange stageChange = new StageChange();
+    private IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
 
     public void initialize()
     {
-        for (Production pr : persistenceHandler.getMyProductions(LoginController.getLoggedInID()))
-        {
-            myProgramList.getItems().add(pr.getTitle());
-        }
-
+        welcomeLabel.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
     }
 
     public void handleProducerCreateProduction(ActionEvent event)
@@ -46,22 +43,22 @@ public class MyProductionsController
         }
     }
 
-    public void handleMyProducerProfile(ActionEvent event)
+    public void handleProducerLogOut(ActionEvent event)
     {
         try
         {
-            stageChange.openNewWindow(event, "ProducerProfile.fxml", "Min profil");
+            stageChange.openNewWindow(event, "FrontPage.fxml", "Login");
         } catch (IOException e)
         {
             e.printStackTrace();
         }
     }
 
-    public void handleProducerLogOut(ActionEvent event)
+    public void handleMyProducerProfile(ActionEvent event)
     {
         try
         {
-            stageChange.openNewWindow(event, "FrontPage.fxml", "Login");
+            stageChange.openNewWindow(event, "ProducerProfile.fxml", "Min profil");
         } catch (IOException e)
         {
             e.printStackTrace();

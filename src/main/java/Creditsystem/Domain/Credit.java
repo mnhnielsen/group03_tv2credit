@@ -2,37 +2,31 @@ package Creditsystem.Domain;
 
 public class Credit
 {
-    private int id;
-    private String role;
-    private Participant participant;
-    private String name;
 
-    public Credit(Participant participant, String role, String name)
+
+    private int productionId;
+    private int roleId;
+    private int participantId;
+
+    public Credit(int productionId, int roleId, int participantId)
     {
-        this.participant = participant;
-        this.role = role;
-        this.name = name;
+        this.productionId = productionId;
+        this.roleId = roleId;
+        this.participantId = participantId;
     }
 
-    public Participant getParticipant()
+    public int getProductionId()
     {
-        return participant;
+        return productionId;
     }
 
-    public String getRole()
+    public int getRoleId()
     {
-        return role;
+        return roleId;
     }
 
-    //TODO This was edited for iteration 1. Should be revised for next iteration!
-    @Override
-    public String toString()
+    public int getParticipantId()
     {
-        return "Rolle: " + role +"\n" + "Navn: " + getParticipant().getName() + "\n" + "\n";
-    }
-
-    public String getName()
-    {
-        return name;
+        return participantId;
     }
 }

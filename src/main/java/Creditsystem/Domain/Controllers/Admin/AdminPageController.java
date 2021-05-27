@@ -1,4 +1,4 @@
-package Creditsystem.Domain.Controllers;
+package Creditsystem.Domain.Controllers.Admin;
 
 import Creditsystem.Data.PersistenceHandler;
 import Creditsystem.Domain.Account;
