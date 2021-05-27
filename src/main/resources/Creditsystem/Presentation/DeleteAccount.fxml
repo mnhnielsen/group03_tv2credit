@@ -81,7 +81,7 @@
             </TableView>
             <VBox prefHeight="500.0" prefWidth="271.0">
                <children>
-                  <Label text="Søg efter e-mail">
+                  <Label text="Søg efter brugere">
                      <font>
                         <Font size="16.0" />
                      </font>

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="647.0" prefWidth="810.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.Controllers.FrontPageCreditInformation">
+<BorderPane prefHeight="647.0" prefWidth="810.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Creditsystem.Domain.Controllers.FrontPageCreditInformation">
    <center>
       <VBox alignment="CENTER" prefHeight="472.0" prefWidth="763.0">
          <children>
@@ -42,7 +42,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <TextArea fx:id="txtDescription" editable="false" prefHeight="104.0" prefWidth="622.0" wrapText="true">
+            <TextArea fx:id="txtDescription" editable="false" pickOnBounds="false" prefHeight="104.0" prefWidth="622.0" wrapText="true">
                <VBox.margin>
                   <Insets left="100.0" right="100.0" />
                </VBox.margin>
