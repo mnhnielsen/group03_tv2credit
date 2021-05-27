@@ -117,6 +117,7 @@ public class ProducerCreateProduction
             //Create a Credit
             credits = new Credit(persistenceHandler.getProductionID(), persistenceHandler.getRoleID(), persistenceHandler.getParticipantID());
             persistenceHandler.createCredit(credits);
+            lblParticipantStatus.setText(txtName.getText() + " blev krediteret i " + txtTitle.getText() + " som " + txtJob.getText());
 
 
             //Visual stuff

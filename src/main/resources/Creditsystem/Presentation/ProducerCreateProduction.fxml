@@ -120,7 +120,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Label fx:id="lblParticipantStatus" prefHeight="46.0" prefWidth="261.0" />
+                        <Label fx:id="lblParticipantStatus" prefHeight="46.0" prefWidth="261.0" wrapText="true" />
                      </children>
                   </VBox>
                   <VBox prefHeight="500.0" prefWidth="457.0">

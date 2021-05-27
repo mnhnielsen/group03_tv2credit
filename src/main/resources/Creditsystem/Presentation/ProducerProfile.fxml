@@ -238,7 +238,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="txtOldPassword" editable="false">
+                  <PasswordField fx:id="txtOldPassword">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>

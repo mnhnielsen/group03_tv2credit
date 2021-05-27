@@ -70,6 +70,7 @@ public class ProducerProfileInfoController
         {
             if (txtNewName.getText().equals(txtRepeatNewName.getText()))
             {
+                lblNameStatus.setStyle(null);
                 int id = LoginController.getLoggedInID();
                 String username = currentProducerAccount.getUsername();
                 String password = currentProducerAccount.getPassword();
@@ -82,15 +83,14 @@ public class ProducerProfileInfoController
                 txtRepeatNewName.clear();
                 txtNewName.clear();
                 txtOldName.setText(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getName());
+                lblNameStatus.setText("Navn ændret");
+
             } else
             {
-                System.out.println("Not the same");
+                lblNameStatus.setStyle("-fx-text-fill: red");
+                lblNameStatus.setText("Det indtastede navn stemmer ikke");
             }
-        } else
-        {
-            System.out.println("Fill out more field");
         }
-
     }
 
     public void saveNewPhone(ActionEvent event)
@@ -104,8 +104,7 @@ public class ProducerProfileInfoController
                     txtNewPhone.setStyle("-fx-border-color: red;");
                     lblPhoneStatus.setStyle("-fx-text-fill: red");
                     lblPhoneStatus.setText("Telefonnr. eksisterer allerede");
-                }
-                else
+                } else
                 {
                     txtNewPhone.setStyle(null);
                     txtRepeatNewPhone.setStyle(null);
@@ -144,13 +143,10 @@ public class ProducerProfileInfoController
             {
                 if (persistenceHandler.checkAccountEmail(txtNewMail.getText()))
                 {
-                    System.out.println("The same");
                     txtNewMail.setStyle("-fx-border-color: red;");
                     lblEmailStatus.setStyle("-fx-text-fill: red");
                     lblEmailStatus.setText("Email eksisterer allerede");
-
-                }
-                else
+                } else
                 {
                     txtNewMail.setStyle(null);
                     txtRepeatNewMail.setStyle(null);
@@ -186,6 +182,8 @@ public class ProducerProfileInfoController
         {
             if (txtNewPassword.getText().equals(txtRepeatNewPassword.getText()))
             {
+                lblPasswordStatus.setStyle(null);
+
                 int id = LoginController.getLoggedInID();
                 String username = currentProducerAccount.getUsername();
                 String password = txtNewPassword.getText();
@@ -194,17 +192,19 @@ public class ProducerProfileInfoController
                 int phone = currentProducerAccount.getPhoneNumber();
                 String company = currentProducerAccount.getCompany();
                 Producer account = new Producer(id, username, password, false, name, email, phone, company);
+
                 persistenceHandler.changeAccountPassword(account);
+
+                txtOldPassword.clear();
                 txtNewPassword.clear();
                 txtRepeatNewPassword.clear();
-                txtOldPassword.setText(String.valueOf(persistenceHandler.getProducerAccount(LoginController.getLoggedInID()).getPassword()));
+                lblPasswordStatus.setText("Password gemt");
+
             } else
             {
-                System.out.println("Error with saveNewPassword()");
+                lblPasswordStatus.setStyle("-fx-text-fill: red");
+                lblPasswordStatus.setText("Det indtastede password stemmer ikke oversens");
             }
-        } else
-        {
-            System.out.println("Fill out more field");
         }
     }
 }
