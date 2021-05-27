@@ -138,7 +138,7 @@ public class PersistenceHandler implements IPersistenceHandler
                 account = new Account(sqlReturnValues.getString(2), sqlReturnValues.getString(3), sqlReturnValues.getBoolean(4));
                 returnValue.add(account);
             }
-            isAdmin = account.getAdminStatus();
+            isAdmin = account.getIsadmin();
         } catch (SQLException throwables)
         {
             throwables.printStackTrace();
@@ -178,7 +178,7 @@ public class PersistenceHandler implements IPersistenceHandler
             PreparedStatement statement = connection.prepareStatement("INSERT INTO accounts(username,password,isadmin)VALUES (?,?,?)");
             statement.setString(1, account.getUsername());
             statement.setString(2, account.getPassword());
-            statement.setBoolean(3, account.getAdminStatus());
+            statement.setBoolean(3, account.getIsadmin());
             statement.execute();
         } catch (SQLException throwables)
         {
@@ -196,7 +196,7 @@ public class PersistenceHandler implements IPersistenceHandler
             PreparedStatement statement = connection.prepareStatement("INSERT INTO produceraccount(username,password,isadmin, name, email, phoneNumber, company)VALUES (?,?,?,?,?,?,?)");
             statement.setString(1, producerAccount.getUsername());
             statement.setString(2, producerAccount.getPassword());
-            statement.setBoolean(3, producerAccount.getAdminStatus());
+            statement.setBoolean(3, producerAccount.getIsadmin());
             statement.setString(4, producerAccount.getName());
             statement.setString(5, producerAccount.getEmail());
             statement.setInt(6, producerAccount.getPhoneNumber());

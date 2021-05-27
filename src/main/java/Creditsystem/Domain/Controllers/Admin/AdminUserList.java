@@ -52,7 +52,7 @@ public class AdminUserList implements Initializable
         //usernameColumn.setMaxWidth(5000);
 
         isAdminColumn.setText("Er admin");
-        //isAdminColumn.setCellValueFactory(new PropertyValueFactory<>("isadmin"));
+        isAdminColumn.setCellValueFactory(new PropertyValueFactory<>("isadmin"));
         isAdminColumn.setMinWidth(10);
         isAdminColumn.setPrefWidth(190);
         //isAdminColumn.setMaxWidth(5000);

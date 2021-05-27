@@ -87,7 +87,7 @@
                   <Font name="Gill Sans MT" size="13.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtDescription" minHeight="60.0" prefHeight="66.0" prefWidth="920.0">
+            <TextArea fx:id="txtDescription" minHeight="60.0" prefHeight="66.0" prefWidth="920.0" wrapText="true">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

@@ -44,7 +44,7 @@ public class Account
         return password;
     }
 
-    public boolean getAdminStatus()
+    public boolean getIsadmin()
     {
         return isadmin;
     }
