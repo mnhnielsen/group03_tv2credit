@@ -48,61 +48,13 @@
                 </ImageView>
             </center>
          <bottom>
-            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#handleMyAdminCreateUser" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Opret bruger">
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#handleDeleteAccount" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Slet bruger">
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#handlePublications" style="-fx-background-color: transparent;" text="Publikationsanmodninger" textFill="#b42524">
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#handleAdminProfile" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Profil">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#handleAdminLogOut" style="-fx-background-color: transparent;" stylesheets="@Style/buttonstyling.css" text="Log ud" />
-               </children>
-            </HBox>
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </bottom>
          <left>
             <AnchorPane prefHeight="84.0" prefWidth="106.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
-               <children>
-                  <ImageView fitHeight="26.0" fitWidth="32.0" layoutX="40.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Images/circled-left.png" />
-                     </image>
-                  </ImageView>
-                  <Button cancelButton="true" layoutX="40.0" layoutY="29.0" mnemonicParsing="false" onAction="#handlePublications" prefHeight="25.0" prefWidth="26.0" style="-fx-background-color: transparent;">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
             </AnchorPane>
          </left>
         </BorderPane>

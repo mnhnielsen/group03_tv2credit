@@ -57,14 +57,6 @@
          </center>
          <left>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fx:id="goBack" accessibleRole="BUTTON" fitHeight="29.0" fitWidth="31.0" layoutX="81.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Images/circled-left.png" />
-                     </image>
-                  </ImageView>
-                  <Button layoutX="87.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleBackButton" opacity="0.0" />
-               </children>
             </AnchorPane>
          </left>
       </BorderPane>
