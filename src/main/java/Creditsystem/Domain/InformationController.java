@@ -1,12 +1,8 @@
 package Creditsystem.Domain;
 
+import Creditsystem.Domain.Helpers.StageChange;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
-
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class InformationController
 {

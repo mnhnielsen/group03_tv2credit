@@ -1,6 +1,7 @@
 package Creditsystem.Domain;
 
 import Creditsystem.Data.FileHandler;
+import Creditsystem.Domain.Helpers.StageChange;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
