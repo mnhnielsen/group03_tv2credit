@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="CreditDB@localhost" uuid="0829bef0-292f-4d29-ad28-eb85cc950d83">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/CreditDB</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="TV2Credit" uuid="cec84572-7ffd-42eb-bf2a-84db6a6e1c03">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
