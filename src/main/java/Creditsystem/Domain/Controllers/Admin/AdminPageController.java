@@ -1,6 +1,7 @@
 package Creditsystem.Domain.Controllers.Admin;
 
 import Creditsystem.Data.PersistenceHandler;
+import Creditsystem.Domain.Helpers.Mail;
 import Creditsystem.Domain.Model.Account;
 import Creditsystem.Domain.Helpers.StageChange;
 import Creditsystem.Domain.IPersistenceHandler;
@@ -20,6 +21,7 @@ public class AdminPageController
     public Button btnDeleteUser;
     private IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
     private StageChange stageChange = new StageChange();
+    private Mail mail = new Mail();
 
 
     public void createNewUser(ActionEvent event)
@@ -46,6 +48,9 @@ public class AdminPageController
                     {
                         Producer producerAccount = new Producer(username, password, false, txtName.getText(), txtEmail.getText(), Integer.valueOf(txtPhone.getText()), txtCompany.getText());
                         persistenceHandler.createProducerAccount(producerAccount);
+                        mail.sendEmail(txtEmail.getText(), "Velkommen til Krediteringssystemet",
+                                "Hej " + txtName.getText() + "\n" + "Her er oplysningerne til din konto. Du kan til ændre din adgangskode når du er logget ind under siden Profil"
+                                        + "\n" + "Brugernavn:" + username + "\n" + "Kodeord: " + password);
                         txtCreateName.clear();
                         pwrdPassword.clear();
                         pswrdReEnterPassword.clear();
