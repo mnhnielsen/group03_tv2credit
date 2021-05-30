@@ -1,9 +1,9 @@
 package Creditsystem.Domain.Controllers;
 
 import Creditsystem.Data.PersistenceHandler;
-import Creditsystem.Domain.CreditJoin;
+import Creditsystem.Domain.Helpers.CreditJoin;
 import Creditsystem.Domain.IPersistenceHandler;
-import Creditsystem.Domain.Production;
+import Creditsystem.Domain.Model.Production;
 import Creditsystem.Domain.Helpers.StageChange;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,5 +1,8 @@
 package Creditsystem.Domain;
 
+import Creditsystem.Domain.Helpers.CreditJoin;
+import Creditsystem.Domain.Model.*;
+
 import java.util.ArrayList;
 
 public interface IPersistenceHandler

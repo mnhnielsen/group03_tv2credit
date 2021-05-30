@@ -1,10 +1,10 @@
 package Creditsystem.Domain.Controllers.Producer;
 
 import Creditsystem.Data.PersistenceHandler;
-import Creditsystem.Domain.Controllers.LoginController;
+import Creditsystem.Domain.Controllers.Login.LoginController;
 import Creditsystem.Domain.Helpers.StageChange;
 import Creditsystem.Domain.IPersistenceHandler;
-import Creditsystem.Domain.Producer;
+import Creditsystem.Domain.Model.Producer;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

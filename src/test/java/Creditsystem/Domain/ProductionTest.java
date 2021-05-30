@@ -1,5 +1,6 @@
 package Creditsystem.Domain;
 
+import Creditsystem.Domain.Model.Production;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

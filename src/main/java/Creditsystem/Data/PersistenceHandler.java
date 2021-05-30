@@ -1,6 +1,8 @@
 package Creditsystem.Data;
 
 import Creditsystem.Domain.*;
+import Creditsystem.Domain.Helpers.CreditJoin;
+import Creditsystem.Domain.Model.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;

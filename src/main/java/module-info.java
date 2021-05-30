@@ -15,4 +15,6 @@ module Creditsystem{
     opens Creditsystem.Domain.Helpers;
     opens Creditsystem.Domain.Controllers.Producer;
     opens Creditsystem.Domain.Controllers.Admin;
+    opens Creditsystem.Domain.Model;
+    opens Creditsystem.Domain.Controllers.Login;
 }

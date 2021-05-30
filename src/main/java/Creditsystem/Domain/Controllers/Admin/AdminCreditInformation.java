@@ -1,11 +1,11 @@
 package Creditsystem.Domain.Controllers.Admin;
 
 import Creditsystem.Data.PersistenceHandler;
-import Creditsystem.Domain.CreditJoin;
+import Creditsystem.Domain.Helpers.CreditJoin;
 import Creditsystem.Domain.Helpers.StageChange;
 import Creditsystem.Domain.IPersistenceHandler;
-import Creditsystem.Domain.Participant;
-import Creditsystem.Domain.Role;
+import Creditsystem.Domain.Model.Participant;
+import Creditsystem.Domain.Model.Role;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;

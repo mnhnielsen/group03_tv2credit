@@ -2,13 +2,12 @@ package Creditsystem.Domain.Controllers.Producer;
 
 import Creditsystem.Data.PersistenceHandler;
 import Creditsystem.Domain.*;
-import Creditsystem.Domain.Controllers.LoginController;
+import Creditsystem.Domain.Controllers.Login.LoginController;
 import Creditsystem.Domain.Helpers.StageChange;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.util.List;
 
 public class ProducerController
 {

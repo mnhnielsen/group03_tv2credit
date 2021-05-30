@@ -1,7 +1,7 @@
 package Creditsystem.Domain.Controllers.Admin;
 
 import Creditsystem.Data.PersistenceHandler;
-import Creditsystem.Domain.Account;
+import Creditsystem.Domain.Model.Account;
 import Creditsystem.Domain.Helpers.StageChange;
 import Creditsystem.Domain.IPersistenceHandler;
 import javafx.collections.FXCollections;

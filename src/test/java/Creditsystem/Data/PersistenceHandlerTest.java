@@ -1,10 +1,8 @@
 package Creditsystem.Data;
 
-import Creditsystem.Domain.Production;
+import Creditsystem.Domain.Model.Production;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
-import java.sql.PreparedStatement;
 
 import static org.junit.Assert.assertEquals;
 

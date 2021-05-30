@@ -1,4 +1,4 @@
-package Creditsystem.Domain;
+package Creditsystem.Domain.Model;
 
 import java.util.List;
 

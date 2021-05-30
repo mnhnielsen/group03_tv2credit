@@ -1,4 +1,4 @@
-package Creditsystem.Domain.Controllers;
+package Creditsystem.Domain.Controllers.Login;
 
 import Creditsystem.Data.PersistenceHandler;
 import Creditsystem.Domain.Helpers.Mail;

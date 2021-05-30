@@ -2,9 +2,13 @@ package Creditsystem.Domain.Controllers.Producer;
 
 import Creditsystem.Data.PersistenceHandler;
 import Creditsystem.Domain.*;
-import Creditsystem.Domain.Controllers.LoginController;
+import Creditsystem.Domain.Controllers.Login.LoginController;
 import Creditsystem.Domain.Helpers.CreditTable;
 import Creditsystem.Domain.Helpers.StageChange;
+import Creditsystem.Domain.Model.Credit;
+import Creditsystem.Domain.Model.Participant;
+import Creditsystem.Domain.Model.Production;
+import Creditsystem.Domain.Model.Role;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;

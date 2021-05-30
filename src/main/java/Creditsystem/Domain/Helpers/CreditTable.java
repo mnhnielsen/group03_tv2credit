@@ -1,6 +1,6 @@
 package Creditsystem.Domain.Helpers;
 
-import Creditsystem.Domain.Participant;
+import Creditsystem.Domain.Model.Participant;
 
 public class CreditTable
 {
