@@ -208,7 +208,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label text="Gengtag ny email">
+                  <Label text="Gentag ny email">
                      <font>
                         <Font size="16.0" />
                      </font>
