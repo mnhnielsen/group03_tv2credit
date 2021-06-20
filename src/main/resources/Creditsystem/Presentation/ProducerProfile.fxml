@@ -221,7 +221,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label fx:id="lblPasswordStatus1" prefHeight="24.0" prefWidth="377.0" />
+                  <Label fx:id="lblEmailStatus" prefHeight="24.0" prefWidth="377.0" />
                   <Button mnemonicParsing="false" onAction="#saveNewMail" style="-fx-background-radius: 15;" text="Gem ændringer">
                      <VBox.margin>
                         <Insets top="10.0" />
