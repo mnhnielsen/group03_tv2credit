@@ -62,7 +62,7 @@ public class AdminCreditInformation
                         newName = t.getNewValue();
                         for (int i = 0; i < persistenceHandler.getParticipants().size(); i++)
                         {
-                            if (!newName.equals(persistenceHandler.getParticipants().get(i).getName()))
+                            if (!newName.toLowerCase().equals(persistenceHandler.getParticipants().get(i).getName()))
                             {
                                 phone.setDisable(false);
                                 email.setDisable(false);
